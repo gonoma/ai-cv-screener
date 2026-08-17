@@ -8,7 +8,8 @@ requires-python = ">=3.12"
 dependencies = [
     "pydantic>=2.9",
     "google-genai>=1.0",   # CV records and photos via Google AI Studio
-    "openai>=1.60",        # OpenRouter is OpenAI-compatible; used only for its base_url
+    "openai>=1.60",         # OpenRouter is OpenAI-compatible; used only for its base_url
+    "pillow>=11.0",                 # normalises photos for committing; draws the local monogram
 ]
 
 [project.optional-dependencies]

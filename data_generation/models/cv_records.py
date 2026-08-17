@@ -1,4 +1,4 @@
-from typing import Any
+from typing import Any, Literal
 
 from pydantic import BaseModel, Field
 
@@ -41,6 +41,17 @@ class Candidate(BaseModel):
     email: str
     phone: str
     location: str = Field(description="City, Country.")
+    presentation: Literal["a woman", "a man", "a non-binary person"] = Field(
+        description="How this person presents in a photograph. Must be consistent "
+        "with the given name. Vary this across the corpus."
+    )
+    appearance: str = Field(
+        description="One short phrase for a headshot, consistent with the name and "
+        "career length: approximate age, build, skin tone, hair, and one ordinary "
+        "distinguishing feature. For example 'in her late forties, heavy build, "
+        "olive skin, short greying hair, wire-rimmed glasses'. No clothing, no "
+        "background."
+    )
     summary: str = Field(description="Two or three sentences, first person omitted.")
     skills: list[str] = Field(description="Six to fourteen concrete technical skills.")
     languages: list[str] = Field(

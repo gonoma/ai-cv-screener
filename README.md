@@ -59,3 +59,14 @@ The builder returns JSON, not CV text. This way the record becomes an answer key
 it gets rendered into PDF later easily, and it can be checked field by field.
 This is quite useful for evals and testing.
 If we returned prose or CV text instead we would loose these benefits.
+
+### Photo Builder
+
+Photo Generation has three options, and it tries them in order: Gemini, then Pollinations
+which needs no key, then it just draws a coloured circle with the person's
+initials (as a local fallback not based on network).
+This way we avoid missing a photo on a CV, even with just the initials is better than no
+photo at all, also it's not worth killing a run that's already spent quota because of a broken network.
+
+The photos never reach the search. They only exist so the PDFs look like real
+documents.

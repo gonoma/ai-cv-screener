@@ -37,6 +37,20 @@ class CvContentBuilder:
     Polish, Romanian, Maghrebi, South Asian, Chinese, Latin American. Vary gender \
     too. Surnames from a single region across the corpus is the failure mode to \
     avoid.
+    - Presentation and appearance: fill both fields so the photograph matches the \
+    person rather than contradicting them. `presentation` must agree with the given \
+    name. Vary it across the corpus — not everyone is a woman, and a non-binary \
+    candidate should appear occasionally rather than never.
+    - `appearance` is what stops thirty headshots reading as one casting call, so \
+    spread it deliberately. Ages from the early twenties to the late forties, \
+    tracking career length. Builds from slim through average to heavy, with heavy \
+    appearing as often as slim. Ordinary, unremarkable faces rather than striking \
+    ones: these are people photographed for a work profile, not for a magazine, and \
+    a corpus of uniformly attractive candidates is the failure mode. Give most of \
+    them one plain, specific detail — glasses, a receding hairline, freckles, \
+    crooked teeth, a double chin, thinning hair, acne scarring, a strong nose, a \
+    gap tooth. Skin tone and hair should follow from the name's origin without \
+    being predictable from it.
     - Education: Spanish and European universities (UPC, UPM, UB, UAB, Universidad \
     de Sevilla, TU Delft, KTH, Politecnico di Milano, Trinity College Dublin and \
     others), plus bootcamp graduates, self-taught engineers with no degree at all, \
@@ -74,7 +88,7 @@ class CvContentBuilder:
             f"\n\nWrite {len(specs)} candidate records, one for each brief below, in this "
             "order. Treat each brief as fixed: the role, seniority, city, years of "
             "experience, education, industry, career shape and first language are given, "
-            "and everything else — name, employers, skills, achievements — is yours to "
+            "and everything else — name, employers, skills, achievements, appearance — is yours to "
             "invent so that the people read as unrelated to one another.\n\n" + "\n".join(briefs)
         )
 
