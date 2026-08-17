@@ -14,6 +14,15 @@ dependencies = [
     "jinja2>=3.1",                  # HTML templates
     "weasyprint>=63",               # HTML -> PDF
     "python-dotenv>=1.0",           # loads .env
+
+    # Backend (backend/). FastAPI service: ingestion, routing, retrieval, chat.
+    "fastapi>=0.115",
+    "uvicorn[standard]>=0.32",
+    "psycopg[binary]>=3.2",
+    "pgvector>=0.3",                # vector type adapter for psycopg
+    "pypdf>=5.1",                   # primary PDF text extraction
+    "pdfplumber>=0.11",             # fallback where pypdf mangles a multi-column page
+    "fastembed>=0.5",               # local ONNX embeddings: no quota, no key, deterministic
 ]
 
 [project.optional-dependencies]
@@ -24,7 +33,10 @@ requires = ["setuptools>=68"]
 build-backend = "setuptools.build_meta"
 
 [tool.setuptools.packages.find]
-include = ["data_generation*"]
+# `backend/` carries __init__.py and sits at the repo root, so no package-dir
+# mapping is needed. That also means the repo-root directory *is* the package
+# rather than shadowing it — see the namespace-package note in backend/__init__.py.
+include = ["data_generation*", "backend*"]
 
 [tool.setuptools.package-data]
 "data_generation.rendering" = ["templates/*.html"]
@@ -45,4 +57,6 @@ src = ["."]
 select = ["E", "F", "I", "UP", "B"]
 
 [tool.ruff.lint.isort]
-known-first-party = ["data_generation"]
+# `backend` resolves through package-dir, which ruff cannot see, so say it here
+# rather than let isort file our own packages under third-party.
+known-first-party = ["backend", "data_generation"]
