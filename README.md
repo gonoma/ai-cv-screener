@@ -1,2 +1,49 @@
 # ai-cv-screener
-AI-Powered CV Screener
+Welcome to the AI-Powered CV Screener!
+
+Essentially A CV screening tool: a user asks questions in a chat interface and gets answers
+grounded in a corpus of CVs, with the source CVs cited.
+
+The project has three parts: a one-shot pipeline that generates a synthetic CV corpus; a backend
+that ingests those CVs and answers questions about them; and a web chat
+interface.
+
+## Setup
+
+Requires Python 3.12 or newer.
+
+```
+python3.12 -m venv .venv
+source .venv/bin/activate
+pip install -e ".[dev]"
+```
+
+```
+make test    # pytest
+make lint    # ruff check
+make format  # ruff format
+```
+
+## Design Decisions
+
+### The corpus is synthetic on purpose
+
+I can't put real CVs in a repo, so I generate fake ones. Nice side effect: I know
+exactly what's in every CV, so later I can check whether the search actually finds
+the right people. In other words: retrieval can later be graded against known
+answers rather than hand-written guesses.
+The evaluation quality of this project rests on that, which is why generation is a 
+real pipeline rather than a fixture file.
+
+
+### Candidate coordinates are fixed in code, before any model call
+
+Before calling the model I pick each person's details in code (job, seniority,
+city, where they studied). If you just ask a model for 30 people you get 30
+versions of the same person, and then there's nothing to search for. This way I'm
+asking it to write a CV for someone I already made up. I deal the options out like
+cards so I don't end up with five people in Barcelona and none anywhere else, and
+I work out years of experience from seniority so I don't get directors with two
+years. It's all seeded, so I get the same 30 people every run.
+As a result, a given corpus size always yields the same result. A failing test is 
+then a real regression rather than a reshuffle.
