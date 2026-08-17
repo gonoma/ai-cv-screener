@@ -62,8 +62,7 @@ class ProfilePhotoBuilder:
     def build_photo(self, prompt: str, initials: str, seed: int) -> bytes:
         """Try each provider in turn, returning the first image anything produces.
 
-        `seed` keeps two CVs apart when they share a name, and makes a retry
-        produce a genuinely different image rather than the same one again.
+        `seed` is the candidate's slot, so each CV asks for its own variation.
         """
         start_at = os.environ.get("IMAGE_PROVIDER", "gemini").strip().lower()
         if start_at not in self._PROVIDER_CHAIN:

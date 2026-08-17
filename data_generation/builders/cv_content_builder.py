@@ -2,7 +2,7 @@ import os
 from typing import Any
 
 from ..models.candidate_specs import CandidateSpec
-from ..models.cv_records import CORPUS_YEAR, Candidate, CandidateBatch
+from ..models.cv_records import CORPUS_YEAR, Candidate
 
 
 class CvContentBuilder:
@@ -63,36 +63,55 @@ class CvContentBuilder:
     Write plausible achievement bullets with concrete numbers where a real CV would \
     have them. Do not use emoji. Return only the record."""
 
-    def build_candidates(self, specs: list[CandidateSpec]) -> list[Candidate]:
-        """
-        Produce one candidate per spec in a single call.
-        Costs one call per batch instead of one per CV.
-        """
-        prompt = self._DIVERSITY_BRIEF + self._build_spec_section(specs)
+    def build_candidate(
+        self, spec: CandidateSpec, already_generated: list[dict[str, Any]]
+    ) -> Candidate:
+        """Produce the candidate this spec describes, in one call."""
+        prompt = (
+            self._DIVERSITY_BRIEF
+            + self._build_steering_section(already_generated)
+            + self._build_spec_section(spec)
+        )
         provider = os.environ.get("TEXT_PROVIDER", self._DEFAULT_PROVIDER).strip().lower()
         if provider == "gemini":
-            batch = self._request_batch_from_gemini(prompt)
-        elif provider == "openrouter":
-            batch = self._request_batch_from_openrouter(prompt)
-        else:
-            raise SystemExit(f"TEXT_PROVIDER must be 'gemini' or 'openrouter', got {provider!r}")
-
-        if len(batch.candidates) != len(specs):
-            raise RuntimeError(f"asked for {len(specs)} records, got {len(batch.candidates)}")
-        return batch.candidates
+            return self._request_candidate_from_gemini(prompt)
+        if provider == "openrouter":
+            return self._request_candidate_from_openrouter(prompt)
+        raise SystemExit(f"TEXT_PROVIDER must be 'gemini' or 'openrouter', got {provider!r}")
 
     @staticmethod
-    def _build_spec_section(specs: list[CandidateSpec]) -> str:
-        briefs = [f"{position + 1}. {spec.as_brief()}" for position, spec in enumerate(specs)]
+    def _build_steering_section(already_generated: list[dict[str, Any]]) -> str:
+        """Show the model who already exists, so it writes someone different.
+
+        Name, job and city all go in, not just the job. When only job titles
+        went in, three calls came back with three different women all surnamed
+        Goikoetxea living in Bilbao: the model varies the axis you show it, and
+        leaves the rest alone.
+        """
+        if not already_generated:
+            return ""
+        listing = "\n".join(
+            f"- {record['name']} | {record['headline']} | {record['location']}"
+            for record in already_generated
+        )
         return (
-            f"\n\nWrite {len(specs)} candidate records, one for each brief below, in this "
-            "order. Treat each brief as fixed: the role, seniority, city, years of "
-            "experience, education, industry, career shape and first language are given, "
-            "and everything else — name, employers, skills, achievements, appearance — is yours to "
-            "invent so that the people read as unrelated to one another.\n\n" + "\n".join(briefs)
+            "\n\nAlready in this corpus:\n" + listing + "\n\nThis candidate must be clearly a "
+            "different person: a surname of different origin, a different city, and a "
+            "different function or seniority. An overlapping skill set is fine."
         )
 
-    def _request_batch_from_gemini(self, prompt: str) -> CandidateBatch:
+    @staticmethod
+    def _build_spec_section(spec: CandidateSpec) -> str:
+        """Turn the fixed coordinates into the actual ask."""
+        return (
+            "\n\nWrite one candidate record for the brief below. Treat the brief as fixed: "
+            "the role, seniority, city, years of experience, education, industry, career "
+            "shape and first language are given, and everything else — name, employers, "
+            "skills, achievements, appearance — is yours to invent so that this person "
+            f"reads as unrelated to the rest of the corpus.\n\n{spec.as_brief()}"
+        )
+
+    def _request_candidate_from_gemini(self, prompt: str) -> Candidate:
         self._required_key("GEMINI_API_KEY")
         from google import genai
 
@@ -105,12 +124,12 @@ class CvContentBuilder:
             response_format={
                 "type": "text",
                 "mime_type": "application/json",
-                "schema": CandidateBatch.model_json_schema(),
+                "schema": Candidate.model_json_schema(),
             },
         )
-        return CandidateBatch.model_validate_json(interaction.output_text)
+        return Candidate.model_validate_json(interaction.output_text)
 
-    def _request_batch_from_openrouter(self, prompt: str) -> CandidateBatch:
+    def _request_candidate_from_openrouter(self, prompt: str) -> Candidate:
         import openai
 
         client = openai.OpenAI(
@@ -123,13 +142,13 @@ class CvContentBuilder:
             response_format={
                 "type": "json_schema",
                 "json_schema": {
-                    "name": "candidate_batch",
+                    "name": "candidate",
                     "strict": True,
-                    "schema": self._forbid_extra_properties(CandidateBatch.model_json_schema()),
+                    "schema": self._forbid_extra_properties(Candidate.model_json_schema()),
                 },
             },
         )
-        return CandidateBatch.model_validate_json(completion.choices[0].message.content)
+        return Candidate.model_validate_json(completion.choices[0].message.content)
 
     @staticmethod
     def _required_key(variable_name: str) -> str:

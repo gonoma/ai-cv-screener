@@ -89,9 +89,3 @@ class Candidate(BaseModel):
     @classmethod
     def from_ground_truth_record(cls, entry: dict[str, Any]) -> "Candidate":
         return cls.model_validate(entry)
-
-
-class CandidateBatch(BaseModel):
-    candidates: list[Candidate] = Field(
-        description="One record per brief, in the same order as the briefs given."
-    )

@@ -17,20 +17,35 @@ brew install pango libffi            # macOS
 sudo apt install libpango-1.0-0 libpangoft2-1.0-0    # Debian/Ubuntu
 ```
 
-```
-python3.12 -m venv .venv
+Create a Virtual Environment with installed dependencies, activate it,
+and create a .env file that needs to be filled with your personal keys.
+```sh
+python3 -m venv .venv
 source .venv/bin/activate
 pip install -e ".[dev]"
+cp .env.example .env      # add your GEMINI_API_KEY
 ```
 
+Makefile commands for simplicity and ease of use:
+
 ```
-make test    # pytest
-make lint    # ruff check
-make format  # ruff format
+make test                # to check a corpus is actually varied
+make lint                # ruff check
+make format              # ruff format
+make generate            # generates 30 CVs
+make generate COUNT=5    # fewer, while testing changes
 ```
 
-Create a `.env` file and copy-paste the content inside the template `.env.example`.
-Fill the API keys and any other required environment variables.
+You can also run the generation command from the terminal:
+```
+python -m data_generation.run --count 30
+```
+
+With the `--force` flag it skips everything already on disk:
+
+```
+python -m data_generation.run --count 30 --force
+```
 
 To generate CVs you need:
 
@@ -94,3 +109,20 @@ depending on how the page is arranged. Thirty identical CVs would test one code
 path thirty times, hence why we have 5 different templates that are quite 
 different in structure. The templates cycle by position rather than at random, 
 so all five always show up.
+
+### Corpus Generation Pipeline
+
+It writes:
+
+- `data/cvs/` — one PDF per candidate
+- `data/photos/` — one JPEG per candidate
+- `data/ground_truth.json` — the answer key, i.e. exactly what went into each CV
+
+Two candidates sharing a name is something a real pile of CVs contains anyway, 
+and the record still differs everywhere else, so there's nothing here re-requesting 
+a record until it looks distinct enough.
+Same for photos: each candidate has their own appearance line, and the headshot
+that comes back is taken as-is.
+
+The answer key gets rewritten after every single CV rather than once at the end.
+If a run dies on number 18, I keep the 17 I already paid for.

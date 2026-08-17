@@ -39,7 +39,11 @@ class CvPdfRenderer:
         return f"{filename_slug}.pdf"
 
     def render_to_pdf(
-        self, candidate: Candidate, photo_data_uri: str | None, template: str, output_path: Path
+        self,
+        candidate: Candidate,
+        photo_data_uri: str | None,
+        template: str,
+        output_path: Path,
     ) -> None:
         rendered_html = self._environment.get_template(template).render(
             candidate=candidate, photo=photo_data_uri
