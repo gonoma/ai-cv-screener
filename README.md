@@ -10,7 +10,12 @@ interface.
 
 ## Setup
 
-Requires Python 3.12 or newer.
+Requires Python 3.12 or newer. WeasyPrint needs a couple of system libraries:
+
+```
+brew install pango libffi            # macOS
+sudo apt install libpango-1.0-0 libpangoft2-1.0-0    # Debian/Ubuntu
+```
 
 ```
 python3.12 -m venv .venv
@@ -24,8 +29,18 @@ make lint    # ruff check
 make format  # ruff format
 ```
 
-Create a .env file and copy-paste the content inside the template `.env.example`.
+Create a `.env` file and copy-paste the content inside the template `.env.example`.
 Fill the API keys and any other required environment variables.
+
+To generate CVs you need:
+
+- `GEMINI_API_KEY` from Google AI Studio, and `TEXT_PROVIDER=gemini`
+- `OPENROUTER_API_KEY` from OpenRouter, and `TEXT_PROVIDER=openrouter`
+
+Photos don't need a key at all. `IMAGE_PROVIDER` picks where to start, and
+anything that fails falls through to the next option.
+
+The tests don't rely on external network APIs.
 
 # Design Decisions
 
@@ -70,3 +85,12 @@ photo at all, also it's not worth killing a run that's already spent quota becau
 
 The photos never reach the search. They only exist so the PDFs look like real
 documents.
+
+### CV Renderer
+
+There are five different CV layouts, and that's not for looks. Getting text back
+out of a PDF is the step that quietly goes wrong, and it goes wrong differently
+depending on how the page is arranged. Thirty identical CVs would test one code
+path thirty times, hence why we have 5 different templates that are quite 
+different in structure. The templates cycle by position rather than at random, 
+so all five always show up.

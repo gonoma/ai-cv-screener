@@ -1,0 +1,75 @@
+<!doctype html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<title>{{ candidate.name }}</title>
+<style>
+  @page { size: A4; margin: 18mm 20mm; }
+  body { font-family: Georgia, serif; font-size: 10pt; line-height: 1.45; color: #1a1a1a; }
+  header { overflow: hidden; border-bottom: 2px solid #1a1a1a; padding-bottom: 10px; margin-bottom: 16px; }
+  header img { float: right; width: 26mm; height: 26mm; object-fit: cover; margin-left: 12px; }
+  h1 { font-size: 21pt; margin: 0; letter-spacing: -0.4px; }
+  .headline { font-size: 11.5pt; color: #4a4a4a; margin: 2px 0 8px; }
+  .contact { font-size: 8.5pt; color: #555; }
+  .contact span { margin-right: 12px; }
+  h2 { font-size: 10pt; text-transform: uppercase; letter-spacing: 1.4px;
+       border-bottom: 1px solid #c9c9c9; padding-bottom: 3px; margin: 18px 0 8px; }
+  .role { margin-bottom: 12px; break-inside: avoid; }
+  .role-head { display: flex; justify-content: space-between; font-weight: bold; }
+  .role-sub { font-size: 9pt; color: #555; font-style: italic; margin-bottom: 3px; }
+  ul { margin: 0; padding-left: 16px; }
+  li { margin-bottom: 2px; }
+  .inline { margin: 0; }
+</style>
+</head>
+<body>
+
+<header>
+  {% if photo %}<img src="{{ photo }}" alt="">{% endif %}
+  <h1>{{ candidate.name }}</h1>
+  <p class="headline">{{ candidate.headline }}</p>
+  <p class="contact">
+    <span>{{ candidate.location }}</span>
+    <span>{{ candidate.email }}</span>
+    <span>{{ candidate.phone }}</span>
+  </p>
+</header>
+
+<h2>Profile</h2>
+<p class="inline">{{ candidate.summary }}</p>
+
+<h2>Experience</h2>
+{% for role in candidate.experience %}
+<div class="role">
+  <div class="role-head">
+    <span>{{ role.role }}, {{ role.company }}</span>
+    <span>{{ role | date_range }}</span>
+  </div>
+  <div class="role-sub">{{ role.location }}</div>
+  <ul>
+    {% for bullet in role.bullets %}
+    <li>{{ bullet }}</li>
+    {% endfor %}
+  </ul>
+</div>
+{% endfor %}
+
+<h2>Education</h2>
+{% for edu in candidate.education %}
+<div class="role">
+  <div class="role-head">
+    <span>{{ edu.degree }} in {{ edu.field }}</span>
+    <span>{{ edu.graduation_year }}</span>
+  </div>
+  <div class="role-sub">{{ edu.institution }} ({{ edu.short_name }})</div>
+</div>
+{% endfor %}
+
+<h2>Skills</h2>
+<p class="inline">{{ candidate.skills | join(' · ') }}</p>
+
+<h2>Languages</h2>
+<p class="inline">{{ candidate.languages | join(' · ') }}</p>
+
+</body>
+</html>

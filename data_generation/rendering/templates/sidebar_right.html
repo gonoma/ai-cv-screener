@@ -1,0 +1,103 @@
+<!doctype html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<title>{{ candidate.name }}</title>
+<style>
+  /* Sidebar on the right, so extraction sees the body first and the contact
+     block last — the opposite order to two_column.html. Two templates with the
+     same visual idea and mirrored content-stream order is a sharper test of
+     chunking than two unrelated layouts.
+
+     z-index: -1 on the fixed blocks is load-bearing: without it they paint
+     after the in-flow content and hide the sidebar text completely. */
+  @page { size: A4; margin: 0; }
+  body { font-family: "Avenir Next", "Segoe UI", Helvetica, Arial, sans-serif;
+         font-size: 9.5pt; line-height: 1.5; color: #232323; margin: 0; }
+
+  .tint { position: fixed; top: 0; right: 0; width: 32%; height: 100%;
+          background: #f4f1ec; z-index: -1; }
+  .rule { position: fixed; top: 0; right: 32%; width: 2.5pt; height: 100%;
+          background: #314b40; z-index: -1; }
+
+  .main { float: left; width: 68%; box-sizing: border-box; padding: 15mm 8mm 15mm 15mm; }
+  .side { margin-left: 68%; box-sizing: border-box; padding: 15mm 13mm 15mm 8mm; }
+
+  h1 { font-size: 21pt; margin: 0; font-weight: 600; color: #1c2a24; }
+  .headline { font-size: 11pt; color: #314b40; margin: 3px 0 10px; font-weight: 500; }
+  h2 { font-size: 8.5pt; text-transform: uppercase; letter-spacing: 2px;
+       color: #314b40; margin: 7mm 0 3mm; font-weight: 700; }
+
+  .role { margin-bottom: 12px; break-inside: avoid; }
+  .role-title { font-weight: 600; font-size: 10pt; }
+  .role-meta { font-size: 8.5pt; color: #464646; margin-bottom: 3px; }
+  ul.bullets { margin: 0; padding-left: 14px; }
+  ul.bullets li { margin-bottom: 2px; }
+
+  .side img { width: 100%; max-width: 38mm; aspect-ratio: 1; object-fit: cover;
+              display: block; margin: 0 0 12px; border-radius: 2px; }
+  .side h3 { font-size: 8pt; text-transform: uppercase; letter-spacing: 1.8px;
+             color: #1c2a24; margin: 6mm 0 2mm; font-weight: 700; }
+  .side p, .side li { font-size: 8.5pt; margin: 0 0 3px; color: #2c332f; }
+  .side ul { list-style: none; margin: 0; padding: 0; }
+  .side .chip { display: inline-block; background: #e3ded4; border-radius: 2px;
+                padding: 1px 5px; margin: 0 3px 3px 0; font-size: 8pt; }
+</style>
+</head>
+<body>
+
+<div class="tint"></div>
+<div class="rule"></div>
+
+<main class="main">
+  <h1>{{ candidate.name }}</h1>
+  <p class="headline">{{ candidate.headline }}</p>
+  <p>{{ candidate.summary }}</p>
+
+  <h2>Experience</h2>
+  {% for role in candidate.experience %}
+  <div class="role">
+    <div class="role-title">{{ role.role }}</div>
+    <div class="role-meta">{{ role.company }} &mdash; {{ role.location }} &mdash; {{ role | date_range }}</div>
+    <ul class="bullets">
+      {% for bullet in role.bullets %}
+      <li>{{ bullet }}</li>
+      {% endfor %}
+    </ul>
+  </div>
+  {% endfor %}
+
+  <h2>Education</h2>
+  {% for edu in candidate.education %}
+  <div class="role">
+    <div class="role-title">{{ edu.degree }}, {{ edu.field }}</div>
+    <div class="role-meta">{{ edu.institution }} ({{ edu.short_name }}) &mdash; {{ edu.graduation_year }}</div>
+  </div>
+  {% endfor %}
+</main>
+
+<aside class="side">
+  {% if photo %}<img src="{{ photo }}" alt="">{% endif %}
+
+  <h3>Contact</h3>
+  <p>{{ candidate.location }}</p>
+  <p>{{ candidate.email }}</p>
+  <p>{{ candidate.phone }}</p>
+
+  <h3>Skills</h3>
+  <p>
+    {% for skill in candidate.skills %}
+    <span class="chip">{{ skill }}</span>
+    {% endfor %}
+  </p>
+
+  <h3>Languages</h3>
+  <ul>
+    {% for language in candidate.languages %}
+    <li>{{ language }}</li>
+    {% endfor %}
+  </ul>
+</aside>
+
+</body>
+</html>

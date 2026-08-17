@@ -1,0 +1,90 @@
+<!doctype html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<title>{{ candidate.name }}</title>
+<style>
+  /* Dates live in a narrow left gutter, detached from the roles they label.
+     A fourth way to break naive extraction: the year and the job title are
+     adjacent on the page but far apart in the content stream. */
+  @page { size: A4; margin: 15mm 16mm; }
+  body { font-family: "Iowan Old Style", Palatino, Georgia, serif;
+         font-size: 10pt; line-height: 1.5; color: #23252a; }
+
+  header { display: table; width: 100%; margin-bottom: 4mm; }
+  header .who, header .pic { display: table-cell; vertical-align: middle; }
+  header .pic { width: 26mm; }
+  header img { width: 24mm; height: 24mm; object-fit: cover; border-radius: 3px; }
+  h1 { font-size: 22pt; margin: 0; font-weight: normal; letter-spacing: -0.5px; }
+  .headline { font-size: 11pt; color: #5f574e; font-style: italic; margin: 2px 0 6px; }
+  .contact { font-size: 8.5pt; color: #55595f; margin: 0; }
+  hr { border: 0; border-top: 2px solid #23252a; margin: 4mm 0 5mm; }
+
+  h2 { font-size: 9pt; text-transform: uppercase; letter-spacing: 2px;
+       color: #6a5537; margin: 6mm 0 3mm; font-weight: bold; }
+
+  .row { display: table; width: 100%; margin-bottom: 4mm; break-inside: avoid; }
+  .when, .what { display: table-cell; vertical-align: top; }
+  .when { width: 26mm; font-size: 8.5pt; color: #5e5850; padding-top: 2px;
+          border-right: 1px solid #d8d2c8; }
+  .what { padding-left: 6mm; }
+  .what .title { font-weight: bold; font-size: 10.5pt; }
+  .what .org { font-size: 9pt; color: #5f574e; margin-bottom: 2px; }
+  ul { margin: 3px 0 0; padding-left: 15px; }
+  li { margin-bottom: 2px; }
+  .flow { margin: 0; }
+</style>
+</head>
+<body>
+
+<header>
+  <div class="who">
+    <h1>{{ candidate.name }}</h1>
+    <p class="headline">{{ candidate.headline }}</p>
+    <p class="contact">{{ candidate.location }} &middot; {{ candidate.email }} &middot; {{ candidate.phone }}</p>
+  </div>
+  {% if photo %}<div class="pic"><img src="{{ photo }}" alt=""></div>{% endif %}
+</header>
+<hr>
+
+<p class="flow">{{ candidate.summary }}</p>
+
+<h2>Experience</h2>
+{% for role in candidate.experience %}
+<div class="row">
+  <div class="when">{{ role | date_range }}</div>
+  <div class="what">
+    <div class="title">{{ role.role }}</div>
+    <div class="org">{{ role.company }}, {{ role.location }}</div>
+    <ul>
+      {% for bullet in role.bullets %}
+      <li>{{ bullet }}</li>
+      {% endfor %}
+    </ul>
+  </div>
+</div>
+{% endfor %}
+
+<h2>Education</h2>
+{% for edu in candidate.education %}
+<div class="row">
+  <div class="when">{{ edu.graduation_year }}</div>
+  <div class="what">
+    <div class="title">{{ edu.degree }}, {{ edu.field }}</div>
+    <div class="org">{{ edu.institution }} ({{ edu.short_name }})</div>
+  </div>
+</div>
+{% endfor %}
+
+<h2>Skills</h2>
+<div class="row">
+  <div class="when">Technical</div>
+  <div class="what"><p class="flow">{{ candidate.skills | join(' · ') }}</p></div>
+</div>
+<div class="row">
+  <div class="when">Languages</div>
+  <div class="what"><p class="flow">{{ candidate.languages | join(' · ') }}</p></div>
+</div>
+
+</body>
+</html>

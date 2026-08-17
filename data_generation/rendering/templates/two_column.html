@@ -1,0 +1,106 @@
+<!doctype html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<title>{{ candidate.name }}</title>
+<style>
+  /* z-index: -1 is load-bearing, not decoration. A positioned block paints
+     after in-flow content, so without it this opaque tint is drawn on top of
+     the sidebar and hides every word of it — the text is still in the PDF and
+     still extracts, which is exactly why a contrast check does not catch it.
+     Verified by paint order in the content stream, not by eye.
+
+     WeasyPrint also silently drops `background: linear-gradient()` on @page,
+     which is how this template lost its background in the first place. */
+  @page { size: A4; margin: 0; }
+  body { font-family: "Helvetica Neue", Helvetica, Arial, sans-serif;
+         font-size: 9.5pt; line-height: 1.5; color: #000000; margin: 0; }
+
+  .tint { position: fixed; top: 0; left: 0; width: 34%; height: 100%;
+          background: #eaeef3; z-index: -1; }
+
+  .sidebar { float: left; width: 34%; box-sizing: border-box;
+             padding: 16mm 8mm 16mm 12mm; }
+  .main { margin-left: 34%; box-sizing: border-box; padding: 16mm 14mm 16mm 10mm; }
+
+  .sidebar img { width: 34mm; height: 34mm; object-fit: cover;
+                 border-radius: 50%; display: block; margin-bottom: 14px; }
+  .sidebar h3 { font-size: 8.5pt; text-transform: uppercase; letter-spacing: 1.6px;
+                color: #000000; margin: 18px 0 6px; font-weight: 700;
+                border-bottom: 1px solid #9aa9bb; padding-bottom: 3px; }
+  .sidebar p, .sidebar li { font-size: 8.5pt; margin: 0 0 4px; color: #000000; }
+  .sidebar ul { list-style: none; margin: 0; padding: 0; }
+
+  h1 { font-size: 20pt; margin: 0; font-weight: 400; color: #000000; }
+  .headline { font-size: 11pt; color: #000000; margin: 3px 0 16px;
+              text-transform: uppercase; letter-spacing: 1.2px; }
+  h2 { font-size: 9pt; text-transform: uppercase; letter-spacing: 1.6px;
+       color: #000000; margin: 20px 0 8px; font-weight: 700;
+       border-bottom: 1px solid #c3cddb; padding-bottom: 2px; }
+
+  .role { margin-bottom: 13px; break-inside: avoid; }
+  .role-title { font-weight: bold; font-size: 10pt; color: #000000; }
+  .role-meta { font-size: 8.5pt; color: #000000; margin-bottom: 4px; }
+  ul.bullets { margin: 0; padding-left: 14px; }
+  ul.bullets li { margin-bottom: 2px; color: #000000; }
+</style>
+</head>
+<body>
+
+<div class="tint"></div>
+
+<aside class="sidebar">
+  {% if photo %}<img src="{{ photo }}" alt="">{% endif %}
+
+  <h3>Contact</h3>
+  <p>{{ candidate.location }}</p>
+  <p>{{ candidate.email }}</p>
+  <p>{{ candidate.phone }}</p>
+
+  <h3>Skills</h3>
+  <ul>
+    {% for skill in candidate.skills %}
+    <li>{{ skill }}</li>
+    {% endfor %}
+  </ul>
+
+  <h3>Languages</h3>
+  <ul>
+    {% for language in candidate.languages %}
+    <li>{{ language }}</li>
+    {% endfor %}
+  </ul>
+
+  <h3>Education</h3>
+  {% for edu in candidate.education %}
+  <p>
+    <strong>{{ edu.degree }}, {{ edu.field }}</strong><br>
+    {{ edu.institution }} ({{ edu.short_name }})<br>
+    {{ edu.graduation_year }}
+  </p>
+  {% endfor %}
+</aside>
+
+<main class="main">
+  <h1>{{ candidate.name }}</h1>
+  <p class="headline">{{ candidate.headline }}</p>
+
+  <h2>Profile</h2>
+  <p>{{ candidate.summary }}</p>
+
+  <h2>Experience</h2>
+  {% for role in candidate.experience %}
+  <div class="role">
+    <div class="role-title">{{ role.role }}</div>
+    <div class="role-meta">{{ role.company }} &bull; {{ role.location }} &bull; {{ role | date_range }}</div>
+    <ul class="bullets">
+      {% for bullet in role.bullets %}
+      <li>{{ bullet }}</li>
+      {% endfor %}
+    </ul>
+  </div>
+  {% endfor %}
+</main>
+
+</body>
+</html>
