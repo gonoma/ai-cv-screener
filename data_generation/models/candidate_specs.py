@@ -233,3 +233,27 @@ def _years_for(seniority: str, rng: random.Random) -> int:
     }
     low, high = spans[seniority]
     return rng.randint(low, high)
+
+
+@dataclass(frozen=True)
+class CandidateSpec:
+    """One person's coordinates, fixed before any LLM call sees them."""
+
+    role: str
+    seniority: str
+    city: str
+    years_experience: int
+    education: str
+    industry: str
+    career_shape: str
+    primary_language: str
+
+    def as_brief(self) -> str:
+        years = "1 year" if self.years_experience == 1 else f"{self.years_experience} years"
+        return (
+            f"{self.seniority} {self.role} in {self.city}, "
+            f"{years} of experience, "
+            f"educated at {self.education}, working in {self.industry}. "
+            f"Career shape: {self.career_shape}. "
+            f"First language {self.primary_language}."
+        )

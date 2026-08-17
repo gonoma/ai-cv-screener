@@ -5,7 +5,11 @@ version = "0.1.0"
 description = "CV screening over a synthetic corpus: generation, retrieval, chat"
 requires-python = ">=3.12"
 
-dependencies = []
+dependencies = [
+    "pydantic>=2.9",
+    "google-genai>=1.0",   # CV records and photos via Google AI Studio
+    "openai>=1.60",        # OpenRouter is OpenAI-compatible; used only for its base_url
+]
 
 [project.optional-dependencies]
 dev = ["ruff>=0.8", "pytest>=8.3"]

@@ -24,7 +24,12 @@ make lint    # ruff check
 make format  # ruff format
 ```
 
-## Design Decisions
+Create a .env file and copy-paste the content inside the template `.env.example`.
+Fill the API keys and any other required environment variables.
+
+# Design Decisions
+
+## Corpus Generation Pipeline
 
 ### The corpus is synthetic on purpose
 
@@ -47,3 +52,10 @@ I work out years of experience from seniority so I don't get directors with two
 years. It's all seeded, so I get the same 30 people every run.
 As a result, a given corpus size always yields the same result. A failing test is 
 then a real regression rather than a reshuffle.
+
+### CV Content Builder
+
+The builder returns JSON, not CV text. This way the record becomes an answer key,
+it gets rendered into PDF later easily, and it can be checked field by field.
+This is quite useful for evals and testing.
+If we returned prose or CV text instead we would loose these benefits.
