@@ -1,0 +1,48 @@
+
+[project]
+name = "cv-screening"
+version = "0.1.0"
+description = "CV screening over a synthetic corpus: generation, retrieval, chat"
+requires-python = ">=3.12"
+
+dependencies = [
+    # Generation pipeline (data_generation/). Runs once, offline.
+    "pydantic>=2.9",
+    "google-genai>=1.0",   # CV records and photos via Google AI Studio
+    "openai>=1.60",         # OpenRouter is OpenAI-compatible; used only for its base_url
+    "pillow>=11.0",                 # normalises photos for committing; draws the local monogram
+    "jinja2>=3.1",                  # HTML templates
+    "weasyprint>=63",               # HTML -> PDF
+    "python-dotenv>=1.0",           # loads .env
+]
+
+[project.optional-dependencies]
+dev = ["ruff>=0.8", "pytest>=8.3"]
+
+[build-system]
+requires = ["setuptools>=68"]
+build-backend = "setuptools.build_meta"
+
+[tool.setuptools.packages.find]
+include = ["data_generation*"]
+
+[tool.setuptools.package-data]
+"data_generation.rendering" = ["templates/*.html"]
+
+[tool.pytest.ini_options]
+# Declared so `pytest.mark.integration` is a marker rather than a typo warning.
+# These tests read the real corpus off disk instead of a fixture, so they are
+# the ones to deselect (`-m "not integration"`) on a fresh clone.
+markers = ["integration: runs against the generated corpus in data/"]
+
+[tool.ruff]
+line-length = 100
+target-version = "py312"
+# Ours, so isort groups them apart from third-party imports.
+src = ["."]
+
+[tool.ruff.lint]
+select = ["E", "F", "I", "UP", "B"]
+
+[tool.ruff.lint.isort]
+known-first-party = ["data_generation"]

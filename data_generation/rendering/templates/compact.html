@@ -1,0 +1,99 @@
+<!doctype html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<title>{{ candidate.name }}</title>
+<style>
+  @page { size: A4; margin: 0; }
+  body { font-family: "Helvetica Neue", Helvetica, Arial, sans-serif;
+         font-size: 9pt; line-height: 1.42; color: #222; margin: 0; }
+
+  .band { background: #f0ece4; padding: 14mm 16mm 10mm; overflow: hidden;
+          border-bottom: 3px solid #7d3c21; }
+  .band img { float: left; width: 24mm; height: 24mm; object-fit: cover; margin-right: 10mm; }
+  .band h1 { font-size: 19pt; margin: 0; font-weight: 600; letter-spacing: -0.3px; }
+  .band .headline { font-size: 10.5pt; color: #7d3c21; margin: 2px 0 6px; font-weight: 600; }
+  .band .contact { font-size: 8pt; color: #4d4d4d; margin: 0; }
+
+  .body { padding: 10mm 16mm 14mm; }
+  h2 { font-size: 8.5pt; text-transform: uppercase; letter-spacing: 1.8px;
+       color: #7d3c21; margin: 14px 0 6px; font-weight: 700; }
+
+  /* Skills flow across two CSS columns, so their reading order in the PDF
+     content stream does not match their visual order. A second way to break
+     naive text extraction, distinct from the sidebar in two_column.html. */
+  .skills { column-count: 2; column-gap: 10mm; font-size: 8.5pt; margin: 0; padding-left: 14px; }
+  .skills li { margin-bottom: 1px; }
+
+  .role { margin-bottom: 10px; break-inside: avoid; }
+  .role-line { font-size: 9.5pt; }
+  .role-line strong { font-weight: 700; }
+  .role-line .years { float: right; color: #4d4d4d; font-size: 8.5pt; }
+  .role-meta { font-size: 8pt; color: #4d4d4d; margin-bottom: 3px; }
+  ul.bullets { margin: 0; padding-left: 14px; }
+  ul.bullets li { margin-bottom: 1px; }
+
+  .two-up { overflow: hidden; }
+  .two-up .col { float: left; width: 48%; }
+  .two-up .col + .col { margin-left: 4%; }
+  .edu { margin-bottom: 6px; font-size: 8.5pt; }
+  .edu .inst { color: #4d4d4d; }
+</style>
+</head>
+<body>
+
+<div class="band">
+  {% if photo %}<img src="{{ photo }}" alt="">{% endif %}
+  <h1>{{ candidate.name }}</h1>
+  <p class="headline">{{ candidate.headline }}</p>
+  <p class="contact">{{ candidate.location }} | {{ candidate.email }} | {{ candidate.phone }}</p>
+</div>
+
+<div class="body">
+  <h2>Summary</h2>
+  <p style="margin:0">{{ candidate.summary }}</p>
+
+  <h2>Technical Skills</h2>
+  <ul class="skills">
+    {% for skill in candidate.skills %}
+    <li>{{ skill }}</li>
+    {% endfor %}
+  </ul>
+
+  <h2>Experience</h2>
+  {% for role in candidate.experience %}
+  <div class="role">
+    <div class="role-line">
+      <span class="years">{{ role | date_range }}</span>
+      <strong>{{ role.role }}</strong> - {{ role.company }}
+    </div>
+    <div class="role-meta">{{ role.location }}</div>
+    <ul class="bullets">
+      {% for bullet in role.bullets %}
+      <li>{{ bullet }}</li>
+      {% endfor %}
+    </ul>
+  </div>
+  {% endfor %}
+
+  <div class="two-up">
+    <div class="col">
+      <h2>Education</h2>
+      {% for edu in candidate.education %}
+      <div class="edu">
+        <strong>{{ edu.degree }}, {{ edu.field }}</strong><br>
+        <span class="inst">{{ edu.institution }} ({{ edu.short_name }}), {{ edu.graduation_year }}</span>
+      </div>
+      {% endfor %}
+    </div>
+    <div class="col">
+      <h2>Languages</h2>
+      {% for language in candidate.languages %}
+      <div class="edu">{{ language }}</div>
+      {% endfor %}
+    </div>
+  </div>
+</div>
+
+</body>
+</html>

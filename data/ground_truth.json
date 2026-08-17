@@ -1,0 +1,807 @@
+{
+  "corpus_year": 2026,
+  "count": 9,
+  "candidates": [
+    {
+      "id": "cv-01",
+      "source_file": "alejandro-martinez.pdf",
+      "template": "single_column.html",
+      "current_role": "Data Engineer",
+      "current_company": "Tideline Technologies",
+      "years_experience": 11,
+      "institutions": [
+        "BTS",
+        "Barcelona Tech School",
+        "UV",
+        "Universidad de Valencia"
+      ],
+      "name": "Alejandro Martínez",
+      "headline": "Data Engineer",
+      "email": "alejandro.martinez@example.com",
+      "phone": "+34 600 123 456",
+      "location": "Valencia, Spain",
+      "presentation": "a man",
+      "appearance": "34 years old, average build, short dark hair, light olive skin, wears glasses",
+      "summary": "Career changer from teaching to data engineering with strong analytical skills and experience building scalable ETL pipelines.",
+      "skills": [
+        "Python",
+        "SQL",
+        "Apache Spark",
+        "Apache Airflow",
+        "dbt",
+        "PostgreSQL",
+        "Docker",
+        "Git",
+        "Pandas",
+        "NumPy"
+      ],
+      "languages": [
+        "Spanish (native)",
+        "English (fluent)",
+        "Catalan (basic)"
+      ],
+      "experience": [
+        {
+          "company": "Tideline Technologies",
+          "role": "Data Engineer",
+          "location": "Valencia, Spain",
+          "start_year": 2023,
+          "end_year": null,
+          "bullets": [
+            "Designed and implemented ETL pipelines processing 2 TB/day of user event data, reducing latency from 45 minutes to 5 minutes.",
+            "Optimized Spark jobs cutting compute costs by 30% ($12,000 annual saving).",
+            "Mentored two junior engineers, improving team delivery velocity by 15%."
+          ]
+        },
+        {
+          "company": "EduStats",
+          "role": "Junior Data Analyst",
+          "location": "Valencia, Spain",
+          "start_year": 2020,
+          "end_year": 2022,
+          "bullets": [
+            "Built automated reporting dashboards using Looker, decreasing report generation time from 4 hours to 15 minutes for five departments.",
+            "Conducted data validation scripts improving data quality score from 88% to 96% across three million records.",
+            "Collaborated with product team to define twelve KPIs, adopted company‑wide."
+          ]
+        },
+        {
+          "company": "Instituto Público de Valencia",
+          "role": "High School Mathematics Teacher",
+          "location": "Valencia, Spain",
+          "start_year": 2016,
+          "end_year": 2020,
+          "bullets": [
+            "Improved average student exam scores by 18% over two years through personalized learning plans.",
+            "Organized an after‑school coding club for thirty students, introducing Python basics.",
+            "Secured a €5,000 grant for classroom technology upgrades."
+          ]
+        },
+        {
+          "company": "Self‑employed",
+          "role": "Freelance Tutor",
+          "location": "Remote (Spain)",
+          "start_year": 2015,
+          "end_year": 2016,
+          "bullets": [
+            "Provided one‑on‑one tutoring to over two hundred high school students, maintaining a 4.8/5 average rating.",
+            "Developed an interactive math curriculum used by three local academies."
+          ]
+        }
+      ],
+      "education": [
+        {
+          "institution": "Barcelona Tech School",
+          "short_name": "BTS",
+          "degree": "Data Engineering Bootcamp",
+          "field": "",
+          "graduation_year": 2022
+        },
+        {
+          "institution": "Universidad de Valencia",
+          "short_name": "UV",
+          "degree": "Bachelor of Science in Mathematics",
+          "field": "",
+          "graduation_year": 2015
+        }
+      ]
+    },
+    {
+      "id": "cv-02",
+      "source_file": "lina-rossi.pdf",
+      "template": "two_column.html",
+      "current_role": "Junior UX Designer",
+      "current_company": "Finova Technologies",
+      "years_experience": 4,
+      "institutions": [
+        "Polimi",
+        "Politecnico di Milano"
+      ],
+      "name": "Lina Rossi",
+      "headline": "Junior UX Designer",
+      "email": "lina.rossi@email.com",
+      "phone": "+39 333 123 4567",
+      "location": "Milan, Italy",
+      "presentation": "a woman",
+      "appearance": "early thirties, average build, wears thin‑rimmed glasses, has a faint freckle pattern across the nose",
+      "summary": "UX designer with a focus on research‑driven interface improvements for fintech and health‑tech products. Passionate about translating user insights into usable flows and measurable impact.",
+      "skills": [
+        "User Research",
+        "Usability Testing",
+        "Wireframing (Figma, Sketch)",
+        "Prototyping (Figma, Axure)",
+        "Interaction Design",
+        "Information Architecture",
+        "HTML/CSS (basic)",
+        "Design Systems",
+        "Accessibility (WCAG 2.1 AA)",
+        "Analytics (Google Analytics, Mixpanel)",
+        "Stakeholder Communication",
+        "Facilitation"
+      ],
+      "languages": [
+        "Italian (native)",
+        "English (C1)",
+        "Spanish (B2)"
+      ],
+      "experience": [
+        {
+          "company": "Finova Technologies",
+          "role": "Junior UX Designer",
+          "location": "Milan, Italy",
+          "start_year": 2023,
+          "end_year": null,
+          "bullets": [
+            "Led end‑to‑end redesign of the mobile onboarding flow, increasing completion rate from 62% to 78% within three months.",
+            "Conducted 12 remote moderated usability tests with healthcare professionals, identifying 34 pain points that informed a redesign reducing task time by 22%.",
+            "Created and maintained a component library in Figma adopted by three product teams, cutting average design hand‑off time by 30%.",
+            "Facilitated bi‑weekly design critique sessions with cross‑functional participants, improving design decision speed and alignment."
+          ]
+        },
+        {
+          "company": "Studio Grafico Roma",
+          "role": "UX Design Intern",
+          "location": "Rome, Italy",
+          "start_year": 2022,
+          "end_year": 2023,
+          "bullets": [
+            "Assisted senior designers on a banking dashboard project, producing wireframes for 15 screens that were used in stakeholder presentations.",
+            "Performed competitive analysis of five fintech apps, delivering a 10‑page report that highlighted three differentiation opportunities adopted in the final design.",
+            "Supported recruitment and scheduling of 8 usability test participants, ensuring timely data collection for iterative improvements."
+          ]
+        }
+      ],
+      "education": [
+        {
+          "institution": "Politecnico di Milano",
+          "short_name": "Polimi",
+          "degree": "B.Sc. in Design & Visual Communication",
+          "field": "Interaction Design",
+          "graduation_year": 2022
+        }
+      ]
+    },
+    {
+      "id": "cv-03",
+      "source_file": "sofia-khalid.pdf",
+      "template": "compact.html",
+      "current_role": "QA Engineer",
+      "current_company": "TechSolutions Iberia",
+      "years_experience": 10,
+      "institutions": [
+        "UGR",
+        "Universidad de Granada"
+      ],
+      "name": "Sofia Khalid",
+      "headline": "QA Engineer",
+      "email": "sofia.khalid@example.com",
+      "phone": "+34 600 123 456",
+      "location": "Granada, Spain",
+      "presentation": "a woman",
+      "appearance": "32 years old, average build, short dark brown hair, wears rectangular glasses, light olive skin tone",
+      "summary": "Mid‑level QA Engineer with six years of experience in test automation, performance testing, and quality advocacy for web and mobile applications.",
+      "skills": [
+        "Test automation (Selenium, Cypress)",
+        "API testing (Postman, REST Assured)",
+        "Performance testing (JMeter, Gatling)",
+        "Test management (Jira, TestRail)",
+        "CI/CD integration (GitLab CI, Jenkins)",
+        "Programming (Java, Python)",
+        "SQL basics",
+        "Agile/Scrum"
+      ],
+      "languages": [
+        "Spanish (Native)",
+        "English (Fluent, C1)",
+        "French (Basic, A2)"
+      ],
+      "experience": [
+        {
+          "company": "TechSolutions Iberia",
+          "role": "QA Engineer",
+          "location": "Granada, Spain",
+          "start_year": 2020,
+          "end_year": null,
+          "bullets": [
+            "Reduced regression suite execution time by 40% by migrating tests to Selenium Grid with parallel nodes.",
+            "Increased automated test coverage from 68% to 92% on the core payment module within six months.",
+            "Logged an average of 150+ defects per release, improving defect detection rate by 25% compared to previous quarter."
+          ]
+        },
+        {
+          "company": "QAtest Contracting",
+          "role": "Contract QA Analyst",
+          "location": "Remote (Spain)",
+          "start_year": 2019,
+          "end_year": 2020,
+          "bullets": [
+            "Executed manual and automated test cycles for three fintech clients, delivering weekly status reports.",
+            "Created reusable Cypress component library that cut test‑authoring time by 30%."
+          ]
+        },
+        {
+          "company": "DevStart Studios",
+          "role": "Junior QA Tester",
+          "location": "Málaga, Spain",
+          "start_year": 2016,
+          "end_year": 2019,
+          "bullets": [
+            "Performed functional testing on mobile iOS/Android apps, capturing defects in Jira.",
+            "Assisted in setting up the first continuous integration pipeline using Jenkins."
+          ]
+        }
+      ],
+      "education": [
+        {
+          "institution": "Universidad de Granada",
+          "short_name": "UGR",
+          "degree": "B.Sc. Computer Science",
+          "field": "Software Engineering",
+          "graduation_year": 2015
+        }
+      ]
+    },
+    {
+      "id": "cv-04",
+      "source_file": "alex-popescu.pdf",
+      "template": "timeline.html",
+      "current_role": "Senior Security Engineer",
+      "current_company": "SecureTech SRL",
+      "years_experience": 8,
+      "institutions": [
+        "Politehnica University of Bucharest",
+        "UPB"
+      ],
+      "name": "Alex Popescu",
+      "headline": "Senior Security Engineer",
+      "email": "alex.popescu@example.com",
+      "phone": "+40 722 123 456",
+      "location": "Cluj-Napoca, Romania",
+      "presentation": "a non-binary person",
+      "appearance": "32 years old, average build, glasses, freckles",
+      "summary": "Security professional with 6 years of experience designing and operating defensive controls, conducting penetration tests, and raising security awareness across engineering teams.",
+      "skills": [
+        "Network Security",
+        "Penetration Testing",
+        "SIEM (Splunk, ELK)",
+        "Vulnerability Scanning (Nessus, OpenVAS)",
+        "OWASP Top 10",
+        "Python",
+        "Bash",
+        "Linux Hardening",
+        "Firewall Management (pfSense, iptables)",
+        "Incident Response",
+        "Security Training & Phishing Simulations"
+      ],
+      "languages": [
+        "Romanian – Native",
+        "English – Fluent (C1)",
+        "Spanish – Basic (A2)"
+      ],
+      "experience": [
+        {
+          "company": "SecureTech SRL",
+          "role": "Senior Security Engineer",
+          "location": "Cluj-Napoca, Romania",
+          "start_year": 2020,
+          "end_year": null,
+          "bullets": [
+            "Reduced incident response time by 40% through automated alert triage in Splunk, processing 150+ alerts per week.",
+            "Led quarterly penetration tests that uncovered 23 critical vulnerabilities; 90% were patched within two weeks.",
+            "Designed and launched an internal phishing simulation program, increasing employee detection rate from 55% to 82% over six months.",
+            "Authored a security hardening checklist adopted by five product teams, decreasing misconfiguration findings by 35%.",
+            "Mentored two junior security analysts, both of whom earned OSCP certification within 12 months."
+          ]
+        },
+        {
+          "company": "CyberGuard Ltd.",
+          "role": "Security Analyst",
+          "location": "Timișoara, Romania",
+          "start_year": 2018,
+          "end_year": 2020,
+          "bullets": [
+            "Monitored SIEM dashboards for a fleet of 300+ servers, investigating an average of 50 alerts daily.",
+            "Performed vulnerability assessments on web applications using Burp Suite, identifying and helping remediate 120+ issues.",
+            "Assisted in drafting the company's ISO 27001 Statement of Applicability, contributing to successful certification audit."
+          ]
+        }
+      ],
+      "education": [
+        {
+          "institution": "Politehnica University of Bucharest",
+          "short_name": "UPB",
+          "degree": "BSc Computer Science",
+          "field": "Computer Science",
+          "graduation_year": 2016
+        }
+      ]
+    },
+    {
+      "id": "cv-05",
+      "source_file": "ana-silva.pdf",
+      "template": "sidebar_right.html",
+      "current_role": "Staff Frontend Engineer",
+      "current_company": "LisbonTech Solutions",
+      "years_experience": 7,
+      "institutions": [
+        "Le Wagon",
+        "Le Wagon Lisbon",
+        "ULisboa",
+        "Universidade de Lisboa"
+      ],
+      "name": "Ana Silva",
+      "headline": "Staff Frontend Engineer",
+      "email": "ana.silva@example.com",
+      "phone": "+351 912 345 678",
+      "location": "Lisbon, Portugal",
+      "presentation": "a woman",
+      "appearance": "early thirties, average build, glasses, freckles",
+      "summary": "Frontend engineer focused on performance, accessibility, and scalable React applications. Passionate about mentoring and improving developer experience.",
+      "skills": [
+        "HTML5",
+        "CSS3",
+        "JavaScript",
+        "TypeScript",
+        "React",
+        "Redux",
+        "Webpack",
+        "Babel",
+        "Jest",
+        "React Testing Library",
+        "Storybook",
+        "ESLint",
+        "Prettier",
+        "Git",
+        "GitHub Actions",
+        "Docker",
+        "RESTful APIs",
+        "GraphQL (basic)",
+        "Web Vitals",
+        "WCAG 2.1 AA",
+        "Performance profiling (Chrome DevTools)",
+        "CI/CD"
+      ],
+      "languages": [
+        "Portuguese (native)",
+        "English (fluent, C1)",
+        "Spanish (intermediate, B1)"
+      ],
+      "experience": [
+        {
+          "company": "LisbonTech Solutions",
+          "role": "Staff Frontend Engineer",
+          "location": "Lisbon, Portugal",
+          "start_year": 2021,
+          "end_year": null,
+          "bullets": [
+            "Led migration of a legacy jQuery‑heavy portal to a modular React/TypeScript stack, cutting average page load time from 4.8 s to 3.1 s (‑35 %) and boosting conversion rate by 7 % in A/B tests.",
+            "Designed and implemented a CI/CD pipeline using GitHub Actions and Docker, reducing release cycle from bi‑weekly to tri‑daily and decreasing hot‑fix rollout time from 4 h to 20 min.",
+            "Drove an accessibility initiative that raised WCAG AA compliance from 68 % to 94 % across all customer‑facing pages, eliminating three potential legal‑risk findings in the latest audit.",
+            "Introduced component‑level Storybook with visual regression testing (Chromatic), cutting UI‑bug leakage to production by 42 %.",
+            "Optimized webpack bundle via code‑splitting and lazy‑loading, shrinking initial JavaScript payload from 1.2 MB to 780 KB (‑35 %) and improving First Contentful Paint by 0.9 s on 3G.",
+            "Mentored four junior engineers; two were promoted to mid‑level within 12 months and the team’s sprint velocity rose 18 % after knowledge‑sharing workshops.",
+            "Authored internal frontend performance guidelines adopted company‑wide, resulting in a 22 % reduction in average bundle size across all projects."
+          ]
+        },
+        {
+          "company": "Freelance / Contract",
+          "role": "Frontend Consultant",
+          "location": "Remote (Portugal)",
+          "start_year": 2019,
+          "end_year": 2021,
+          "bullets": [
+            "Delivered three React‑based SaaS dashboards for clients in finance and logistics, each averaging a 4.8/5 satisfaction score and delivering agreed‑upon features two weeks ahead of schedule.",
+            "Implemented responsive design using CSS Grid and Flexbox, achieving Lighthouse performance scores >90 on mobile for all projects.",
+            "Set up automated testing pipelines (Jest + Cypress) that caught 95 % of regressions before client review."
+          ]
+        }
+      ],
+      "education": [
+        {
+          "institution": "Universidade de Lisboa",
+          "short_name": "ULisboa",
+          "degree": "BSc in Informatics Engineering",
+          "field": "Informatics Engineering",
+          "graduation_year": 2019
+        },
+        {
+          "institution": "Le Wagon Lisbon",
+          "short_name": "Le Wagon",
+          "degree": "Full‑Stack Web Development Bootcamp (focus on React)",
+          "field": "Web Development",
+          "graduation_year": 2020
+        }
+      ]
+    },
+    {
+      "id": "cv-06",
+      "source_file": "jana-novak.pdf",
+      "template": "single_column.html",
+      "current_role": "Backend Engineer",
+      "current_company": "Česká spořitelna",
+      "years_experience": 6,
+      "institutions": [
+        "Czech Technical University in Prague (ČVUT)",
+        "ČVUT"
+      ],
+      "name": "Jana Novak",
+      "headline": "Backend Engineer",
+      "email": "jana.novak@email.com",
+      "phone": "+420 777 123 456",
+      "location": "Prague, Czech Republic",
+      "presentation": "a woman",
+      "appearance": "28 years old, average build, glasses, light skin, dark brown hair, unremarkable face",
+      "summary": "Mid‑level backend engineer with solid experience in Java‑based microservices, cloud platforms, and API performance optimisation.",
+      "skills": [
+        "Java",
+        "Spring Boot",
+        "PostgreSQL",
+        "Redis",
+        "Docker",
+        "Kubernetes",
+        "AWS",
+        "REST",
+        "GraphQL",
+        "Git",
+        "JUnit"
+      ],
+      "languages": [
+        "Czech (native)",
+        "English (fluent)",
+        "German (basic)"
+      ],
+      "experience": [
+        {
+          "company": "Česká spořitelna",
+          "role": "Backend Engineer",
+          "location": "Prague, Czech Republic",
+          "start_year": 2022,
+          "end_year": null,
+          "bullets": [
+            "Reduced average API latency by 35% through introduction of a Redis caching layer, supporting a steady load of 2 million requests per day.",
+            "Led the migration of a legacy monolith to a container‑based micro‑service architecture on Kubernetes, cutting deployment time from 4 hours to 30 minutes.",
+            "Designed and implemented a GitHub Actions CI/CD pipeline that lowered release‑failure rate by 20% and increased deployment frequency from weekly to twice‑weekly."
+          ]
+        },
+        {
+          "company": "Avast",
+          "role": "Software Engineer Intern",
+          "location": "Prague, Czech Republic",
+          "start_year": 2021,
+          "end_year": 2021,
+          "bullets": [
+            "Built an internal log‑processing tool in Python that parsed 500 k entries per day, improving security‑alert response time by 15%.",
+            "Wrote unit tests achieving 92% coverage for a new authentication micro‑service, reducing post‑release bugs by 18%."
+          ]
+        },
+        {
+          "company": "Freelance",
+          "role": "Web Developer",
+          "location": "Remote",
+          "start_year": 2020,
+          "end_year": 2021,
+          "bullets": [
+            "Delivered 10+ e‑commerce sites using PHP/Laravel, raising average client conversion rate by 12%.",
+            "Managed full project lifecycle for 3‑month contracts, maintaining 95% on‑time delivery across all engagements."
+          ]
+        }
+      ],
+      "education": [
+        {
+          "institution": "Czech Technical University in Prague (ČVUT)",
+          "short_name": "ČVUT",
+          "degree": "BSc Computer Science",
+          "field": "Computer Science",
+          "graduation_year": 2021
+        }
+      ]
+    },
+    {
+      "id": "cv-07",
+      "source_file": "youssef-benali.pdf",
+      "template": "two_column.html",
+      "current_role": "Junior Software Engineer",
+      "current_company": "Teknova Solutions",
+      "years_experience": 10,
+      "institutions": [
+        "Scrum.org",
+        "UPV/EHU",
+        "University of the Basque Country (UPV/EHU)"
+      ],
+      "name": "Youssef Benali",
+      "headline": "Engineering Manager",
+      "email": "youssef.benali@example.com",
+      "phone": "+34 600 123 456",
+      "location": "Bilbao, Spain",
+      "presentation": "a man",
+      "appearance": "38-year-old, average build, short dark curly hair, olive skin tone, wears rectangular glasses",
+      "summary": "Engineering manager with a solid software‑engineering background, experienced in building high‑performance cloud platforms, leading distributed teams, and driving product‑focused engineering outcomes.",
+      "skills": [
+        "People management",
+        "Agile/Scrum",
+        "OKR setting",
+        "Technical background: Python, Java, Go",
+        "Cloud: AWS, Azure",
+        "Containers: Docker, Kubernetes",
+        "CI/CD: GitHub Actions, Argo CD, Jenkins",
+        "Monitoring: Prometheus, Grafana",
+        "Budgeting & vendor management",
+        "Conflict resolution",
+        "Technical writing"
+      ],
+      "languages": [
+        "Spanish (native)",
+        "English (fluent, C1)",
+        "French (intermediate, B1)",
+        "Arabic (basic, A2)"
+      ],
+      "experience": [
+        {
+          "company": "Teknova Solutions",
+          "role": "Junior Software Engineer",
+          "location": "Bilbao, Spain",
+          "start_year": 2016,
+          "end_year": 2018,
+          "bullets": [
+            "Developed RESTful APIs in Python/Django that processed 150k transactions per month.",
+            "Automated unit test coverage increase from 45% to 78% using pytest."
+          ]
+        },
+        {
+          "company": "Iberia Tech",
+          "role": "Software Engineer",
+          "location": "Bilbao, Spain",
+          "start_year": 2018,
+          "end_year": 2021,
+          "bullets": [
+            "Refactored legacy monolith into microservices, improving system uptime from 99.2% to 99.8%.",
+            "Mentored 3 interns, all of whom received return offers."
+          ]
+        },
+        {
+          "company": "GlobalPay Inc.",
+          "role": "Senior Software Engineer / Team Lead",
+          "location": "Remote (Spain)",
+          "start_year": 2021,
+          "end_year": 2023,
+          "bullets": [
+            "Led a team of 8 engineers to build a real‑time fraud detection service processing 500k events/day, reducing false positives by 22%.",
+            "Introduced feature‑flagging framework that cut hotfix rollout time from 4 hours to 15 minutes."
+          ]
+        },
+        {
+          "company": "DataFlow Systems",
+          "role": "Engineering Manager",
+          "location": "Bilbao, Spain",
+          "start_year": 2023,
+          "end_year": null,
+          "bullets": [
+            "Managed a team of 12 engineers delivering a cloud‑native payment platform that now serves 2M monthly active users and cut average latency by 35%.",
+            "Implemented CI/CD pipelines with GitHub Actions and Argo CD, decreasing release cycle from 2 weeks to 2 days and increasing deployment frequency from 4 to 20 per month.",
+            "Oversaw an annual budget of €1.2M, achieving 15% cost savings through vendor consolidation while maintaining SLA >99.9%.",
+            "Hired and onboarded 5 engineers, improving team diversity ratio from 20% to 35% underrepresented groups.",
+            "Instituted quarterly OKR process that raised objective completion rate from 68% to 91% within one year."
+          ]
+        }
+      ],
+      "education": [
+        {
+          "institution": "University of the Basque Country (UPV/EHU)",
+          "short_name": "UPV/EHU",
+          "degree": "BSc Computer Science",
+          "field": "Computer Science",
+          "graduation_year": 2016
+        },
+        {
+          "institution": "Scrum.org",
+          "short_name": "Scrum.org",
+          "degree": "Professional Scrum Master I (certification)",
+          "field": "Agile Leadership",
+          "graduation_year": 2020
+        }
+      ]
+    },
+    {
+      "id": "cv-08",
+      "source_file": "maarten-de-jong.pdf",
+      "template": "compact.html",
+      "current_role": "Principal QA Engineer",
+      "current_company": "MercadoSol Marketplace",
+      "years_experience": 22,
+      "institutions": [
+        "UPM",
+        "Universidad Politécnica de Madrid"
+      ],
+      "name": "Maarten de Jong",
+      "headline": "Principal QA Engineer",
+      "email": "maarten.dejong@outlook.es",
+      "phone": "+34 954 81 29 40",
+      "location": "Seville, Spain",
+      "presentation": "a man",
+      "appearance": "in his late forties, heavy build, fair ruddy skin, thinning sandy hair, prominent laugh lines around the eyes",
+      "summary": "Principal Quality Engineer with 16 years in software testing following an early background in hotel operations and hospitality management. Specialises in large-scale e-commerce test automation architectures, load simulation, and contract testing across distributed microservices. Focuses on embedding quality engineering into continuous deployment pipelines to eliminate production regressions.",
+      "skills": [
+        "Playwright",
+        "Cypress",
+        "Selenium WebDriver",
+        "k6",
+        "Gatling",
+        "Pact (Contract Testing)",
+        "TypeScript",
+        "Python",
+        "Postman / Newman",
+        "GitHub Actions",
+        "Docker",
+        "TestRail",
+        "Chaos Mesh",
+        "Quality Engineering Strategy"
+      ],
+      "languages": [
+        "Dutch (native)",
+        "Spanish (fluent)",
+        "English (fluent)"
+      ],
+      "experience": [
+        {
+          "company": "MercadoSol Marketplace",
+          "role": "Principal QA Engineer",
+          "location": "Seville, Spain",
+          "start_year": 2021,
+          "end_year": null,
+          "bullets": [
+            "Architected an end-to-end multi-region test framework using Playwright and TypeScript across checkout, catalogue, and vendor portal services, executing 4,200+ scenarios in under 18 minutes via parallelised runners.",
+            "Established enterprise consumer-driven contract testing with Pact across 38 microservices, reducing breaking API integration incidents by 74% over two years.",
+            "Standardised peak-event performance validation with k6 and Chaos Mesh, ensuring uninterrupted checkout flow during Black Friday promotions with 65,000 peak concurrent users."
+          ]
+        },
+        {
+          "company": "Andalucía Retail Solutions",
+          "role": "Lead QA Automation Engineer",
+          "location": "Seville, Spain",
+          "start_year": 2016,
+          "end_year": 2021,
+          "bullets": [
+            "Led a QA chapter of 9 test engineers supporting web and mobile storefront platforms across European retail clients.",
+            "Replaced legacy Selenium test suites with Cypress and Postman automated regression suites, cutting pipeline execution time from 90 minutes to 22 minutes.",
+            "Introduced visual regression testing tools to the frontend release pipeline, catching over 300 UI defects prior to staging deployment."
+          ]
+        },
+        {
+          "company": "Viajes Bética Online",
+          "role": "Senior QA Engineer",
+          "location": "Seville, Spain",
+          "start_year": 2012,
+          "end_year": 2016,
+          "bullets": [
+            "Built automated regression and booking engine load tests using Gatling and Java, scaling test coverage from 35% to 82% across high-volume flight and hotel reservation APIs.",
+            "Collaborated with SREs to integrate performance regression thresholds into Jenkins CI builds, halting deployments exceeding latency targets."
+          ]
+        },
+        {
+          "company": "SolTech QA Labs",
+          "role": "QA Engineer",
+          "location": "Madrid, Spain",
+          "start_year": 2010,
+          "end_year": 2012,
+          "bullets": [
+            "Transitioned into software testing from hospitality management, executing manual, exploratory, and basic automated testing for early regional e-commerce storefronts.",
+            "Authored over 1,500 test cases covering payment gateway integrations and inventory management modules."
+          ]
+        },
+        {
+          "company": "Hotel Occidental Castellana",
+          "role": "Front Office Operations Supervisor",
+          "location": "Madrid, Spain",
+          "start_year": 2004,
+          "end_year": 2010,
+          "bullets": [
+            "Supervised front desk shift operations, guest problem resolution, and reservation database integrity for a 280-room hotel.",
+            "Liaised with property management software vendors during system migrations and user acceptance testing phases."
+          ]
+        }
+      ],
+      "education": [
+        {
+          "institution": "Universidad Politécnica de Madrid",
+          "short_name": "UPM",
+          "degree": "Diplomatura",
+          "field": "Gestión y Administración de Empresas Turísticas",
+          "graduation_year": 2004
+        }
+      ]
+    },
+    {
+      "id": "cv-09",
+      "source_file": "elena-zapater.pdf",
+      "template": "timeline.html",
+      "current_role": "Freelance Junior Security Engineer",
+      "current_company": "Self-Employed (Freelance Security Consultant)",
+      "years_experience": 1,
+      "institutions": [
+        "KeepCoding",
+        "KeepCoding Tech School"
+      ],
+      "name": "Elena Zapater",
+      "headline": "Junior Security Engineer",
+      "email": "elena.zapater.sec@gmail.com",
+      "phone": "+34 671 492 815",
+      "location": "Zaragoza, Spain",
+      "presentation": "a woman",
+      "appearance": "in her early twenties, average build, pale olive skin, dark brown wavy hair tied in a loose ponytail, faint bridge freckles and subtle acne scarring",
+      "summary": "Junior security engineer specialising in vulnerability assessment and application hardening for digital health applications. Delivers freelance security assessments, ENS compliance gap reviews, and automated CI/CD security scanning for telehealth and clinical data startups.",
+      "skills": [
+        "Vulnerability Assessment",
+        "OWASP Top 10",
+        "Burp Suite",
+        "SAST/DAST",
+        "Python",
+        "Bash scripting",
+        "Linux Hardening",
+        "Docker Security",
+        "Esquema Nacional de Seguridad (ENS)",
+        "Wazuh",
+        "Trivy",
+        "GitLab CI/CD"
+      ],
+      "languages": [
+        "Spanish (native)",
+        "English (professional)"
+      ],
+      "experience": [
+        {
+          "company": "Self-Employed (Freelance Security Consultant)",
+          "role": "Freelance Junior Security Engineer",
+          "location": "Zaragoza, Spain",
+          "start_year": 2025,
+          "end_year": null,
+          "bullets": [
+            "Delivered web application and API security audits for two Aragon-based telemedicine startups, discovering and validating 18 OWASP vulnerabilities prior to public release.",
+            "Implemented automated vulnerability and secret scanning using Trivy and GitGuardian within GitLab CI pipelines across 4 client repositories.",
+            "Helped an electronic prescription platform map authentication and logging controls against the Esquema Nacional de Seguridad (ENS) intermediate baseline."
+          ]
+        },
+        {
+          "company": "MedData Safe",
+          "role": "Junior Security Tester (Part-time Contractor)",
+          "location": "Zaragoza, Spain",
+          "start_year": 2025,
+          "end_year": 2025,
+          "bullets": [
+            "Conducted authorization and parameter-tampering tests on FHIR-compliant patient data ingest endpoints using Burp Suite and Postman.",
+            "Monitored and triaged security alerts across 15 cloud-hosted Linux application servers using Wazuh HIDS, reducing false-positive notifications by 25% through log filter tuning.",
+            "Authored structured remediation tickets and technical reports for frontend and backend development teams to patch broken access control flaws."
+          ]
+        }
+      ],
+      "education": [
+        {
+          "institution": "KeepCoding Tech School",
+          "short_name": "KeepCoding",
+          "degree": "Bootcamp Diploma",
+          "field": "Cybersecurity & Ethical Hacking",
+          "graduation_year": 2025
+        }
+      ]
+    }
+  ]
+}
