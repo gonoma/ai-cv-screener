@@ -7,11 +7,15 @@ from ...providers.embeddings import EmbeddingModel
 
 
 class ContextRetriever:
+    # The semantic route's whole cost, and the one number to turn down first
+    # when a token budget bites: each chunk is up to CHUNK_CHARS (currently 900)
+    # of prompt, so this is roughly 1.8k tokens[1] of context on every open-ended question,
+    # whether or not the answer needed all eight.
+    #
+    # [1] 8 chunks × 900 chars = 7,200 chars, and at the ~4 chars/token rule of
+    # thumb that's ≈1.8k tokens.
     _TOP_K: int = int(os.environ.get("SEMANTIC_SEARCH_TOP_K", "8"))
 
-    CANDIDATE_COLUMNS: str = (
-        "source_file, name, role, current_company, years_experience, skills, institutions"
-    )
     CHUNK_COLUMNS: str = "source_file, name, section, content"
 
     def __init__(self, connection: psycopg.Connection) -> None:
@@ -20,21 +24,22 @@ class ContextRetriever:
 
     def retrieve_context(self, question: str, route: QueryRoute) -> RetrievedContext:
         if route.route == "structured":
-            return self.retrieve_all_candidates_matching_filters(route)
+            return self._retrieve_all_candidates_matching_filters(route)
         if route.route == "profile":
-            return self.retrieve_chunks_for_named_candidate(route)
-        return self.retrieve_chunks_by_similarity(question)
+            return self._retrieve_chunks_for_named_candidate(question, route)
+        return self._retrieve_chunks_by_similarity(question)
 
-    def retrieve_all_candidates_matching_filters(self, route: QueryRoute) -> RetrievedContext:
-        """Return *every* candidate matching the filters, not the nearest few.
+    def _retrieve_all_candidates_matching_filters(self, route: QueryRoute) -> RetrievedContext:
+        """Return *every* candidate matching the filters, carrying only the asked-about fields.
 
         This is the route that exists because similarity search cannot count.
         Asked "who has experience with Python" a top-k of 8 returns eight names
         whether eight or eighteen match, and nothing in the answer reveals the
         truncation. A SQL predicate over the skills array returns all of them.
         """
+        columns = self._columns_worth_sending(route)
         conditions, parameters = self._build_sql_conditions(route)
-        sql = f"SELECT {self.CANDIDATE_COLUMNS} FROM candidates"
+        sql = f"SELECT source_file, name, {', '.join(columns)} FROM candidates"
         if conditions:
             sql += " WHERE " + " AND ".join(conditions)
         sql += " ORDER BY name"
@@ -45,22 +50,30 @@ class ContextRetriever:
                 text="No candidate in the corpus matches that filter.", source_files=[]
             )
         return RetrievedContext(
-            text=f"All {len(rows)} matching candidates:\n" + self._format_candidate_rows(rows),
+            text=f"All {len(rows)} matching candidates:\n"
+            + self._format_candidate_rows(
+                rows=rows,
+                columns=columns,
+            ),
             source_files=[row[0] for row in rows],
         )
 
-    def retrieve_chunks_for_named_candidate(self, route: QueryRoute) -> RetrievedContext:
-        """Resolve the name to candidate ids first, then fetch chunks by id.
+    @staticmethod
+    def _columns_worth_sending(route: QueryRoute) -> list[str]:
+        columns = []
+        if route.skills:
+            columns.append("skills")
+        if route.institution:
+            columns.append("institutions")
+        if route.minimum_years_experience is not None:
+            columns.append("years_experience")
+        return columns or ["role", "current_company", "years_experience", "skills", "institutions"]
 
-        The extra hop exists because names are not identifiers: the corpus
-        deliberately contains two different people with the same name. Filtering
-        chunks on the name directly would interleave two careers into a single
-        incoherent profile, and taking the first match would silently answer
-        about the wrong person. Matching on ids keeps them apart, and
-        `_build_ambiguous_name_note` tells the model to describe both.
-        """
+    def _retrieve_chunks_for_named_candidate(
+        self, question: str, route: QueryRoute
+    ) -> RetrievedContext:
         if not route.candidate_name:
-            return self.retrieve_chunks_by_similarity("")
+            return self._retrieve_chunks_by_similarity(question)
 
         matches: list[NameMatchRow] = self.connection.execute(
             "SELECT id, name, source_file, role, current_company "
@@ -80,12 +93,49 @@ class ContextRetriever:
             [[match[0] for match in matches]],
         ).fetchall()
         return RetrievedContext(
-            text=self._format_chunk_rows(rows),
+            text=self._format_chunk_rows(self._drop_repeated_overlap(rows)),
             source_files=sorted({row[0] for row in rows}),
-            disambiguation_note=self._build_ambiguous_name_note(route.candidate_name, matches),
+            disambiguation_note=self._build_ambiguous_name_note(
+                candidate_name=route.candidate_name,
+                matches=matches,
+            ),
         )
 
-    def retrieve_chunks_by_similarity(self, question: str) -> RetrievedContext:
+    @staticmethod
+    def _drop_repeated_overlap(rows: list[ChunkRow]) -> list[ChunkRow]:
+        """
+        Un-overlap consecutive chunks, which this route reads back in order.
+
+        Chunks deliberately repeat their edges so a fact on a boundary survives
+        whole in one of them — that is a retrieval property, and it is worth
+        paying for at search time.
+        """
+        trimmed: list[ChunkRow] = []
+        for row in rows:
+            source_file, name, section, content = row
+            if trimmed:
+                previous = trimmed[-1]
+                same_document_and_section = (previous[0], previous[2]) == (source_file, section)
+                if same_document_and_section:
+                    overlap = ContextRetriever._shared_run(
+                        before=previous[3],
+                        after=content,
+                    )
+                    content = content[overlap:].lstrip()
+                    if not content:
+                        continue
+            trimmed.append((source_file, name, section, content))
+        return trimmed
+
+    @staticmethod
+    def _shared_run(before: str, after: str) -> int:
+        """Length of the longest suffix of `before` that starts `after`."""
+        for length in range(min(len(before), len(after)), 0, -1):
+            if before.endswith(after[:length]):
+                return length
+        return 0
+
+    def _retrieve_chunks_by_similarity(self, question: str) -> RetrievedContext:
         question_vector = self._embedding_model.embed_single_text(question)
         rows: list[ChunkRow] = self.connection.execute(
             f"SELECT {self.CHUNK_COLUMNS} FROM chunks ORDER BY embedding <=> %s::vector LIMIT %s",
@@ -115,11 +165,22 @@ class ContextRetriever:
         return conditions, parameters
 
     @staticmethod
-    def _format_candidate_rows(rows: list[CandidateRow]) -> str:
+    def _format_candidate_rows(rows: list[CandidateRow], columns: list[str]) -> str:
+        """
+        One line per candidate, carrying whichever columns were selected.
+
+        Labels are dropped for the fields the model can identify unaided, a
+        list of technologies does not need to be introduced as skills, because
+        a label repeated across thirty rows is thirty times its own length.
+        """
+
+        def render(value) -> str:
+            return ", ".join(value) if isinstance(value, list) else str(value)
+
         return "\n".join(
-            f"- {name} ({source_file}): {role} at {company}, {years} years experience. "
-            f"Skills: {', '.join(skills)}. Education: {', '.join(institutions)}."
-            for source_file, name, role, company, years, skills, institutions in rows
+            f"- {name} ({source_file}): "
+            + "; ".join(render(value) for value in values if value not in (None, [], ""))
+            for source_file, name, *values in rows
         )
 
     @staticmethod

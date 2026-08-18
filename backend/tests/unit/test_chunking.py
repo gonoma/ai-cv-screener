@@ -10,19 +10,19 @@ def test_empty_input_produces_no_chunks() -> None:
 
 def test_headings_become_sections() -> None:
     text = "Ada Lovelace\nada@example.com\nEXPERIENCE\nEngineer at Acme\nEDUCATION\nBSc, UPC"
-    sections = CHUNKER.split_into_sections(text)
+    sections = CHUNKER._split_into_sections(text)
     assert [heading for heading, _ in sections] == [None, "Experience", "Education"]
     assert "ada@example.com" in sections[0][1]
     assert "UPC" in sections[2][1]
 
 
 def test_text_without_headings_is_one_section() -> None:
-    assert [h for h, _ in CHUNKER.split_into_sections("just a wall of text")] == [None]
+    assert [h for h, _ in CHUNKER._split_into_sections("just a wall of text")] == [None]
 
 
 def test_section_longer_than_the_window_is_split() -> None:
     body = "x" * (CvTextChunker.CHUNK_CHARS * 2)
-    windows = CHUNKER.split_into_overlapping_windows(body)
+    windows = CHUNKER._split_into_overlapping_windows(body)
     assert len(windows) > 1
     assert all(len(w) <= CvTextChunker.CHUNK_CHARS for w in windows)
 
@@ -33,7 +33,7 @@ def test_consecutive_windows_actually_overlap() -> None:
     assert CvTextChunker.CHUNK_OVERLAP > 0, "no overlap means boundary facts are lost"
 
     body = "".join(f"{i:05d}." for i in range(400))
-    windows = CHUNKER.split_into_overlapping_windows(body)
+    windows = CHUNKER._split_into_overlapping_windows(body)
     assert len(windows) > 1
 
     overlap = CvTextChunker.CHUNK_OVERLAP
@@ -41,7 +41,7 @@ def test_consecutive_windows_actually_overlap() -> None:
 
 
 def test_short_body_is_not_split() -> None:
-    assert CHUNKER.split_into_overlapping_windows("short") == ["short"]
+    assert CHUNKER._split_into_overlapping_windows("short") == ["short"]
 
 
 def test_chunks_carry_their_section() -> None:

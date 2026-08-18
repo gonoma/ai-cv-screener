@@ -45,28 +45,15 @@ class Database:
         register_vector(connection)
         return connection
 
-    def create_tables(self, connection: psycopg.Connection) -> None:
-        connection.execute(self._SCHEMA_SQL)
-
     def drop_and_recreate_tables(self, connection: psycopg.Connection) -> None:
-        """Rebuild from empty rather than upserting.
-
-        Regenerating the corpus invalidates every candidate id anyway, so an
-        incremental-update path would be code with no caller and a second way
-        for the vectors and the rows to disagree.
-        """
         connection.execute("DROP TABLE IF EXISTS chunks")
         connection.execute("DROP TABLE IF EXISTS candidates")
-        self.create_tables(connection)
+        self._create_tables(connection)
+
+    def _create_tables(self, connection: psycopg.Connection) -> None:
+        connection.execute(self._SCHEMA_SQL)
 
     def count_ingested_rows(self, connection: psycopg.Connection) -> dict[str, int]:
-        """Return zeros for a database whose tables do not exist yet.
-
-        Before the first ingest the tables genuinely are absent, and callers use
-        this to decide whether to answer a question at all — so "nothing has
-        been ingested" has to be a value they can branch on, not an exception
-        that reaches the user as a psycopg traceback.
-        """
         try:
             candidates, chunks = connection.execute(
                 "SELECT (SELECT count(*) FROM candidates), (SELECT count(*) FROM chunks)"

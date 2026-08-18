@@ -46,6 +46,10 @@ include = ["data_generation*", "backend*"]
 # These tests read the real corpus off disk instead of a fixture, so they are
 # the ones to deselect (`-m "not integration"`) on a fresh clone.
 markers = ["integration: runs against the generated corpus in data/"]
+# --strict-markers turns a misspelt marker into a collection error rather than a
+# warning; it only bites if it lives in the config every invocation resolves to.
+addopts = ["--strict-markers"]
+testpaths = ["data_generation", "backend"]
 
 [tool.ruff]
 line-length = 100

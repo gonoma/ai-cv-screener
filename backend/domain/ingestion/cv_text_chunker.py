@@ -30,13 +30,13 @@ class CvTextChunker:
 
     def chunk_cv_text(self, cv_text: str) -> list[CvChunk]:
         chunks: list[CvChunk] = []
-        for heading, section_text in self.split_into_sections(cv_text):
-            for window in self.split_into_overlapping_windows(section_text):
+        for heading, section_text in self._split_into_sections(cv_text):
+            for window in self._split_into_overlapping_windows(section_text):
                 if window.strip():
                     chunks.append(CvChunk(section=heading, content=window.strip()))
         return chunks
 
-    def split_into_sections(self, cv_text: str) -> list[tuple[str | None, str]]:
+    def _split_into_sections(self, cv_text: str) -> list[tuple[str | None, str]]:
         """Cut the text at recognised headings, returning (heading, body) pairs.
 
         Two cases are easy to miss. The text before the first heading has no
@@ -63,7 +63,7 @@ class CvTextChunker:
                 sections.append((heading_match.group(1).strip().title(), section_text))
         return sections
 
-    def split_into_overlapping_windows(self, section_text: str) -> list[str]:
+    def _split_into_overlapping_windows(self, section_text: str) -> list[str]:
         """Cut a long section into windows that deliberately repeat their edges.
 
         Each window advances by less than its own width, so the last

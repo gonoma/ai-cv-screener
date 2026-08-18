@@ -29,23 +29,33 @@ class IngestionPipeline:
     _CV_DIRECTORY: Path = REPO_ROOT / "data" / "cvs"
 
     # One extraction per CV, cached so an interrupted run does not re-spend the
-    # calls it already made. Free tiers are metered in tens of requests per day,
-    # and the read phase is all-or-nothing, so without this a run that dies on
-    # the twenty-sixth CV throws away twenty-five successful calls and cannot be
-    # retried until the quota resets.
+    # tokens it already bought.
     _EXTRACTION_DIRECTORY: Path = REPO_ROOT / "data" / "extractions"
 
-    # CVs per extraction call. Free tiers meter calls, not tokens, so a thirty-CV
-    # ingest is six requests at this size rather than thirty. Five CVs is roughly
-    # 2.5k tokens in and 1.3k out, well inside both providers' limits.
-    _BATCH_SIZE: int = 5
+    # CVs per extraction call.
+    # The instruction block is the only part of the prompt a batch shares — the CV
+    # bodies are ~85% of the tokens and are sent either way, so that 15% is the whole
+    # ceiling on what batching can save. At 10 the block is split 10 ways, capturing
+    # ~90% of it (13.5% of total); doubling to 20 adds under a percent while widening
+    # the window for a misaligned batch, in other words, past 10 you barely save anything
+    # and just make the AI more likely to mix people up.
+    _BATCH_SIZE: int = 10
 
-    # Batches in flight. The calls are independent, so wall time is set by how
-    # many run at once rather than by any local work — embedding is on-CPU and
-    # takes seconds. The ceiling is the tightest free tier we target, not the
-    # fastest: Gemini allows 5 requests per minute, and going over fails the run
-    # on the first wave rather than queueing behind it.
-    _CONCURRENT_READS: int = 4
+    # How much of a batch may be rescued one CV at a time before the batch is
+    # declared bad instead.
+    # If only a couple of the 10 CVs come back wrong it's worth re-asking those alone,
+    # but past that limit the whole batch is treated as junk, a RuntimeError is raised
+    # aborting the whole ingest and asks to lower _BATCH_SIZE — nothing from that batch
+    # gets cached or written.
+    _MAX_SALVAGE_FRACTION: float = 0.3
+
+    # Batches in flight.
+    # Concurrency here is tuned for latency, not cost: token spend is identical whether
+    # requests go out serially or in parallel, so the limit is the provider's
+    # rate/connection tolerance.
+    # Raise it if the provider tolerates it and you need more latency (+80 CVs);
+    # the work is pure I/O and the local half (embedding) is CPU and runs after.
+    _CONCURRENT_READS: int = 8
 
     def __init__(self, connection: psycopg.Connection) -> None:
         self.connection = connection
@@ -60,31 +70,28 @@ class IngestionPipeline:
         if not pdf_paths:
             raise FileNotFoundError(f"no PDFs in {self._CV_DIRECTORY} — run the generator first")
 
-        # Read the whole corpus before dropping anything. Every plausible
-        # failure lives in this phase — LLM calls against an endpoint that
-        # rate-limits — and dropping first means any one of them failing leaves
-        # no corpus at all instead of the previous one.
-        read_cvs = self.read_corpus(pdf_paths)
+        # Read the whole corpus before dropping anything.
+        read_cvs = self._read_corpus(pdf_paths)
 
         self._database.drop_and_recreate_tables(self.connection)
-        ingested = [self.store_cv(read_cv) for read_cv in read_cvs]
+        ingested = [self._store_cv(read_cv) for read_cv in read_cvs]
         return {
             "candidates": len(ingested),
             "chunks": sum(ingested_file["chunks"] for ingested_file in ingested),
-            # How many CVs cost an LLM call this run. On a resumed run this is
-            # the only number that matters, since it is what the quota paid for.
             "extracted": sum(1 for read_cv in read_cvs if not read_cv.from_cache),
             "reused": sum(1 for read_cv in read_cvs if read_cv.from_cache),
+            "characters_sent": sum(
+                len(read_cv.cv_text) for read_cv in read_cvs if not read_cv.from_cache
+            ),
             "files": ingested,
         }
 
-    def read_corpus(self, pdf_paths: list[Path]) -> list[ReadCv]:
+    def _read_corpus(self, pdf_paths: list[Path]) -> list[ReadCv]:
         """The half of ingestion that touches no database, so the half that can run in threads.
 
         `ingest_corpus` holds a single psycopg connection, which is not safe to
         share across threads, so the split is not a stylistic one: everything
-        here is pure I/O against the filesystem and the LLM, and every write
-        happens back on the calling thread in `store_cv`.
+        here is pure I/O against the filesystem and the LLM.
 
         PDF text is pulled for the whole corpus first because it is local and
         costs under a second; only the CVs with no valid cache entry reach the
@@ -97,7 +104,13 @@ class IngestionPipeline:
         cached = {
             pdf_path: entry
             for pdf_path in pdf_paths
-            if (entry := self._cached_extraction(pdf_path, texts[pdf_path])) is not None
+            if (
+                entry := self._cached_extraction(
+                    pdf_path=pdf_path,
+                    cv_text=texts[pdf_path],
+                )
+            )
+            is not None
         }
 
         uncached = [pdf_path for pdf_path in pdf_paths if pdf_path not in cached]
@@ -121,7 +134,7 @@ class IngestionPipeline:
         ]
 
     def _extract_batch(self, pdf_paths: list[Path], texts: dict[Path, str]) -> dict[Path, dict]:
-        """Extract one batch, then cache each record separately.
+        """Extract one batch, keep every record that checks out, re-ask for the rest.
 
         Cached per CV rather than per batch so a later run reuses whatever
         succeeded, regardless of how the CVs were grouped this time — the batch
@@ -129,43 +142,92 @@ class IngestionPipeline:
         """
         records = self.candidate_parser.parse_candidates([texts[path] for path in pdf_paths])
 
-        extracted = {}
+        aligned: dict[Path, dict] = {}
+        misaligned: list[Path] = []
         for pdf_path, record in zip(pdf_paths, records, strict=True):
-            self._reject_if_misaligned(pdf_path, texts[pdf_path], record)
-            self._cache_extraction(pdf_path, texts[pdf_path], record)
-            extracted[pdf_path] = record
-        return extracted
+            if self._describes_this_cv(
+                cv_text=texts[pdf_path],
+                record=record,
+            ):
+                aligned[pdf_path] = record
+            else:
+                misaligned.append(pdf_path)
 
-    @staticmethod
-    def _reject_if_misaligned(pdf_path: Path, cv_text: str, record: dict) -> None:
-        """Check the record actually describes this CV, which batching can break.
-
-        One call holding five unrelated people can return them shifted by one,
-        or blend two together. Nothing downstream would notice: the row is
-        well-formed, the schema validates, and the answer key would simply grade
-        the system as wrong at retrieval time. The surname is the cheapest
-        anchor that is always present in the source text.
-        """
-        name_parts = record["name"].split()
-        if not name_parts:
-            raise RuntimeError(f"{pdf_path.name}: extracted record has no name")
-
-        surname = name_parts[-1]
-        if surname.lower() not in cv_text.lower():
+        # Always at least one, so a single stray record is still rescued no
+        # matter how small the batch — the cap is there to stop a wholesale
+        # re-buy, not to make salvage impossible when batches are short.
+        salvageable = max(1, int(len(pdf_paths) * self._MAX_SALVAGE_FRACTION))
+        if len(misaligned) > salvageable:
             raise RuntimeError(
-                f"{pdf_path.name}: extracted name {record['name']!r} does not appear in the CV — "
-                "the batch came back misaligned"
+                f"{len(misaligned)} of {len(pdf_paths)} records in the batch do not match the CV "
+                f"they were returned for ({', '.join(p.name for p in misaligned[:3])}...) — "
+                "re-asking each one would cost more than the batch. Lower _BATCH_SIZE."
             )
 
-    def _cached_extraction(self, pdf_path: Path, cv_text: str) -> dict | None:
-        """Return a previous extraction for this CV, or None if there isn't a valid one.
+        for pdf_path, record in aligned.items():
+            self._cache_extraction(
+                pdf_path=pdf_path,
+                cv_text=texts[pdf_path],
+                candidate_info=record,
+            )
+        for pdf_path in misaligned:
+            aligned[pdf_path] = self._retry_pdf_extraction(
+                pdf_path=pdf_path,
+                cv_text=texts[pdf_path],
+            )
+        return aligned
 
-        Validity is the hash of the extracted text, not the filename. A
-        regenerated corpus reuses filenames for different people, so keying on
-        the name alone would hand new candidates the previous ones' skills —
-        silently, and in a way no test would catch. Hashing the text means a
-        changed CV simply misses, which is why there is no --force flag to
-        forget.
+    def _retry_pdf_extraction(self, pdf_path: Path, cv_text: str) -> dict:
+        """Re-ask for a single CV, and treat a record-to-cv description failure as a real one."""
+        record = self.candidate_parser.parse_candidates([cv_text])[0]
+        if not self._describes_this_cv(
+            cv_text=cv_text,
+            record=record,
+        ):
+            raise RuntimeError(
+                f"{pdf_path.name}: extracted name {record.get('name')!r} does not appear in the "
+                "CV, on its own in the prompt — this is not batch misalignment"
+            )
+        self._cache_extraction(
+            pdf_path=pdf_path,
+            cv_text=cv_text,
+            candidate_info=record,
+        )
+        return record
+
+    @staticmethod
+    def _describes_this_cv(cv_text: str, record: dict) -> bool:
+        """Check the record actually describes this CV, which batching can break.
+
+        One call holding ten unrelated people can return them shifted by one, or
+        blend two together. Nothing downstream would notice: the row is
+        well-formed, the schema validates, and the answer key would simply grade
+        the system as wrong at retrieval time. The surname is the cheapest
+        anchor that is always present in the source text, and checking it costs
+        no tokens at all.
+
+        "Present in the source text" is not enough on its own, though. Models
+        reading a CV whose name sits under a heading have returned the *heading*
+        as the name — and "PROFILE" passes an appears-in-the-text check
+        trivially, because it is right there in the text. Such a row poisons more
+        than its own record: the profile route resolves names, and the query
+        router treats every name in the corpus as routing vocabulary, so a
+        candidate called PROFILE quietly becomes a thing users can ask about.
+        Hence two more conditions — a real name is not a section heading, and it
+        has more than one part.
+        """
+        name = str(record.get("name") or "").strip()
+        name_parts = name.split()
+        if len(name_parts) < 2:
+            return False
+        if name.lower() in CvTextChunker.SECTION_HEADINGS:
+            return False
+        return name_parts[-1].lower() in cv_text.lower()
+
+    def _cached_extraction(self, pdf_path: Path, cv_text: str) -> dict | None:
+        """
+        Return a previous extraction for this CV, or None if there isn't a valid one.
+        Validity is the hash of the extracted text, not the filename.
         """
         cache_file = self._extraction_path(pdf_path)
         if not cache_file.exists():
@@ -201,13 +263,19 @@ class IngestionPipeline:
     def _text_fingerprint(cv_text: str) -> str:
         return hashlib.sha256(cv_text.encode("utf-8")).hexdigest()
 
-    def store_cv(self, read_cv: ReadCv) -> dict:
-        candidate_id = self._insert_candidate_row(read_cv.source_file, read_cv.candidate_info)
-
+    def _store_cv(self, read_cv: ReadCv) -> dict:
+        candidate_id = self._insert_candidate_row(
+            source_file=read_cv.source_file,
+            candidate_info=read_cv.candidate_info,
+        )
         chunks = self.cv_text_chunker.chunk_cv_text(read_cv.cv_text)
         self._insert_chunk_rows(
-            candidate_id, read_cv.source_file, read_cv.candidate_info["name"], chunks
+            candidate_id=candidate_id,
+            source_file=read_cv.source_file,
+            candidate_name=read_cv.candidate_info["name"],
+            chunks=chunks,
         )
+
         return {
             "source_file": read_cv.source_file,
             "name": read_cv.candidate_info["name"],
@@ -231,7 +299,11 @@ class IngestionPipeline:
         ).fetchone()[0]
 
     def _insert_chunk_rows(
-        self, candidate_id: int, source_file: str, candidate_name: str, chunks: list[CvChunk]
+        self,
+        candidate_id: int,
+        source_file: str,
+        candidate_name: str,
+        chunks: list[CvChunk],
     ) -> None:
         vectors = self._embedding_model.embed_texts([chunk.content for chunk in chunks])
         with self.connection.cursor() as cursor:
