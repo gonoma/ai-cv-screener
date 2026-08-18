@@ -1,0 +1,29 @@
+{
+  "source_file": "lina-rossi.pdf",
+  "text_sha256": "e0e87227a0290f7df344584220b000dd9692988853f4a505dec7d098fa57671b",
+  "candidate_info": {
+    "name": "Lina Rossi",
+    "current_role": "Junior UX Designer",
+    "current_company": "Finova Technologies",
+    "years_experience": 4,
+    "skills": [
+      "User Research",
+      "Usability Testing",
+      "Wireframing (Figma, Sketch)",
+      "Prototyping (Figma, Axure)",
+      "Interaction Design",
+      "Information Architecture",
+      "HTML/CSS (basic)",
+      "Design Systems",
+      "Accessibility (WCAG 2.1 AA)",
+      "Analytics (Google Analytics, Mixpanel)",
+      "Stakeholder Communication",
+      "Facilitation",
+      "Figma"
+    ],
+    "institutions": [
+      "Politecnico di Milano",
+      "Polimi"
+    ]
+  }
+}

@@ -1,6 +1,6 @@
 {
   "corpus_year": 2026,
-  "count": 9,
+  "count": 30,
   "candidates": [
     {
       "id": "cv-01",
@@ -799,6 +799,2099 @@
           "short_name": "KeepCoding",
           "degree": "Bootcamp Diploma",
           "field": "Cybersecurity & Ethical Hacking",
+          "graduation_year": 2025
+        }
+      ]
+    },
+    {
+      "id": "cv-10",
+      "source_file": "jordi-olsen.pdf",
+      "template": "sidebar_right.html",
+      "current_role": "Director, Machine Learning Engineer",
+      "current_company": "Freelance (part‑time clients)",
+      "years_experience": 16,
+      "institutions": [
+        "DTU",
+        "Technical University of Denmark (DTU)",
+        "UB",
+        "UPC",
+        "Universitat Politècnica de Catalunya (UPC)",
+        "Universitat de Barcelona"
+      ],
+      "name": "Jordi Olsen",
+      "headline": "Director, Machine Learning Engineer",
+      "email": "j.olsen@example.com",
+      "phone": "+45 12 34 56 78",
+      "location": "Copenhagen, Denmark",
+      "presentation": "a man",
+      "appearance": "38‑year‑old, average build, olive skin, dark brown hair, glasses, slight receding hairline",
+      "summary": "Seasoned machine‑learning leader with a PhD in quantitative methods and 14 years of end‑to‑end ML delivery in agritech. Experienced in building scalable MLOps platforms, leading remote teams, and translating research into measurable farm‑level impact.",
+      "skills": [
+        "Machine Learning (TensorFlow, PyTorch, Scikit‑learn)",
+        "Deep Learning & Computer Vision (satellite imagery, CNNs)",
+        "Time‑Series Forecasting & Temporal Modeling",
+        "Data Engineering (Apache Spark, SQL, Airflow, Kafka)",
+        "Statistical Modeling & Experiment Design",
+        "MLOps (Docker, Kubernetes, MLflow, Prometheus)",
+        "Team Leadership & Agile Delivery",
+        "Technical Communication & Stakeholder Management"
+      ],
+      "languages": [
+        "Catalan (native)",
+        "Spanish (fluent)",
+        "English (fluent)",
+        "Danish (basic)"
+      ],
+      "experience": [
+        {
+          "company": "Freelance (part‑time clients)",
+          "role": "Director, Machine Learning Engineer",
+          "location": "Copenhagen, Denmark",
+          "start_year": 2022,
+          "end_year": null,
+          "bullets": [
+            "Led a distributed team of 4 ML engineers to create a yield‑prediction model that lifted forecast accuracy by 18% for a Danish seed supplier, saving ≈€1.2 M in input costs.",
+            "Architected an MLOps pipeline on Kubernetes that cut model‑deployment latency from 2 weeks to 2 days across three concurrent agritech projects.",
+            "Advised two Spanish cooperatives on pest‑outbreak detection using CNN‑based image classification, achieving 92% precision and reducing scouting labour by 30%."
+          ]
+        },
+        {
+          "company": "Freelance",
+          "role": "Machine Learning Consultant",
+          "location": "Remote",
+          "start_year": 2018,
+          "end_year": 2022,
+          "bullets": [
+            "Delivered end‑to‑end ML solutions for six European clients, averaging €250k contract value per engagement.",
+            "Engineered a Spark‑based pipeline processing 5 TB of weekly NDVI satellite data, reducing latency from 6 h to 45 min.",
+            "Authored a white‑paper on explainable AI for crop disease detection, cited at three industry conferences."
+          ]
+        },
+        {
+          "company": "CropX",
+          "role": "Senior ML Engineer",
+          "location": "Amsterdam, Netherlands",
+          "start_year": 2015,
+          "end_year": 2018,
+          "bullets": [
+            "Enhanced the fertilizer‑schedule recommendation engine, raising average crop yield by 7% over 12 k ha of farmland.",
+            "Mentored three junior engineers and instituted weekly tech talks that lifted team velocity by ~15%."
+          ]
+        },
+        {
+          "company": "AgriTech Solutions",
+          "role": "ML Engineer",
+          "location": "Barcelona, Spain",
+          "start_year": 2012,
+          "end_year": 2015,
+          "bullets": [
+            "Built a Prophet‑based irrigation‑demand forecast that cut water usage by 10% on pilot farms.",
+            "Integrated an IoT‑sensor API, boosting data ingestion to 200 k events/min."
+          ]
+        },
+        {
+          "company": "Finova Bank",
+          "role": "Data Analyst",
+          "location": "Valencia, Spain",
+          "start_year": 2010,
+          "end_year": 2012,
+          "bullets": [
+            "Automated credit‑risk reporting with Python/Tableau, shrinking monthly turnaround from 2 days to 4 h.",
+            "Developed a predictive default model (AUC 0.81) adopted in the loan‑approval workflow."
+          ]
+        }
+      ],
+      "education": [
+        {
+          "institution": "Technical University of Denmark (DTU)",
+          "short_name": "DTU",
+          "degree": "PhD in Machine Learning for Agriculture",
+          "field": "Quantitative / Computer Science",
+          "graduation_year": 2016
+        },
+        {
+          "institution": "Universitat Politècnica de Catalunya (UPC)",
+          "short_name": "UPC",
+          "degree": "MSc in Data Science",
+          "field": "Computer Science",
+          "graduation_year": 2010
+        },
+        {
+          "institution": "Universitat de Barcelona",
+          "short_name": "UB",
+          "degree": "BSc in Mathematics",
+          "field": "Mathematics",
+          "graduation_year": 2008
+        }
+      ]
+    },
+    {
+      "id": "cv-11",
+      "source_file": "marco-bianchi.pdf",
+      "template": "single_column.html",
+      "current_role": "Intern",
+      "current_company": "HealthTech Solutions",
+      "years_experience": 1,
+      "institutions": [
+        "Le Wagon",
+        "Le Wagon Prague"
+      ],
+      "name": "Marco Bianchi",
+      "headline": "Junior Backend Engineer",
+      "email": "marco.bianchi@example.com",
+      "phone": "+420 777 123 456",
+      "location": "Prague, Czechia",
+      "presentation": "a man",
+      "appearance": "Early 20s, average build, wears rectangular glasses, short dark‑brown hair with a slight receding hairline, light‑olive skin tone, plain facial features.",
+      "summary": "Recent bootcamp graduate with one year of hands‑on backend experience in healthtech, focused on building reliable APIs and improving service performance.",
+      "skills": [
+        "Python",
+        "Django",
+        "PostgreSQL",
+        "Docker",
+        "GitHub Actions",
+        "REST API design",
+        "pytest",
+        "AWS EC2",
+        "Linux Bash"
+      ],
+      "languages": [
+        "Italian (native)",
+        "English (B2)",
+        "Czech (A2)"
+      ],
+      "experience": [
+        {
+          "company": "HealthTech Solutions",
+          "role": "Intern",
+          "location": "Prague, Czechia",
+          "start_year": 2025,
+          "end_year": 2025,
+          "bullets": [
+            "Assisted senior developers in maintaining patient‑record APIs.",
+            "Wrote unit tests that increased coverage by 10 % in the authentication module."
+          ]
+        },
+        {
+          "company": "MedTech Innovations",
+          "role": "Junior Backend Engineer",
+          "location": "Prague, Czechia",
+          "start_year": 2025,
+          "end_year": null,
+          "bullets": [
+            "Optimized database queries, cutting average API response time from 250 ms to 175 ms (‑30%).",
+            "Built an automated test suite that raised unit‑test coverage from 45 % to 85 % within three months.",
+            "Containerized the patient‑onboarding service, reducing environment‑setup time from 4 hours to 20 minutes."
+          ]
+        }
+      ],
+      "education": [
+        {
+          "institution": "Le Wagon Prague",
+          "short_name": "Le Wagon",
+          "degree": "Full‑Stack Web Development Bootcamp",
+          "field": "Software Engineering",
+          "graduation_year": 2025
+        }
+      ]
+    },
+    {
+      "id": "cv-12",
+      "source_file": "ion-dumitrescu.pdf",
+      "template": "two_column.html",
+      "current_role": "Customer Operations Specialist",
+      "current_company": "KPN Telecom",
+      "years_experience": 31,
+      "institutions": [
+        "Audit",
+        "Bootcamp",
+        "Codecademy Bootcamp",
+        "Self‑taught",
+        "Universitatea Politehnica Timișoara (audit)"
+      ],
+      "name": "Ion Dumitrescu",
+      "headline": "Solutions Architect",
+      "email": "ion.dumitrescu@example.com",
+      "phone": "+31 6 12345678",
+      "location": "Delft, Netherlands",
+      "presentation": "a man",
+      "appearance": "early thirties, average build, short dark hair, glasses, light stubble, olive skin tone",
+      "summary": "Recent graduate of a coding bootcamp with a strong interest in media streaming architectures. Brings eight years of experience in customer‑support and operations at a Dutch telecom, now transitioning into a Solutions Architect internship focused on designing scalable streaming platforms.",
+      "skills": [
+        "AWS Media Services",
+        "FFmpeg",
+        "Docker",
+        "Kubernetes",
+        "REST APIs",
+        "Python",
+        "SQL",
+        "CDN fundamentals",
+        "Linux networking",
+        "Agile/Scrum"
+      ],
+      "languages": [
+        "Romanian (native)",
+        "English (C1)",
+        "Dutch (A2)"
+      ],
+      "experience": [
+        {
+          "company": "KPN Telecom",
+          "role": "Customer Operations Specialist",
+          "location": "Amsterdam, Netherlands",
+          "start_year": 2016,
+          "end_year": 2024,
+          "bullets": [
+            "Managed a portfolio of 12 000+ residential and SME internet subscriptions, maintaining a 98 % satisfaction score.",
+            "Automated routine provisioning tasks with Python scripts, reducing manual effort by 15 hours per week.",
+            "Led a cross‑functional shift‑handover initiative that cut average incident resolution time from 45 min to 30 min.",
+            "Mentored four junior operators, all of whom earned internal certifications within six months."
+          ]
+        },
+        {
+          "company": "StreamFlux Media (internship)",
+          "role": "Solutions Architect Intern",
+          "location": "Delft, Netherlands",
+          "start_year": 2024,
+          "end_year": null,
+          "bullets": [
+            "Assisted senior architects in designing a low‑latency live‑streaming pipeline for sports events, contributing to a 20 % reduction in end‑to‑end delay.",
+            "Produced architecture diagrams using C4 model and presented them to stakeholders in bi‑weekly syncs.",
+            "Evaluated three CDN providers, drafting a cost‑benefit analysis that informed a proof‑of‑concept selection.",
+            "Created runbooks for monitoring key QoS metrics (jitter, packet loss) using Prometheus and Grafana."
+          ]
+        },
+        {
+          "company": "Codecademy Bootcamp",
+          "role": "Full‑Stack Web Development Bootcamp Graduate",
+          "location": "Remote",
+          "start_year": 2023,
+          "end_year": 2024,
+          "bullets": [
+            "Completed a 24‑week intensive program covering HTML5, CSS3, JavaScript, Node.js, Express, React, and AWS basics.",
+            "Built a personal portfolio site showcasing three projects: a media‑player widget, a RESTful API for user‑generated playlists, and a CI/CD pipeline for containerized apps.",
+            "Participated in pair‑programming sessions averaging 10 hours per week, receiving consistent feedback on code clarity and test coverage."
+          ]
+        },
+        {
+          "company": "Self‑directed Learning",
+          "role": "Independent Study",
+          "location": "Remote",
+          "start_year": 2015,
+          "end_year": 2016,
+          "bullets": [
+            "Earned CompTIA Network+ and Linux+ certifications through self‑study and lab practice.",
+            "Configured home‑lab routers and switches to simulate ISP‑grade traffic shaping and QoS policies."
+          ]
+        },
+        {
+          "company": "Universitatea Politehnica Timișoara (audit)",
+          "role": "Course Auditor – Computer Networks",
+          "location": "Timișoara, Romania",
+          "start_year": 2014,
+          "end_year": 2015,
+          "bullets": [
+            "Attended lectures on TCP/IP, routing protocols, and network security as a non‑degree auditor.",
+            "Completed lab assignments on VLAN trunking and OSPF configuration, scoring in the top 15 % of the class."
+          ]
+        },
+        {
+          "company": "Freelance",
+          "role": "Tech Support Contractor",
+          "location": "Remote",
+          "start_year": 2013,
+          "end_year": 2014,
+          "bullets": [
+            "Provided on‑site and remote troubleshooting for small businesses in Timișoara, resolving 90 % of tickets within the SLA.",
+            "Documented recurring issues in a knowledge base that decreased repeat calls by 25 %."
+          ]
+        },
+        {
+          "company": "Volunteer",
+          "role": "IT Assistant – Local NGO",
+          "location": "Timișoara, Romania",
+          "start_year": 2012,
+          "end_year": 2013,
+          "bullets": [
+            "Maintained a mixed Windows/Linux network of 30 workstations for a community centre.",
+            "Trained five volunteers on basic cybersecurity hygiene, including password management and phishing awareness."
+          ]
+        },
+        {
+          "company": "Military Service",
+          "role": "Communications Technician",
+          "location": "Timișoara, Romania",
+          "start_year": 2010,
+          "end_year": 2012,
+          "bullets": [
+            "Supported field radio and satellite communications units during training exercises.",
+            "Performed preventive maintenance on HF/VHF radios, achieving a 95 % operational readiness rate."
+          ]
+        },
+        {
+          "company": "High School",
+          "role": "Student – Mathematics‑Informatics Track",
+          "location": "Timișoara, Romania",
+          "start_year": 2006,
+          "end_year": 2010,
+          "bullets": [
+            "Graduated with distinction, scoring in the top 10 % of the national informatics olympiad.",
+            "Led a student team that built a simple website for the school’s cultural festival, using HTML and PHP."
+          ]
+        },
+        {
+          "company": "Various",
+          "role": "Part‑time Retail & Hospitality",
+          "location": "Timișoara, Romania",
+          "start_year": 2008,
+          "end_year": 2010,
+          "bullets": [
+            "Worked evenings and weekends in a electronics store and a café, developing customer‑service and cash‑handling skills."
+          ]
+        },
+        {
+          "company": "None",
+          "role": "None",
+          "location": "None",
+          "start_year": 1995,
+          "end_year": 2006,
+          "bullets": [
+            "Early childhood – no formal employment."
+          ]
+        },
+        {
+          "company": "None",
+          "role": "None",
+          "location": "None",
+          "start_year": 1995,
+          "end_year": 2006,
+          "bullets": []
+        }
+      ],
+      "education": [
+        {
+          "institution": "Codecademy Bootcamp",
+          "short_name": "Bootcamp",
+          "degree": "Certificate in Full‑Stack Web Development",
+          "field": "Software Engineering",
+          "graduation_year": 2024
+        },
+        {
+          "institution": "Self‑taught",
+          "short_name": "Self‑taught",
+          "degree": "CompTIA Network+ & Linux+",
+          "field": "IT Infrastructure",
+          "graduation_year": 2016
+        },
+        {
+          "institution": "Universitatea Politehnica Timișoara (audit)",
+          "short_name": "Audit",
+          "degree": "Course Auditor – Computer Networks",
+          "field": "Computer Science",
+          "graduation_year": 2015
+        }
+      ]
+    },
+    {
+      "id": "cv-13",
+      "source_file": "arjun-sharma.pdf",
+      "template": "compact.html",
+      "current_role": "Financial Analyst",
+      "current_company": "FinCorp GmbH",
+      "years_experience": 10,
+      "institutions": [
+        "TU Delft"
+      ],
+      "name": "Arjun Sharma",
+      "headline": "Lead Engineering Manager",
+      "email": "arjun.sharma@example.com",
+      "phone": "+43 660 123 4567",
+      "location": "Vienna, Austria",
+      "presentation": "a man",
+      "appearance": "Male, early 30s, average build, short black hair, receding hairline, glasses, light olive skin, slight stubble",
+      "summary": "Career changer from finance to engineering. Eight years of experience building scalable edtech platforms, leading teams, and driving product growth.",
+      "skills": [
+        "Leadership",
+        "Agile Scrum",
+        "Python",
+        "Django",
+        "React",
+        "AWS",
+        "Kubernetes",
+        "CI/CD",
+        "Data pipelines",
+        "Mentoring",
+        "Stakeholder management",
+        "Budget planning"
+      ],
+      "languages": [
+        "Hindi (native)",
+        "English (C1)",
+        "German (B1)"
+      ],
+      "experience": [
+        {
+          "company": "FinCorp GmbH",
+          "role": "Financial Analyst",
+          "location": "Vienna, Austria",
+          "start_year": 2016,
+          "end_year": 2018,
+          "bullets": [
+            "Produced weekly risk reports for a €200M portfolio.",
+            "Automated Excel‑based reporting with VBA, cutting preparation time by 4 hours per week."
+          ]
+        },
+        {
+          "company": "EduTech Solutions",
+          "role": "Junior Software Engineer",
+          "location": "Vienna, Austria",
+          "start_year": 2018,
+          "end_year": 2020,
+          "bullets": [
+            "Developed RESTful APIs in Django for a student‑management SaaS.",
+            "Wrote unit tests achieving 85% code coverage.",
+            "Participated in two‑week Scrum sprints, delivering features bi‑weekly."
+          ]
+        },
+        {
+          "company": "LearnVita AG",
+          "role": "Software Engineer",
+          "location": "Vienna, Austria",
+          "start_year": 2020,
+          "end_year": 2022,
+          "bullets": [
+            "Refactored legacy monolith into micro‑services, reducing deployment time from 45 min to 8 min and cutting infra costs by 30%.",
+            "Implemented CI/CD pipeline with GitHub Actions and Docker, enabling daily releases.",
+            "Mentored three junior engineers, improving team velocity by 15%."
+          ]
+        },
+        {
+          "company": "NovaLearn GmbH",
+          "role": "Senior Software Engineer",
+          "location": "Vienna, Austria",
+          "start_year": 2022,
+          "end_year": 2024,
+          "bullets": [
+            "Led a team of five engineers building a recommendation engine that lifted course completion rates by 12% (A/B test, n=150k).",
+            "Designed AWS‑based data pipeline (Kinesis → Lambda → Redshift) processing 2 TB/month of clickstream data.",
+            "Conducted technical interviews and hired eight engineers."
+          ]
+        },
+        {
+          "company": "SummitEd Inc.",
+          "role": "Lead Engineering Manager",
+          "location": "Vienna, Austria",
+          "start_year": 2024,
+          "end_year": null,
+          "bullets": [
+            "Manage a cross‑functional team of 12 engineers (backend, frontend, QA, DevOps) delivering three major product releases per year while maintaining >99.9% uptime.",
+            "Introduced a finance‑to‑engineering internal bootcamp that upskilled 20 former finance analysts, raising internal promotion rate by 25%.",
+            "Negotiated vendor contracts saving €180k annually on cloud services.",
+            "Prepared annual engineering budget of €1.4 M, achieving 96% spend accuracy."
+          ]
+        }
+      ],
+      "education": [
+        {
+          "institution": "TU Delft",
+          "short_name": "TU Delft",
+          "degree": "MSc Computer Science",
+          "field": "Computer Science",
+          "graduation_year": 2018
+        }
+      ]
+    },
+    {
+      "id": "cv-14",
+      "source_file": "sanne-lindberg.pdf",
+      "template": "timeline.html",
+      "current_role": "Freelance Platform Engineer",
+      "current_company": "Self‑employed",
+      "years_experience": 18,
+      "institutions": [
+        "UZ",
+        "Universidad de Zaragoza"
+      ],
+      "name": "Sanne Lindberg",
+      "headline": "Principal Platform Engineer",
+      "email": "sanne.lindberg@example.com",
+      "phone": "+91 98765 43210",
+      "location": "Bangalore, India",
+      "presentation": "a woman",
+      "appearance": "42‑year‑old, average build, light skin, straight blond hair, wears rectangular glasses",
+      "summary": "Principal Platform Engineer with 20 years of experience building reliable, scalable platforms for industrial automation. Dutch‑speaking freelancer who mixes part‑time client work with longer contracts, delivering cloud‑native solutions that integrate legacy PLC/SCADA systems.",
+      "skills": [
+        "Kubernetes",
+        "Docker",
+        "AWS",
+        "Azure",
+        "PLC programming (IEC 61131‑3)",
+        "SCADA",
+        "OPC UA",
+        "MQTT",
+        "Python",
+        "Go",
+        "CI/CD (Jenkins, GitLab)",
+        "Terraform",
+        "Prometheus",
+        "Grafana",
+        "Linux",
+        "Bash",
+        "GitOps",
+        "Helm"
+      ],
+      "languages": [
+        "Dutch (native)",
+        "English (fluent)",
+        "Spanish (basic)",
+        "Hindi (conversational)"
+      ],
+      "experience": [
+        {
+          "company": "Self‑employed",
+          "role": "Freelance Platform Engineer",
+          "location": "Bangalore, India",
+          "start_year": 2020,
+          "end_year": null,
+          "bullets": [
+            "Designed and operated Git‑Ops pipelines (ArgoCD + Flux) that cut deployment latency by 40 % across 12 manufacturing sites.",
+            "Automated unit‑ and integration‑testing for IEC 61131‑3 PLC code, reducing bug escape rate by 25 %.",
+            "Migrated a legacy SCADA system to a hybrid Azure‑edge architecture, saving the client ≈ $1.2 M in yearly OPEX.",
+            "Led a team of five contractors to deliver a real‑time OEE dashboard for 30+ machines, raising overall equipment effectiveness by 15 %."
+          ]
+        },
+        {
+          "company": "Siemens India",
+          "role": "Part‑time Platform Engineer",
+          "location": "Pune, India",
+          "start_year": 2018,
+          "end_year": 2020,
+          "bullets": [
+            "Implemented Prometheus‑Grafana monitoring for 200+ edge gateways, improving mean‑time‑to‑detect from 45 min to 8 min.",
+            "Authored internal Terraform module library adopted by three other Siemens business units."
+          ]
+        },
+        {
+          "company": "ABB India",
+          "role": "Contract Platform Engineer",
+          "location": "Chennai, India",
+          "start_year": 2015,
+          "end_year": 2018,
+          "bullets": [
+            "Built a Kubernetes‑based micro‑services platform to replace monolithic MES adapters, increasing release frequency from monthly to weekly.",
+            "Integrated OPC UA brokers with MQTT bridges, enabling secure data flow from 500+ field devices to cloud analytics."
+          ]
+        },
+        {
+          "company": "Bosch India",
+          "role": "Senior Platform Engineer",
+          "location": "Coimbatore, India",
+          "start_year": 2010,
+          "end_year": 2015,
+          "bullets": [
+            "Introduced Helm charts for all internal services, cutting average release rollout time by 60 %.",
+            "Mentored four junior engineers; two were promoted within 18 months."
+          ]
+        },
+        {
+          "company": "Tata Consultancy Services",
+          "role": "Platform Engineer",
+          "location": "Mumbai, India",
+          "start_year": 2008,
+          "end_year": 2010,
+          "bullets": [
+            "Developed Bash‑Python automation for provisioning bare‑metal servers in a private OpenStack cloud.",
+            "Participated in a cross‑functional Scrum team delivering a batch‑processing platform for automotive clients."
+          ]
+        }
+      ],
+      "education": [
+        {
+          "institution": "Universidad de Zaragoza",
+          "short_name": "UZ",
+          "degree": "B.Eng. Electrical Engineering",
+          "field": "",
+          "graduation_year": 2008
+        }
+      ]
+    },
+    {
+      "id": "cv-15",
+      "source_file": "ming-li.pdf",
+      "template": "sidebar_right.html",
+      "current_role": "Junior Quantitative Analyst",
+      "current_company": "Finova Bank",
+      "years_experience": 10,
+      "institutions": [
+        "EUR",
+        "Erasmus University Rotterdam"
+      ],
+      "name": "Ming Li",
+      "headline": "Lead Data Analyst",
+      "email": "ming.li@example.com",
+      "phone": "+31 6 1234 5678",
+      "location": "Amsterdam, Netherlands",
+      "presentation": "a non-binary person",
+      "appearance": "age 35, heavy build, East Asian features, light-medium skin tone, straight black hair, wears thin‑framed rectangular glasses, slight double chin",
+      "summary": "PhD‑trained quantitative professional who transitioned from finance to healthtech, delivering data‑driven solutions that improve patient outcomes and reduce costs.",
+      "skills": [
+        "SQL",
+        "Python (pandas, NumPy, scikit-learn)",
+        "R",
+        "Statistical modeling",
+        "Machine learning (gradient boosting, survival analysis)",
+        "Data visualization (Tableau, Power BI)",
+        "Healthcare data standards (HL7, FHIR)",
+        "ETL pipelines (Apache Airflow, Spark)",
+        "Excel VBA",
+        "Risk modeling",
+        "Experiment design",
+        "A/B testing"
+      ],
+      "languages": [
+        "Mandarin (native)",
+        "English (fluent)",
+        "Dutch (conversational)",
+        "Spanish (basic)"
+      ],
+      "experience": [
+        {
+          "company": "Finova Bank",
+          "role": "Junior Quantitative Analyst",
+          "location": "London, UK",
+          "start_year": 2016,
+          "end_year": 2018,
+          "bullets": [
+            "Built Monte‑Carlo simulation frameworks for portfolio risk, improving accuracy of VaR estimates by 8%.",
+            "Automated monthly regulatory reporting cut turnaround time from 3 days to 6 hours."
+          ]
+        },
+        {
+          "company": "Quantum FinTech",
+          "role": "Senior Quantitative Analyst",
+          "location": "Amsterdam, Netherlands",
+          "start_year": 2018,
+          "end_year": 2020,
+          "bullets": [
+            "Developed a credit‑scoring model using gradient boosting that increased approval‑rate precision by 10% while maintaining default rate.",
+            "Migrated legacy SAS pipelines to Python/Airflow, reducing maintenance overhead by 40%."
+          ]
+        },
+        {
+          "company": "MediPulse Health",
+          "role": "Data Analyst",
+          "location": "Amsterdam, Netherlands",
+          "start_year": 2020,
+          "end_year": 2023,
+          "bullets": [
+            "Created a predictive model for patient readmission that raised AUC from 0.78 to 0.90, projecting a 12% reduction in readmissions for a cohort of 5,000 patients.",
+            "Automated ETL of claims data, lowering batch processing time from 6 hours to 30 minutes and saving roughly 800 engineer‑hours per year."
+          ]
+        },
+        {
+          "company": "Vitalytics HealthTech",
+          "role": "Lead Data Analyst",
+          "location": "Amsterdam, Netherlands",
+          "start_year": 2023,
+          "end_year": null,
+          "bullets": [
+            "Led a team of 4 analysts and 2 clinicians to launch a real‑time vaccine‑uptake dashboard used by 150+ clinics across the Netherlands.",
+            "Identified supply‑chain inefficiencies via regression analysis, recommending changes that cut annual expenses by €180,000.",
+            "Published two peer‑reviewed papers on predictive modeling in EHRs in JAMIA and Statistics in Medicine."
+          ]
+        }
+      ],
+      "education": [
+        {
+          "institution": "Erasmus University Rotterdam",
+          "short_name": "EUR",
+          "degree": "PhD in Biostatistics",
+          "field": "Biostatistics",
+          "graduation_year": 2015
+        }
+      ]
+    },
+    {
+      "id": "cv-16",
+      "source_file": "lucy-dubois.pdf",
+      "template": "single_column.html",
+      "current_role": "Freelance Data Engineering Consultant",
+      "current_company": "Self-employed",
+      "years_experience": 16,
+      "institutions": [
+        "KTH",
+        "KTH Royal Institute of Technology"
+      ],
+      "name": "Lucy Dubois",
+      "headline": "Director, Data Engineer",
+      "email": "lucy.dubois@example.com",
+      "phone": "+33 6 12 34 56 78",
+      "location": "Lyon, France",
+      "presentation": "a woman",
+      "appearance": "early 40s, average build, wears thin-rimmed glasses, slight receding hairline, light skin, dark brown hair",
+      "summary": "Director-level data engineer with 19 years of experience building scalable data pipelines and analytics platforms in the energy sector. Proven track record of leading freelance teams, cutting costs, and delivering real-time insights for grid operations.",
+      "skills": [
+        "Data Engineering",
+        "ETL/ELT",
+        "SQL",
+        "Python",
+        "Apache Spark",
+        "Kafka",
+        "AWS (S3, Glue, Redshift)",
+        "GCP (BigQuery, Dataflow)",
+        "Data Modeling",
+        "Data Governance",
+        "Tableau",
+        "Power BI",
+        "SCADA Systems",
+        "Energy Domain Knowledge",
+        "Git",
+        "Docker",
+        "Kubernetes"
+      ],
+      "languages": [
+        "English (Native)",
+        "French (Fluent)",
+        "Swedish (Basic)"
+      ],
+      "experience": [
+        {
+          "company": "Self-employed",
+          "role": "Freelance Data Engineering Consultant",
+          "location": "Lyon, France",
+          "start_year": 2022,
+          "end_year": null,
+          "bullets": [
+            "Designed and deployed a real-time SCADA data ingestion pipeline processing 2.5M sensor readings/day, reducing latency from 15 min to under 30 sec.",
+            "Led a cross‑functional team of 5 freelancers to build a data lake on AWS S3, cutting storage costs by 40 % and enabling self‑service analytics for 150+ users.",
+            "Implemented data quality checks using Great Expectations, decreasing erroneous records by 92 % and saving ~€200k annually in rework."
+          ]
+        },
+        {
+          "company": "EDF Renewables",
+          "role": "Part‑time Data Pipeline Engineer",
+          "location": "Lyon, France",
+          "start_year": 2020,
+          "end_year": 2021,
+          "bullets": [
+            "Orchestrated nightly ETL jobs for wind‑farm SCADA data, improving data freshness to hourly intervals.",
+            "Reduced pipeline failure rate by 70 % through automated monitoring and alerting."
+          ]
+        },
+        {
+          "company": "TotalEnergies",
+          "role": "Contract Data Architect",
+          "location": "Paris, France",
+          "start_year": 2018,
+          "end_year": 2020,
+          "bullets": [
+            "Migrated legacy Informatica ETL jobs to Apache Spark, boosting throughput 3× and saving 25 hrs/week of operational overhead.",
+            "Designed a unified data model for downstream trading analytics, adopted by three business units."
+          ]
+        },
+        {
+          "company": "Various startups (remote)",
+          "role": "Freelance Data Engineer",
+          "location": "Remote",
+          "start_year": 2015,
+          "end_year": 2018,
+          "bullets": [
+            "Built real‑time analytics dashboards for IoT energy‑metering platforms using Python, Flask, and D3.js.",
+            "Consulted on GDPR‑compliant data handling practices for EU‑based clients."
+          ]
+        },
+        {
+          "company": "Siemens Energy",
+          "role": "Junior Data Engineer",
+          "location": "Munich, Germany",
+          "start_year": 2011,
+          "end_year": 2014,
+          "bullets": [
+            "Supported migration of SAP‑based energy‑consumption data to a Hadoop‑based lake.",
+            "Authored internal documentation on data‑lineage tracking adopted by the EMEA data team."
+          ]
+        },
+        {
+          "company": "KTH Data Lab",
+          "role": "Intern",
+          "location": "Stockholm, Sweden",
+          "start_year": 2010,
+          "end_year": 2010,
+          "bullets": [
+            "Assisted in research on stream processing for smart‑grid fault detection.",
+            "Co‑authored a conference paper presented at IEEE SmartGridComm 2010."
+          ]
+        }
+      ],
+      "education": [
+        {
+          "institution": "KTH Royal Institute of Technology",
+          "short_name": "KTH",
+          "degree": "MSc Data Engineering",
+          "field": "Computer Science",
+          "graduation_year": 2005
+        }
+      ]
+    },
+    {
+      "id": "cv-17",
+      "source_file": "jan-kowalski.pdf",
+      "template": "two_column.html",
+      "current_role": "Contract Solutions Architect",
+      "current_company": "Learnify Studios",
+      "years_experience": 5,
+      "institutions": [
+        "IST",
+        "Instituto Superior Técnico"
+      ],
+      "name": "Jan Kowalski",
+      "headline": "Mid-Level Solutions Architect",
+      "email": "jan.kowalski@example.com",
+      "phone": "+31 6 1234 5678",
+      "location": "Bangalore, India",
+      "presentation": "a man",
+      "appearance": "average build, short dark hair, glasses, light olive skin",
+      "summary": "Solutions architect with 5 years of experience designing scalable cloud‑native platforms for edtech products. Proven contractor track record delivering end‑to‑end architectures on AWS and Azure, integrating micro‑services, data pipelines, and CI/CD pipelines for fast‑moving startup environments.",
+      "skills": [
+        "AWS (EC2, S3, RDS, Lambda, EKS)",
+        "Azure (App Service, SQL DB, Functions, AKS)",
+        "Terraform",
+        "Kubernetes",
+        "Docker",
+        "Python (FastAPI, Django)",
+        "Node.js (Express)",
+        "React",
+        "PostgreSQL",
+        "MongoDB",
+        "Redis",
+        "GraphQL",
+        "REST API design",
+        "CI/CD (GitHub Actions, GitLab CI)",
+        "Observability (Prometheus, Grafana, ELK)",
+        "Security best practices (IAM, VPC, encryption)",
+        "Agile/Scrum",
+        "Technical documentation",
+        "Stakeholder communication"
+      ],
+      "languages": [
+        "Dutch (native)",
+        "English (professional working proficiency)",
+        "Hindi (conversational)"
+      ],
+      "experience": [
+        {
+          "company": "Learnify Studios",
+          "role": "Contract Solutions Architect",
+          "location": "Remote (client in Bangalore)",
+          "start_year": 2024,
+          "end_year": null,
+          "bullets": [
+            "Designed a multi‑tenant SaaS architecture on AWS serving 150k+ monthly active learners, reducing latency by 35% through CloudFront edge caching and RDS read replicas.",
+            "Led migration of monolithic Node.js backend to a micro‑service ecosystem using EKS, cutting deployment time from 45 minutes to 8 minutes via GitHub Actions pipelines.",
+            "Authored infrastructure‑as‑code Terraform modules reused across three edtech products, saving an estimated 600 engineering hours per year."
+          ]
+        },
+        {
+          "company": "SkillBridge",
+          "role": "Contract Cloud Architect",
+          "location": "Remote (client in Pune)",
+          "start_year": 2023,
+          "end_year": 2024,
+          "bullets": [
+            "Architected a data lake on Azure Data Lake Storage Gen2 supporting real‑time analytics for course completion metrics, enabling BI dashboards with 5‑second refresh.",
+            "Implemented CI/CD workflows using Azure DevOps, achieving 98% successful build rate and reducing release failures by 70%.",
+            "Conducted security hardening workshops, resulting in compliance with ISO 27001 controls for customer data protection."
+          ]
+        },
+        {
+          "company": "EduNova",
+          "role": "Associate Solutions Architect",
+          "location": "Remote (client in Hyderabad)",
+          "start_year": 2022,
+          "end_year": 2023,
+          "bullets": [
+            "Delivered a serverless API gateway (AWS Lambda + API Gateway) handling 2 million requests/day for interactive quiz engine, cutting compute costs by 40%.",
+            "Integrated third‑party payment gateway (Stripe) with PCI‑DSS compliance, enabling subscription revenue growth of 22% QoQ.",
+            "Produced detailed architecture decision records (ADRs) and runbooks adopted as standard by the engineering team."
+          ]
+        },
+        {
+          "company": "CodeCraft Academy",
+          "role": "Junior Cloud Engineer (Contract)",
+          "location": "Remote (client in Chennai)",
+          "start_year": 2021,
+          "end_year": 2022,
+          "bullets": [
+            "Supported migration of legacy PHP learning portal to Docker‑based environment on Azure App Service, improving uptime from 92% to 99.9%.",
+            "Automated backup and disaster recovery scripts using Azure Automation, reducing RTO from 4 hours to 30 minutes.",
+            "Participated in daily stand‑ups and sprint planning as embedded contractor, contributing to two major feature releases per quarter."
+          ]
+        }
+      ],
+      "education": [
+        {
+          "institution": "Instituto Superior Técnico",
+          "short_name": "IST",
+          "degree": "B.Sc. in Computer Science and Engineering",
+          "field": "Computer Science",
+          "graduation_year": 2020
+        }
+      ]
+    },
+    {
+      "id": "cv-18",
+      "source_file": "priya-desai.pdf",
+      "template": "compact.html",
+      "current_role": "UX Designer",
+      "current_company": "UX Consultancy Estonia",
+      "years_experience": 14,
+      "institutions": [
+        "Polimi",
+        "Politecnico di Milano"
+      ],
+      "name": "Priya Desai",
+      "headline": "Staff UX Designer",
+      "email": "priya.desai@example.com",
+      "phone": "+372 555 1234",
+      "location": "Tallinn, Estonia",
+      "presentation": "a woman",
+      "appearance": "34, average build, rectangular glasses, short dark curls, light olive skin, subtle smile",
+      "summary": "Staff UX Designer with 14 years of experience shaping user‑centered products for fintech and e‑commerce clients in the consultancy space. Proven ability to lead redesigns, build design systems, and drive measurable improvements in task completion, support load, and NPS.",
+      "skills": [
+        "User research",
+        "Wireframing & prototyping (Figma, Sketch)",
+        "Usability testing",
+        "Interaction design",
+        "Design systems",
+        "HTML/CSS",
+        "Basic JavaScript",
+        "Stakeholder facilitation",
+        "Accessibility (WCAG 2.1 AA)",
+        "Workshop facilitation"
+      ],
+      "languages": [
+        "Hindi (native)",
+        "English (fluent)",
+        "Estonian (basic)"
+      ],
+      "experience": [
+        {
+          "company": "UX Consultancy Estonia",
+          "role": "UX Designer",
+          "location": "Tallinn, Estonia",
+          "start_year": 2012,
+          "end_year": 2017,
+          "bullets": [
+            "Conducted ethnographic interviews and surveys for banking clients, delivering persona packs that increased feature adoption by 18%.",
+            "Created low‑fi wireframes and clickable prototypes in Sketch, reducing design iteration cycles by 25%.",
+            "Ran moderated usability tests (n=12 per sprint) and presented actionable reports to product owners."
+          ]
+        },
+        {
+          "company": "UX Consultancy Estonia",
+          "role": "Senior UX Designer",
+          "location": "Tallinn, Estonia",
+          "start_year": 2017,
+          "end_year": 2022,
+          "bullets": [
+            "Led the end‑to‑end redesign of a fintech startup’s client portal, boosting task completion rate from 68% to 90% (‑22% error rate) and cutting monthly support tickets by 15%.",
+            "Introduced a component‑based design system in Figma that was adopted across three internal product teams, decreasing UI development effort by ~30%.",
+            "Mentored four junior designers, establishing a critique culture that raised internal design quality scores from 3.2 to 4.1/5."
+          ]
+        },
+        {
+          "company": "NordDesign",
+          "role": "Staff UX Designer",
+          "location": "Tallinn, Estonia",
+          "start_year": 2022,
+          "end_year": null,
+          "bullets": [
+            "Directed a cross‑functional team to redesign an e‑commerce checkout flow, resulting in a 12% uplift in conversion and a 0.8‑point increase in NPS for the client.",
+            "Established a reusable design‑system library (Figma + Storybook) that now serves as the foundation for all new NordDesign projects, saving an estimated 450 hours of design work annually.",
+            "Facilitated quarterly design‑thinking workshops with C‑suite stakeholders, aligning product roadmaps with user needs and securing a 20% increase in stakeholder satisfaction scores."
+          ]
+        }
+      ],
+      "education": [
+        {
+          "institution": "Politecnico di Milano",
+          "short_name": "Polimi",
+          "degree": "MSc Interaction Design",
+          "field": "Design",
+          "graduation_year": 2012
+        }
+      ]
+    },
+    {
+      "id": "cv-19",
+      "source_file": "rui-ibarra.pdf",
+      "template": "timeline.html",
+      "current_role": "Director, Platform Engineering",
+      "current_company": "Siemens Industrial Automation",
+      "years_experience": 18,
+      "institutions": [
+        "TUM",
+        "Technical University of Munich (TU München)",
+        "UP",
+        "Universidade do Porto"
+      ],
+      "name": "Rui Ibarra",
+      "headline": "Director Platform Engineer",
+      "email": "rui.ibarra@example.com",
+      "phone": "+34 600 112 233",
+      "location": "Bogotá, Colombia",
+      "presentation": "a man",
+      "appearance": "early 40s, average build, receding hairline, wears thin-framed glasses, light olive skin, short dark brown hair",
+      "summary": "Platform engineering leader with 18 years of experience delivering scalable industrial‑automation systems. Former secondary‑school physics teacher who transitioned into software via a self‑studied bootcamp and open‑source contributions. Passionate about building reliable CI/CD pipelines, observability stacks, and edge‑compute solutions for manufacturing clients.",
+      "skills": [
+        "Kubernetes",
+        "Istio",
+        "Terraform",
+        "Prometheus",
+        "Grafana",
+        "Jaeger",
+        "Python (FastAPI, Celery)",
+        "Go",
+        "Docker",
+        "Helm",
+        "GitLab CI",
+        "Jenkins X",
+        "MQTT",
+        "OPC UA",
+        "EdgeX Foundry",
+        "Linux (RHEL, Ubuntu)",
+        "AWS (EKS, RDS, S3, Lambda)",
+        "Azure IoT Hub",
+        "C/C++ (embedded)",
+        "REST/gRPC",
+        "SQL (PostgreSQL, TimescaleDB)",
+        "NoSQL (Cassandra, Redis)",
+        "Chaos Engineering",
+        "Site Reliability Engineering (SLO/SLI)",
+        "Technical mentoring",
+        "Agile/SAFe"
+      ],
+      "languages": [
+        "Portuguese (native)",
+        "Spanish (fluent)",
+        "English (professional working proficiency)",
+        "French (basic)"
+      ],
+      "experience": [
+        {
+          "company": "Siemens Industrial Automation",
+          "role": "Director, Platform Engineering",
+          "location": "Bogotá, Colombia (remote)",
+          "start_year": 2020,
+          "end_year": null,
+          "bullets": [
+            "Led a platform team of 12 engineers delivering a Kubernetes‑based edge platform that reduced deployment time for factory‑floor applications from 2 weeks to 4 hours, serving 35+ manufacturing sites across Latin America.",
+            "Defined and instituted SLOs (99.9% availability, <100ms latency) for the internal MQTT broker handling 2.5M messages/day, achieving 99.95% uptime in FY2024.",
+            "Introduced GitOps workflow with ArgoCD and Helm, cutting configuration drift incidents by 78% year‑over‑year.",
+            "Mentored 6 senior engineers through internal leadership program; 3 promoted to Staff level within 18 months.",
+            "Managed vendor relationships with Azure and AWS, negotiating a 22% cost reduction on reserved instances while maintaining performance SLAs."
+          ]
+        },
+        {
+          "company": "Red Hat (OpenShift Consulting)",
+          "role": "Principal Platform Engineer",
+          "location": "Remote (based in Lisbon, Portugal)",
+          "start_year": 2015,
+          "end_year": 2020,
+          "bullets": [
+            "Architected OpenShift‑based CI/CD pipelines for a European automotive supplier, enabling 150+ daily builds and cutting release cycle from monthly to weekly.",
+            "Authored internal training material on service mesh (Istio) adopted across 4 consulting squads, upskilling 40+ consultants.",
+            "Led a cross‑border incident response team that reduced MTTR for production outages from 4.2h to 1.1h over 6 months."
+          ]
+        },
+        {
+          "company": "Freelance / Contract",
+          "role": "Platform Consultant",
+          "location": "Remote",
+          "start_year": 2012,
+          "end_year": 2015,
+          "bullets": [
+            "Built container‑based monitoring stack (Prometheus + Grafana) for a fintech startup, increasing observable metrics coverage from 30% to 95%.",
+            "Automated infrastructure provisioning with Terraform for 3 clients, reducing environment spin‑up time from days to under 20 minutes."
+          ]
+        },
+        {
+          "company": "Self‑taught / Open Source",
+          "role": "Open‑Source Contributor & Teacher",
+          "location": "Online",
+          "start_year": 2008,
+          "end_year": 2012,
+          "bullets": [
+            "Transitioned from teaching physics at a public high school in Porto to software engineering by completing a 6‑month full‑stack bootcamp (self‑funded) and contributing to Kubernetes SIG‑Docs.",
+            "Maintained a popular Portuguese‑language blog on DevOps practices, averaging 5k monthly readers; translated official Docker docs into Portuguese."
+          ]
+        }
+      ],
+      "education": [
+        {
+          "institution": "Technical University of Munich (TU München)",
+          "short_name": "TUM",
+          "degree": "Certificate, Cloud Native Computing Foundations",
+          "field": "Computer Science (continuing education)",
+          "graduation_year": 2011
+        },
+        {
+          "institution": "Universidade do Porto",
+          "short_name": "UP",
+          "degree": "B.Sc., Physics Education",
+          "field": "Physics & Education",
+          "graduation_year": 2007
+        }
+      ]
+    },
+    {
+      "id": "cv-20",
+      "source_file": "leila-ben-cherif.pdf",
+      "template": "sidebar_right.html",
+      "current_role": "Lead Site Reliability Engineer",
+      "current_company": "NexaTech Consulting",
+      "years_experience": 14,
+      "institutions": [
+        "IFT Paris",
+        "Institut de Formation Technologique (IFT) – Paris"
+      ],
+      "name": "Leila Ben Cherif",
+      "headline": "Lead Site Reliability Engineer",
+      "email": "leila.bencherif@example.com",
+      "phone": "+33 6 12 34 56 78",
+      "location": "Paris, France",
+      "presentation": "a woman",
+      "appearance": "Average build, light freckles across the nose, subtle double chin, short dark hair, rectangular glasses",
+      "summary": "Site reliability professional with 11 years of experience designing and operating large‑scale, highly available systems. Returned to the workforce after a three‑year gap for family care and now works in IT consultancy delivering SRE transformations for clients across Europe.",
+      "skills": [
+        "Linux (RHEL, Ubuntu)",
+        "Kubernetes",
+        "Docker",
+        "Terraform",
+        "Prometheus",
+        "Grafana",
+        "ELK Stack",
+        "Python",
+        "Bash",
+        "AWS",
+        "Azure",
+        "Monitoring & Alerting",
+        "Incident Management",
+        "CI/CD (GitLab CI)",
+        "Networking (TCP/IP, DNS, Load Balancing)"
+      ],
+      "languages": [
+        "Arabic (native)",
+        "French (fluent, C2)",
+        "English (professional, B2)"
+      ],
+      "experience": [
+        {
+          "company": "NexaTech Consulting",
+          "role": "Lead Site Reliability Engineer",
+          "location": "Paris, France",
+          "start_year": 2020,
+          "end_year": null,
+          "bullets": [
+            "Reduced mean time to recovery (MTTR) by 42 % across client platforms by redesigning run‑book automation – saved ≈ €180 k/yr",
+            "Led migration of 28 legacy services to Kubernetes, cutting infrastructure costs by 35 % (≈ €250 k/yr)",
+            "Built an automated patching pipeline that decreased manual patching effort by 260 hrs/yr",
+            "Mentored four junior SREs; two promoted to SRE II within 12 months",
+            "Implemented centralized logging that improved incident detection time from 45 min to 8 min"
+          ]
+        },
+        {
+          "company": "FreeLance SRE Contractor",
+          "role": "Freelance Site Reliability Engineer",
+          "location": "Remote (France)",
+          "start_year": 2017,
+          "end_year": 2020,
+          "bullets": [
+            "Provided on‑call support and performance tuning for three mid‑size SaaS products",
+            "Automated deployment pipelines using Jenkins and Helm, cutting release cycle from 2 weeks to 2 days",
+            "Conducted quarterly chaos‑engineering exercises that uncovered and fixed three critical failure modes"
+          ]
+        },
+        {
+          "company": "Career Gap (Family Care)",
+          "role": "Not employed",
+          "location": "Paris, France",
+          "start_year": 2014,
+          "end_year": 2017,
+          "bullets": [
+            "Took a planned three‑year hiatus to provide full‑time care for an aging parent; kept technical skills current via online courses and open‑source contributions"
+          ]
+        },
+        {
+          "company": "EuroSys Solutions",
+          "role": "Junior Systems Administrator",
+          "location": "Lyon, France",
+          "start_year": 2012,
+          "end_year": 2014,
+          "bullets": [
+            "Managed Windows and Linux server fleet of 150+ machines",
+            "Implemented backup solution using Veeam, reducing RPO from 24 h to 4 h",
+            "Automated routine patching with PowerShell scripts, saving ~10 hrs/week"
+          ]
+        }
+      ],
+      "education": [
+        {
+          "institution": "Institut de Formation Technologique (IFT) – Paris",
+          "short_name": "IFT Paris",
+          "degree": "Vocational Qualification in System Administration",
+          "field": "IT Infrastructure",
+          "graduation_year": 2012
+        }
+      ]
+    },
+    {
+      "id": "cv-21",
+      "source_file": "iker-etxebarria.pdf",
+      "template": "single_column.html",
+      "current_role": "Finance Analyst Intern",
+      "current_company": "Banco Santander",
+      "years_experience": 4,
+      "institutions": [
+        "ITE",
+        "Instituto Tecnológico de Energía"
+      ],
+      "name": "Iker Etxebarria",
+      "headline": "Intern Backend Engineer",
+      "email": "iker.etxebarria@example.com",
+      "phone": "+34 600 123 456",
+      "location": "Bangalore, India",
+      "presentation": "a man",
+      "appearance": "23 years old, average build, glasses, light olive skin, dark brown short hair, unremarkable face",
+      "summary": "Career changer from finance with one year of hands‑on backend experience in the energy sector. Strong Python/Django foundation, eager to contribute to scalable services.",
+      "skills": [
+        "Python",
+        "Django",
+        "REST API design",
+        "PostgreSQL",
+        "Git",
+        "Linux/bash",
+        "Agile/Scrum",
+        "Energy market basics"
+      ],
+      "languages": [
+        "Basque (native)",
+        "Spanish (fluent)",
+        "English (professional working proficiency)"
+      ],
+      "experience": [
+        {
+          "company": "Banco Santander",
+          "role": "Finance Analyst Intern",
+          "location": "Madrid, Spain",
+          "start_year": 2022,
+          "end_year": 2023,
+          "bullets": [
+            "Processed ~2,000 monthly transaction records, improving data entry speed by 15% through macro automation.",
+            "Assisted in quarterly risk‑exposure reporting, ensuring 98% accuracy against audit samples."
+          ]
+        },
+        {
+          "company": "GreenPower Solutions",
+          "role": "Intern Backend Engineer",
+          "location": "Bangalore, India",
+          "start_year": 2024,
+          "end_year": null,
+          "bullets": [
+            "Reduced data‑processing time for monthly energy consumption reports by 30% via optimized ETL scripts, saving ~15 hours/month.",
+            "Automated validation of 5,000+ smart‑meter readings per week, cutting manual checks by 40%.",
+            "Contributed to a microservice handling billing for 10,000+ residential customers, maintaining 99.9% uptime during internship.",
+            "Participated in weekly code reviews, raising average SonarQube quality gate score from 78 to 85."
+          ]
+        }
+      ],
+      "education": [
+        {
+          "institution": "Instituto Tecnológico de Energía",
+          "short_name": "ITE",
+          "degree": "Vocational Diploma in Software Development",
+          "field": "Software Development",
+          "graduation_year": 2023
+        }
+      ]
+    },
+    {
+      "id": "cv-22",
+      "source_file": "priya-muller.pdf",
+      "template": "two_column.html",
+      "current_role": "Primary School Teacher",
+      "current_company": "Scuola Primaria Verdi",
+      "years_experience": 11,
+      "institutions": [
+        "Le Wagon",
+        "Le Wagon Full‑Stack Web Development Bootcamp"
+      ],
+      "name": "Priya Müller",
+      "headline": "Senior QA Engineer",
+      "email": "priya.muller@example.com",
+      "phone": "+39 02 555 0123",
+      "location": "Milan, Italy",
+      "presentation": "a woman",
+      "appearance": "average build, glasses, early thirties",
+      "summary": "Career changer from primary school teaching to senior QA engineer in govtech. Leverages strong communication skills from teaching to drive quality advocacy and cross‑functional collaboration.",
+      "skills": [
+        "Selenium WebDriver",
+        "Cypress",
+        "Postman/Newman",
+        "JMeter",
+        "Jira",
+        "GitLab CI/CD",
+        "Python",
+        "SQL",
+        "Test case design",
+        "Bug triage",
+        "API testing",
+        "Performance testing",
+        "Mentoring"
+      ],
+      "languages": [
+        "Hindi (native)",
+        "English (fluent)",
+        "Italian (intermediate)"
+      ],
+      "experience": [
+        {
+          "company": "Scuola Primaria Verdi",
+          "role": "Primary School Teacher",
+          "location": "Milan, Italy",
+          "start_year": 2015,
+          "end_year": 2018,
+          "bullets": [
+            "Designed and delivered lesson plans for classes of 30+ students aged 6‑10.",
+            "Implemented reading‑buddy program that lifted average literacy scores by 12% within one academic year.",
+            "Coordinated parent‑teacher meetings and produced progress reports for 120 families."
+          ]
+        },
+        {
+          "company": "GovTech Italia",
+          "role": "QA Engineer",
+          "location": "Milan, Italy",
+          "start_year": 2018,
+          "end_year": 2020,
+          "bullets": [
+            "Built a Selenium‑Grid regression suite using Docker, cutting test execution time by 40%.",
+            "Increased automated test coverage from 55% to 85% for the citizen services portal.",
+            "Authored detailed test plans and traceability matrices for GDPR‑compliant features."
+          ]
+        },
+        {
+          "company": "GovTech Italia",
+          "role": "QA Lead",
+          "location": "Milan, Italy",
+          "start_year": 2020,
+          "end_year": 2023,
+          "bullets": [
+            "Led a team of four QA engineers; instituted peer‑review of test cases that reduced defect leakage by 30%.",
+            "Achieved zero critical bugs in production for eight consecutive months (Jan‑Aug 2022).",
+            "Introduced JMeter performance testing, decreasing average API response time from 420 ms to 330 ms."
+          ]
+        },
+        {
+          "company": "GovTech Italia",
+          "role": "Senior QA Engineer",
+          "location": "Milan, Italy",
+          "start_year": 2023,
+          "end_year": null,
+          "bullets": [
+            "Designed and maintained an API validation pipeline (Postman + Newman) integrated into GitLab CI, catching ~150 defects per release.",
+            "Mentored two junior QA engineers, both promoted to QA Engineer within 12 months.",
+            "Advocated for shift‑left testing, resulting in 20% fewer defects found during system‑test phase.",
+            "Improved deployment frequency from bi‑weekly to weekly by stabilizing the automated test suite."
+          ]
+        }
+      ],
+      "education": [
+        {
+          "institution": "Le Wagon",
+          "short_name": "Le Wagon Full‑Stack Web Development Bootcamp",
+          "degree": "Bootcamp Certificate",
+          "field": "Software Testing & Automation",
+          "graduation_year": 2018
+        }
+      ]
+    },
+    {
+      "id": "cv-23",
+      "source_file": "lucas-pereira.pdf",
+      "template": "compact.html",
+      "current_role": "Intern Technical Writer",
+      "current_company": "PixelForge",
+      "years_experience": 17,
+      "institutions": [
+        "UPC",
+        "Universitat Politecnica de Catalunya (UPC)"
+      ],
+      "name": "Lucas Pereira",
+      "headline": "Principal Technical Writer",
+      "email": "lucas.pereira@example.com",
+      "phone": "+34 600 112 233",
+      "location": "Seville, Spain",
+      "presentation": "a non-binary person",
+      "appearance": "average build, glasses, freckles, short dark hair, light skin",
+      "summary": "Principal Technical Writer with 13 years of experience creating clear, user‑focused documentation for games. Returned to the workforce after a two‑year caregiving break. Native Galician speaker, fluent in Spanish and professional English.",
+      "skills": [
+        "Markdown",
+        "DITA",
+        "MadCap Flare",
+        "Adobe FrameMaker",
+        "XML",
+        "API documentation",
+        "Git",
+        "Python",
+        "Unity",
+        "Unreal Engine",
+        "Localization",
+        "UX writing",
+        "Style guides",
+        "Single‑source publishing"
+      ],
+      "languages": [
+        "Galician (native)",
+        "Spanish (fluent)",
+        "English (professional)",
+        "Portuguese (basic)"
+      ],
+      "experience": [
+        {
+          "company": "PixelForge",
+          "role": "Intern Technical Writer",
+          "location": "Seville, Spain",
+          "start_year": 2009,
+          "end_year": 2010,
+          "bullets": [
+            "Produced release notes and in‑game tutorials for three mobile prototypes.",
+            "Learned Markdown and basic XML authoring under senior writer guidance."
+          ]
+        },
+        {
+          "company": "Social Point",
+          "role": "Technical Writer",
+          "location": "Seville, Spain",
+          "start_year": 2010,
+          "end_year": 2015,
+          "bullets": [
+            "Wrote and maintained over 150 pages of API documentation for a flagship puzzle game.",
+            "Created a localization kit that reduced translation turnaround from 3 weeks to 10 days.",
+            "Automated nightly build documentation with Git hooks, cutting manual effort by 25 %."
+          ]
+        },
+        {
+          "company": "Nimble Giant Entertainment",
+          "role": "Senior Technical Writer",
+          "location": "Seville, Spain",
+          "start_year": 2017,
+          "end_year": 2022,
+          "bullets": [
+            "Led documentation for a multi‑platform RPG shipped on PC, console and mobile.",
+            "Implemented a single‑source publishing pipeline (MadCap Flare → HTML5/PDF) that cut release documentation time by 40 %.",
+            "Authored UX copy for in‑game menus, improving player task completion rates by 12 %.",
+            "Mentored two junior writers; team on‑time delivery rose from 78 % to 93 %."
+          ]
+        },
+        {
+          "company": "Social Point",
+          "role": "Principal Technical Writer",
+          "location": "Seville, Spain",
+          "start_year": 2022,
+          "end_year": null,
+          "bullets": [
+            "Authored and maintained >200 pages of API documentation for a live‑service mobile game, decreasing support tickets by 30 %.",
+            "Directed a localization effort that shipped the game in 12 languages, increasing international revenue by 18 %.",
+            "Established a style guide and template library adopted across three studio locations, ensuring consistency.",
+            "Ran quarterly workshops on API documentation best practices, raising contributor satisfaction scores from 3.2 to 4.6/5."
+          ]
+        }
+      ],
+      "education": [
+        {
+          "institution": "Universitat Politecnica de Catalunya (UPC)",
+          "short_name": "UPC",
+          "degree": "B.A. in Communication",
+          "field": "Technical Communication & Media",
+          "graduation_year": 2010
+        }
+      ]
+    },
+    {
+      "id": "cv-24",
+      "source_file": "emily-papadopoulos.pdf",
+      "template": "timeline.html",
+      "current_role": "Junior Engineering Manager",
+      "current_company": "LogiTrans Solutions",
+      "years_experience": 6,
+      "institutions": [
+        "UPB",
+        "Universitatea Politehnica din Bucuresti"
+      ],
+      "name": "Emily Papadopoulos",
+      "headline": "Junior Engineering Manager",
+      "email": "Not applicable",
+      "phone": "Not applicable",
+      "location": "Lyon, France",
+      "presentation": "a woman",
+      "appearance": "26 years old, average build, olive skin, dark brown hair, thin‑rimmed glasses",
+      "summary": "Career‑changer from hospitality into engineering management with one year of experience leading logistics‑focused software teams in Lyon.",
+      "skills": [
+        "Agile",
+        "Scrum",
+        "JIRA",
+        "Python",
+        "SQL",
+        "Docker",
+        "AWS Basics",
+        "Logistics Optimization",
+        "Data Analysis (Excel, PowerBI)",
+        "Stakeholder Management",
+        "Budgeting",
+        "Communication"
+      ],
+      "languages": [
+        "English (native)",
+        "French (professional working proficiency)",
+        "Romanian (conversational)"
+      ],
+      "experience": [
+        {
+          "company": "LogiTrans Solutions",
+          "role": "Junior Engineering Manager",
+          "location": "Lyon, France",
+          "start_year": 2025,
+          "end_year": null,
+          "bullets": [
+            "Led a team of 4 engineers to redesign the warehouse scheduling algorithm, reducing order‑processing time by 18%.",
+            "Implemented a CI/CD pipeline that cut deployment failures by 30%.",
+            "Coordinated cross‑functional logistics improvements that saved approximately €120 k per year."
+          ]
+        },
+        {
+          "company": "Hotel Lyon Centre",
+          "role": "Guest Relations Manager",
+          "location": "Lyon, France",
+          "start_year": 2022,
+          "end_year": 2025,
+          "bullets": [
+            "Increased guest satisfaction score from 78 % to 92 % within 12 months by streamlining check‑in procedures.",
+            "Managed a team of 12 front‑desk staff, decreasing overtime hours by 25 %.",
+            "Handled VIP accounts that generated €250 k in repeat business."
+          ]
+        },
+        {
+          "company": "Hostel Bellevue",
+          "role": "Front Desk Supervisor",
+          "location": "Bucharest, Romania",
+          "start_year": 2020,
+          "end_year": 2022,
+          "bullets": [
+            "Trained and scheduled a crew of 8, achieving a 95 % shift‑coverage rate.",
+            "Introduced a mobile check‑in app that reduced front‑desk wait times by 15 %."
+          ]
+        }
+      ],
+      "education": [
+        {
+          "institution": "Universitatea Politehnica din Bucuresti",
+          "short_name": "UPB",
+          "degree": "BEng in Industrial Engineering",
+          "field": "Industrial Engineering",
+          "graduation_year": 2021
+        }
+      ]
+    },
+    {
+      "id": "cv-25",
+      "source_file": "isabel-fernandes.pdf",
+      "template": "sidebar_right.html",
+      "current_role": "Junior Product Analyst",
+      "current_company": "TechSolutions Lisbon",
+      "years_experience": 10,
+      "institutions": [
+        "UB",
+        "Universitat de Barcelona"
+      ],
+      "name": "Isabel Fernandes",
+      "headline": "Senior Product Manager",
+      "email": "isabel.fernandes@example.com",
+      "phone": "+351 912 345 678",
+      "location": "Dublin, Ireland",
+      "presentation": "a woman",
+      "appearance": "Early thirties, average build, wears rectangular glasses, light olive skin, dark curly hair pulled back, slight receding hairline at temples",
+      "summary": "Results‑driven product manager with a decade of experience delivering B2B SaaS solutions in consultancy settings. Adept at aligning engineering, design, and business stakeholders to launch market‑winning products and drive measurable growth.",
+      "skills": [
+        "Product Strategy",
+        "Roadmap Planning",
+        "Agile/Scrum",
+        "User Research",
+        "Metrics & KPI Analysis",
+        "A/B Testing",
+        "JIRA",
+        "Confluence",
+        "SQL",
+        "Stakeholder Management",
+        "Go‑to‑Market Planning",
+        "Customer Journey Mapping",
+        "OKR Framework",
+        "Cross‑functional Leadership"
+      ],
+      "languages": [
+        "Portuguese (Native)",
+        "English (Fluent – C1)",
+        "Spanish (Intermediate – B2)",
+        "French (Basic – A2)"
+      ],
+      "experience": [
+        {
+          "company": "TechSolutions Lisbon",
+          "role": "Junior Product Analyst",
+          "location": "Lisbon, Portugal",
+          "start_year": 2016,
+          "end_year": 2018,
+          "bullets": [
+            "Assisted in market research for five new product concepts, contributing to a 12% increase in the innovation pipeline",
+            "Created user personas and journey maps that improved stakeholder alignment scores by 18%",
+            "Supported A/B testing of onboarding flows, lifting conversion by 7%"
+          ]
+        },
+        {
+          "company": "Stratagem Consulting",
+          "role": "Senior Product Manager",
+          "location": "Dublin, Ireland",
+          "start_year": 2018,
+          "end_year": null,
+          "bullets": [
+            "Led end‑to‑end launch of three B2B SaaS modules, generating €2.4M ARR within the first 12 months",
+            "Increased feature adoption rates by 35% through data‑driven iteration and targeted user outreach",
+            "Reduced average time‑to‑market from 6 months to 4.8 months by implementing dual‑track discovery and delivery",
+            "Managed a cross‑functional squad of 8 engineers, 2 designers, and 1 analyst, improving sprint predictability to 90%",
+            "Introduced an OKR framework that lifted quarterly goal attainment from 68% to 85%"
+          ]
+        }
+      ],
+      "education": [
+        {
+          "institution": "Universitat de Barcelona",
+          "short_name": "UB",
+          "degree": "BSc in Business Administration",
+          "field": "Business Administration",
+          "graduation_year": 2014
+        }
+      ]
+    },
+    {
+      "id": "cv-26",
+      "source_file": "micha-nowak.pdf",
+      "template": "single_column.html",
+      "current_role": "Frontend Engineer (Contractor)",
+      "current_company": "Learnify",
+      "years_experience": 4,
+      "institutions": [
+        "US",
+        "Universidad de Sevilla"
+      ],
+      "name": "Michał Nowak",
+      "headline": "Mid-Level Frontend Engineer",
+      "email": "m.nowak@example.com",
+      "phone": "+49 151 23456789",
+      "location": "Berlin, Germany",
+      "presentation": "a man",
+      "appearance": "27 years old, average build, wears glasses",
+      "summary": "Polish-speaking frontend contractor with 4 years of experience building accessible, performant edtech applications in Berlin. Skilled in React, TypeScript, and modern tooling, with a track record of delivering features that boost user engagement and reduce load times.",
+      "skills": [
+        "React",
+        "TypeScript",
+        "JavaScript (ES6+)",
+        "HTML5",
+        "CSS3 / SCSS",
+        "Redux Toolkit",
+        "Jest & React Testing Library",
+        "Storybook",
+        "Webpack 5",
+        "Vite",
+        "REST & GraphQL APIs",
+        "Accessibility (WCAG 2.1 AA)",
+        "Figma (design handoff)",
+        "GitHub Actions CI/CD"
+      ],
+      "languages": [
+        "Polish (native)",
+        "English (professional working)",
+        "Spanish (basic)"
+      ],
+      "experience": [
+        {
+          "company": "Learnify",
+          "role": "Frontend Engineer (Contractor)",
+          "location": "Berlin, Germany",
+          "start_year": 2022,
+          "end_year": 2022,
+          "bullets": [
+            "Implemented a React‑based lesson player that reduced average load time by 32% through code‑splitting and lazy loading.",
+            "Authored 48 unit tests with Jest, achieving 92% coverage for core UI components.",
+            "Collaborated with UX to integrate WCAG‑AA keyboard navigation, raising accessibility score from 78 to 94 in automated audits."
+          ]
+        },
+        {
+          "company": "SkillHub",
+          "role": "Frontend Engineer (Contractor)",
+          "location": "Berlin, Germany",
+          "start_year": 2022,
+          "end_year": 2022,
+          "bullets": [
+            "Migrated legacy jQuery dashboard to a TypeScript‑React stack, cutting bug‑fix cycle from 2 weeks to 3 days.",
+            "Designed a reusable component library (Storybook) adopted by three internal teams, saving ~150 developer‑hours per quarter.",
+            "Optimized bundle size via Webpack 5 tree‑shaking, decreasing initial payload by 1.8 MB."
+          ]
+        },
+        {
+          "company": "Edusoft",
+          "role": "Frontend Engineer (Contractor)",
+          "location": "Berlin, Germany",
+          "start_year": 2023,
+          "end_year": 2023,
+          "bullets": [
+            "Led the rollout of a real‑time collaborative whiteboard using React and WebSocket, increasing daily active users by 21% within two months.",
+            "Introduced automated visual regression testing with Chromatic, reducing UI‑related hotfixes by 40%.",
+            "Mentored two junior contractors on React best practices and TypeScript strict mode."
+          ]
+        },
+        {
+          "company": "Edutech Solutions",
+          "role": "Mid-Level Frontend Engineer (Contractor)",
+          "location": "Berlin, Germany",
+          "start_year": 2023,
+          "end_year": null,
+          "bullets": [
+            "Owned the frontend for a K‑12 analytics portal, delivering 12+ feature releases that drove a 18% rise in teacher retention metrics.",
+            "Implemented server‑side rendering with Next.js, improving SEO‑driven organic traffic by 27%.",
+            "Conducted bi‑weekly accessibility audits; fixed 63 issues, achieving AA compliance across all public pages.",
+            "Reduced mean time to recovery (MTTR) for production incidents from 4.5 h to 1.2 h by introducing feature flags and automated rollback pipelines."
+          ]
+        }
+      ],
+      "education": [
+        {
+          "institution": "Universidad de Sevilla",
+          "short_name": "US",
+          "degree": "B.Sc. in Computer Science",
+          "field": "Computer Science",
+          "graduation_year": 2022
+        }
+      ]
+    },
+    {
+      "id": "cv-27",
+      "source_file": "andrei-georgescu.pdf",
+      "template": "two_column.html",
+      "current_role": "Lead Data Analyst",
+      "current_company": "MedTech Solutions",
+      "years_experience": 13,
+      "institutions": [
+        "UAB",
+        "Universitat Autònoma de Barcelona"
+      ],
+      "name": "Andrei Georgescu",
+      "headline": "Lead Data Analyst",
+      "email": "andrei.georgescu@example.com",
+      "phone": "+54 9 11 5555-1234",
+      "location": "Buenos Aires, Argentina",
+      "presentation": "a man",
+      "appearance": "early‑30s, average build, short dark hair, light olive skin tone, wears thin‑rimmed rectangular glasses, slight receding hairline",
+      "summary": "Lead Data Analyst with 13 years of experience delivering analytics solutions in health‑tech. Promoted three times internally at the same employer, turning raw clinical data into actionable insights that improve patient outcomes and reduce costs.",
+      "skills": [
+        "SQL",
+        "Python (pandas, NumPy, scikit‑learn)",
+        "R (tidyverse, caret)",
+        "Tableau & Power BI",
+        "Apache Spark (PySpark)",
+        "AWS Redshift & S3",
+        "Git & GitHub Actions",
+        "Statistical modeling & A/B testing",
+        "ETL orchestration (Airflow)",
+        "Data visualization best practices"
+      ],
+      "languages": [
+        "Romanian (native)",
+        "English (fluent, C1)",
+        "Spanish (professional, B2)"
+      ],
+      "experience": [
+        {
+          "company": "MedTech Solutions",
+          "role": "Lead Data Analyst",
+          "location": "Buenos Aires, Argentina",
+          "start_year": 2021,
+          "end_year": null,
+          "bullets": [
+            "Designed and deployed a predictive churn model for a tele‑health platform that lowered patient dropout by 18 %, translating to an estimated $1.2 M annual saving.",
+            "Automated end‑to‑end ETL pipelines using Airflow and Spark, cutting daily data‑preparation time from 6 hours to 20 minutes and enabling real‑time dashboards for 150+ clinicians.",
+            "Led a cross‑functional team of 5 engineers and clinicians to launch a personalized treatment‑recommendation engine; post‑launch engagement rose 22 % and Net Promoter Score increased by 9 points.",
+            "Mentored three junior analysts; all were promoted to senior roles within 18 months."
+          ]
+        },
+        {
+          "company": "MedTech Solutions",
+          "role": "Senior Data Analyst",
+          "location": "Buenos Aires, Argentina",
+          "start_year": 2018,
+          "end_year": 2021,
+          "bullets": [
+            "Built a cohort‑based risk‑scoring system for diabetic patients that improved early‑intervention rates by 15 %.",
+            "Created a self‑service analytics portal in Tableau that reduced ad‑hoc request turnaround from 3 days to under 4 hours, serving 80+ business users."
+          ]
+        },
+        {
+          "company": "MedTech Solutions",
+          "role": "Data Analyst",
+          "location": "Buenos Aires, Argentina",
+          "start_year": 2015,
+          "end_year": 2018,
+          "bullets": [
+            "Performed survival analysis on post‑operative recovery data, identifying two key predictors that reduced average hospital stay by 0.8 days.",
+            "Developed monthly KPI reports for the C‑suite, cutting reporting effort by 40 % through template automation."
+          ]
+        },
+        {
+          "company": "MedTech Solutions",
+          "role": "Junior Data Analyst",
+          "location": "Buenos Aires, Argentina",
+          "start_year": 2013,
+          "end_year": 2015,
+          "bullets": [
+            "Cleaned and merged disparate EMR and claims datasets, establishing a unified data warehouse used by 12 downstream teams.",
+            "Supported the rollout of a new patient‑feedback survey, achieving a 70 % response rate within the first quarter."
+          ]
+        }
+      ],
+      "education": [
+        {
+          "institution": "Universitat Autònoma de Barcelona",
+          "short_name": "UAB",
+          "degree": "BSc in Statistics",
+          "field": "Statistics",
+          "graduation_year": 2012
+        }
+      ]
+    },
+    {
+      "id": "cv-28",
+      "source_file": "antoine-moreau.pdf",
+      "template": "compact.html",
+      "current_role": "Machine Learning Engineer (contract)",
+      "current_company": "Freelance",
+      "years_experience": 16,
+      "institutions": [
+        "KTH",
+        "KTH Royal Institute of Technology"
+      ],
+      "name": "Antoine Moreau",
+      "headline": "Staff Machine Learning Engineer",
+      "email": "antoine.moreau@example.com",
+      "phone": "+34 600 123 456",
+      "location": "Valencia, Spain",
+      "presentation": "a man",
+      "appearance": "Early thirties, average build, short dark hair, glasses, light stubble",
+      "summary": "Freelance ML engineer specializing in adtech predictive modeling and real‑time bidding optimization. Experienced in end‑to‑end MLOps, from data pipelines to model deployment, with a track record of improving ROI and reducing CPA for digital advertising campaigns.",
+      "skills": [
+        "Python",
+        "TensorFlow",
+        "PyTorch",
+        "SQL",
+        "AWS SageMaker",
+        "Kafka",
+        "Feature Store",
+        "MLflow",
+        "A/B testing",
+        "Bayesian optimization",
+        "Docker",
+        "GitLab CI"
+      ],
+      "languages": [
+        "French (native)",
+        "English (fluent)",
+        "Spanish (intermediate)"
+      ],
+      "experience": [
+        {
+          "company": "Freelance",
+          "role": "Machine Learning Engineer (contract)",
+          "location": "Remote (clients in Spain, France, Germany)",
+          "start_year": 2015,
+          "end_year": null,
+          "bullets": [
+            "Built CTR prediction models that lifted campaign ROI by 18% for AdNova (2012‑2015) and continued similar work for multiple adtech clients.",
+            "Designed a feature store using AWS SageMaker and Kafka, reducing feature engineering time by 40%.",
+            "Authored an internal MLOps best‑practice guide adopted by five adtech firms, cutting model deployment time from two weeks to three days."
+          ]
+        },
+        {
+          "company": "AdNova",
+          "role": "Machine Learning Engineer",
+          "location": "Madrid, Spain",
+          "start_year": 2012,
+          "end_year": 2015,
+          "bullets": [
+            "Delivered a real‑time bidding model that reduced cost per acquisition by 22% for a major e‑commerce client (2023).",
+            "Implemented Bayesian optimization for hyperparameter tuning, improving model AUC by 0.03 across 10 campaigns.",
+            "Mentored two junior data scientists, overseeing their project delivery and code reviews."
+          ]
+        },
+        {
+          "company": "ClickBoost",
+          "role": "Junior Data Scientist",
+          "location": "Barcelona, Spain",
+          "start_year": 2010,
+          "end_year": 2012,
+          "bullets": [
+            "Built an A/B testing framework that increased click‑through rates by 12% across five campaigns.",
+            "Automated data extraction pipelines using Python and Airflow, cutting daily reporting latency from 4 hours to 20 minutes.",
+            "Presented weekly performance insights to stakeholders, translating technical findings into actionable marketing recommendations."
+          ]
+        }
+      ],
+      "education": [
+        {
+          "institution": "KTH Royal Institute of Technology",
+          "short_name": "KTH",
+          "degree": "MSc in Machine Learning",
+          "field": "Computer Science",
+          "graduation_year": 2010
+        }
+      ]
+    },
+    {
+      "id": "cv-29",
+      "source_file": "lars-van-dijk.pdf",
+      "template": "timeline.html",
+      "current_role": "Mobile Developer Intern",
+      "current_company": "FinTech Utrecht",
+      "years_experience": 1,
+      "institutions": [
+        "TU Munich",
+        "Technische Universität München"
+      ],
+      "name": "Lars van Dijk",
+      "headline": "Junior Mobile Engineer",
+      "email": "lars.vandijk@example.com",
+      "phone": "+33 6 12 34 56 78",
+      "location": "Paris, France",
+      "presentation": "a man",
+      "appearance": "23 years old, slim build, fair skin, short dark‑brown hair, thin‑rimmed glasses",
+      "summary": "Junior Mobile Engineer with one year of experience building secure mobile applications for cybersecurity products. Moved from the Netherlands to France after a six‑month internship.",
+      "skills": [
+        "Kotlin",
+        "Android Jetpack",
+        "SwiftUI",
+        "REST API",
+        "OAuth 2.0",
+        "OWASP Mobile Top 10",
+        "Secure coding practices",
+        "Git",
+        "JIRA",
+        "Agile Scrum"
+      ],
+      "languages": [
+        "Dutch (native)",
+        "English (professional)",
+        "French (A2)"
+      ],
+      "experience": [
+        {
+          "company": "FinTech Utrecht",
+          "role": "Mobile Developer Intern",
+          "location": "Utrecht, Netherlands",
+          "start_year": 2025,
+          "end_year": 2025,
+          "bullets": [
+            "Assisted in developing a consumer‑facing Android app using Kotlin and Jetpack Compose.",
+            "Performed security‑focused code reviews following OWASP Mobile guidelines."
+          ]
+        },
+        {
+          "company": "CyberSecure Products",
+          "role": "Junior Mobile Engineer",
+          "location": "Paris, France",
+          "start_year": 2025,
+          "end_year": null,
+          "bullets": [
+            "Built a secure login flow with biometric authentication and OAuth 2.0, reducing account‑takeover attempts by 38 % in the first three months post‑launch.",
+            "Authored Espresso UI tests that increased automated test coverage from 28 % to 70 % within two months.",
+            "Contributed to a quarterly threat‑modeling session that uncovered a hard‑coded API key, leading to a fix before the next release."
+          ]
+        }
+      ],
+      "education": [
+        {
+          "institution": "Technische Universität München",
+          "short_name": "TU Munich",
+          "degree": "B.Sc. Computer Science",
+          "field": "Computer Science",
+          "graduation_year": 2024
+        }
+      ]
+    },
+    {
+      "id": "cv-30",
+      "source_file": "felix-schneider.pdf",
+      "template": "sidebar_right.html",
+      "current_role": "Intern Security Engineer",
+      "current_company": "Folksam",
+      "years_experience": 0,
+      "institutions": [
+        "UPM",
+        "Universidad Politécnica de Madrid (UPM)"
+      ],
+      "name": "Felix Schneider",
+      "headline": "Intern Security Engineer",
+      "email": "felix.schneider@email.com",
+      "phone": "+46 70 123 4567",
+      "location": "Stockholm, Sweden",
+      "presentation": "a man",
+      "appearance": "22‑year‑old, slim build, light skin, light‑brown short hair, wears thin‑rimmed glasses, ordinary facial features",
+      "summary": "Recent computer‑science graduate from UPM seeking to apply foundational security knowledge in an insurance‑sector internship.",
+      "skills": [
+        "Network security fundamentals",
+        "Linux administration (Ubuntu, CentOS)",
+        "Python scripting for automation",
+        "Basics of SIEM tools (Splunk, ELK)",
+        "OWASP Top 10 awareness",
+        "Vulnerability scanning with Nessus/OpenVAS",
+        "Incident‑response ticketing (JIRA Service Desk)",
+        "Git version control",
+        "Basic cryptography concepts",
+        "Security awareness training delivery"
+      ],
+      "languages": [
+        "German (native)",
+        "Swedish (professional working proficiency)",
+        "English (full professional proficiency)",
+        "Spanish (limited working proficiency)"
+      ],
+      "experience": [
+        {
+          "company": "Folksam",
+          "role": "Intern Security Engineer",
+          "location": "Stockholm, Sweden",
+          "start_year": 2026,
+          "end_year": null,
+          "bullets": [
+            "Automated daily log‑collection scripts that cut manual review effort by ~30 % during a two‑week pilot.",
+            "Assisted the SOC team in tuning Nessus policies, resulting in a 12 % reduction of false‑positive findings on internal web assets.",
+            "Co‑facilitated a quarterly internal phishing simulation; participant click‑through rate dropped from 22 % to 15 % after the campaign.",
+            "Documented remediation steps for 15 low‑severity configuration issues identified in routine vulnerability scans.",
+            "Produced a one‑page cheat‑sheet on secure password practices distributed to 200+ non‑technical staff."
+          ]
+        }
+      ],
+      "education": [
+        {
+          "institution": "Universidad Politécnica de Madrid (UPM)",
+          "short_name": "UPM",
+          "degree": "B.Sc. in Computer Science (Cybersecurity focus)",
+          "field": "Computer Science",
           "graduation_year": 2025
         }
       ]

@@ -1,0 +1,30 @@
+{
+  "source_file": "alejandro-martinez.pdf",
+  "text_sha256": "3208a8c40895e5098a59847ca743586ed30727bb0ce9681084ed00659f243b7f",
+  "candidate_info": {
+    "name": "Alejandro Martínez",
+    "current_role": "Data Engineer",
+    "current_company": "Tideline Technologies",
+    "years_experience": 3,
+    "skills": [
+      "Python",
+      "SQL",
+      "Apache Spark",
+      "Apache Airflow",
+      "dbt",
+      "PostgreSQL",
+      "Docker",
+      "Git",
+      "Pandas",
+      "NumPy",
+      "Looker",
+      "ETL"
+    ],
+    "institutions": [
+      "Barcelona Tech School",
+      "BTS",
+      "Universidad de Valencia",
+      "UV"
+    ]
+  }
+}

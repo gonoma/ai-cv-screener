@@ -1,0 +1,51 @@
+{
+  "source_file": "ion-dumitrescu.pdf",
+  "text_sha256": "00b064878c622263aede428634c4184be2291f705c01dc9668396a0c226d1e77",
+  "candidate_info": {
+    "name": "Ion Dumitrescu",
+    "current_role": "Solutions Architect Intern",
+    "current_company": "StreamFlux Media (internship)",
+    "years_experience": 20,
+    "skills": [
+      "AWS Media Services",
+      "FFmpeg",
+      "Docker",
+      "Kubernetes",
+      "REST APIs",
+      "Python",
+      "SQL",
+      "CDN fundamentals",
+      "Linux networking",
+      "Agile/Scrum",
+      "C4 model",
+      "Prometheus",
+      "Grafana",
+      "HTML5",
+      "CSS3",
+      "JavaScript",
+      "Node.js",
+      "Express",
+      "React",
+      "AWS basics",
+      "CI/CD pipeline",
+      "CompTIA Network+",
+      "CompTIA Linux+",
+      "TCP/IP",
+      "routing protocols",
+      "network security",
+      "VLAN trunking",
+      "OSPF configuration",
+      "HTML",
+      "PHP"
+    ],
+    "institutions": [
+      "Codecademy Bootcamp",
+      "Bootcamp",
+      "Self-taught",
+      "Universitatea Politehnica Timișoara (audit)",
+      "Audit",
+      "Universitatea Politehnica Timișoara",
+      "High School"
+    ]
+  }
+}

@@ -1,0 +1,35 @@
+{
+  "source_file": "maarten-de-jong.pdf",
+  "text_sha256": "2d249377dda1ea0e500d57bce3e21fe9999fcd048a13a666cb324123a41eb875",
+  "candidate_info": {
+    "name": "Maarten de Jong",
+    "current_role": "Principal QA Engineer",
+    "current_company": "MercadoSol Marketplace",
+    "years_experience": 22,
+    "skills": [
+      "Playwright",
+      "Cypress",
+      "Selenium WebDriver",
+      "k6",
+      "Gatling",
+      "Pact (Contract Testing)",
+      "TypeScript",
+      "Python",
+      "Postman / Newman",
+      "GitHub Actions",
+      "Docker",
+      "TestRail",
+      "Chaos Mesh",
+      "Quality Engineering Strategy",
+      "Pact",
+      "Selenium",
+      "Postman",
+      "Java",
+      "Jenkins"
+    ],
+    "institutions": [
+      "Universidad Politécnica de Madrid",
+      "UPM"
+    ]
+  }
+}

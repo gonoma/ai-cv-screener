@@ -1,0 +1,46 @@
+{
+  "source_file": "youssef-benali.pdf",
+  "text_sha256": "6abed9e60e2b12a28fd77ca96652051c8e25db11c2bd5582bad212f8e62e7ac6",
+  "candidate_info": {
+    "name": "Youssef Benali",
+    "current_role": "Engineering Manager",
+    "current_company": "DataFlow Systems",
+    "years_experience": 9,
+    "skills": [
+      "People management",
+      "Agile/Scrum",
+      "OKR setting",
+      "Technical background: Python, Java, Go",
+      "Python",
+      "Java",
+      "Go",
+      "Cloud: AWS, Azure",
+      "AWS",
+      "Azure",
+      "Containers: Docker, Kubernetes",
+      "Docker",
+      "Kubernetes",
+      "CI/CD: GitHub Actions, Argo CD, Jenkins",
+      "GitHub Actions",
+      "Argo CD",
+      "Jenkins",
+      "Monitoring: Prometheus, Grafana",
+      "Prometheus",
+      "Grafana",
+      "Budgeting & vendor management",
+      "Conflict resolution",
+      "Technical writing",
+      "RESTful APIs",
+      "Django",
+      "pytest",
+      "microservices",
+      "feature‑flagging",
+      "CI/CD"
+    ],
+    "institutions": [
+      "University of the Basque Country (UPV/EHU)",
+      "UPV/EHU",
+      "Scrum.org"
+    ]
+  }
+}

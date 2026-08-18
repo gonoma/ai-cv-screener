@@ -1,0 +1,27 @@
+{
+  "source_file": "iker-etxebarria.pdf",
+  "text_sha256": "42c463e79ad9bfca7e43d3ddd2f853ed0d6ac53fff1d062df51e3b91b4514d87",
+  "candidate_info": {
+    "name": "Iker Etxebarria",
+    "current_role": "Intern Backend Engineer",
+    "current_company": "GreenPower Solutions",
+    "years_experience": 4,
+    "skills": [
+      "Python",
+      "Django",
+      "REST API design",
+      "PostgreSQL",
+      "Git",
+      "Linux/bash",
+      "Agile/Scrum",
+      "Energy market basics",
+      "macro automation",
+      "ETL scripts",
+      "SonarQube"
+    ],
+    "institutions": [
+      "Instituto Tecnológico de Energía",
+      "ITE"
+    ]
+  }
+}

@@ -1,0 +1,42 @@
+{
+  "source_file": "sofia-khalid.pdf",
+  "text_sha256": "65fd4ba92137ca82d2d3a507e999f980c1c1cd4432f53c5d54b30b4d300ddff4",
+  "candidate_info": {
+    "name": "Sofia Khalid",
+    "current_role": "QA Engineer",
+    "current_company": "TechSolutions Iberia",
+    "years_experience": 9,
+    "skills": [
+      "test automation",
+      "performance testing",
+      "quality advocacy",
+      "Test automation (Selenium, Cypress)",
+      "Selenium",
+      "Cypress",
+      "API testing (Postman, REST Assured)",
+      "Postman",
+      "REST Assured",
+      "Performance testing (JMeter, Gatling)",
+      "JMeter",
+      "Gatling",
+      "Test management (Jira, TestRail)",
+      "Jira",
+      "TestRail",
+      "CI/CD integration (GitLab CI, Jenkins)",
+      "GitLab CI",
+      "Jenkins",
+      "Programming (Java, Python)",
+      "Java",
+      "Python",
+      "SQL basics",
+      "Agile/Scrum",
+      "Selenium Grid",
+      "continuous integration"
+    ],
+    "institutions": [
+      "Universidad de Granada (UGR)",
+      "Universidad de Granada",
+      "UGR"
+    ]
+  }
+}

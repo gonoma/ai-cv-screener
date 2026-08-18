@@ -1,0 +1,35 @@
+{
+  "source_file": "arjun-sharma.pdf",
+  "text_sha256": "81baa1d1336708d87cd82c139b4ca1cb6bc8286aaa01ab8a2f3bd19166469e9a",
+  "candidate_info": {
+    "name": "Arjun Sharma",
+    "current_role": "Lead Engineering Manager",
+    "current_company": "SummitEd Inc.",
+    "years_experience": 10,
+    "skills": [
+      "Leadership",
+      "Agile Scrum",
+      "Python",
+      "Django",
+      "React",
+      "AWS",
+      "Kubernetes",
+      "CI/CD",
+      "Data pipelines",
+      "Mentoring",
+      "Stakeholder management",
+      "Budget planning",
+      "VBA",
+      "Excel",
+      "RESTful APIs",
+      "unit tests",
+      "GitHub Actions",
+      "Docker",
+      "Kinesis",
+      "Lambda",
+      "Redshift",
+      "A/B test"
+    ],
+    "institutions": []
+  }
+}

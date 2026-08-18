@@ -1,0 +1,34 @@
+{
+  "source_file": "alex-popescu.pdf",
+  "text_sha256": "f5967d2077b76d1ee54cdb3f7cefedfe324bb7a91a89d1be14f344b4ab35ea17",
+  "candidate_info": {
+    "name": "Alex Popescu",
+    "current_role": "Senior Security Engineer",
+    "current_company": "SecureTech SRL",
+    "years_experience": 6,
+    "skills": [
+      "Technical Network Security",
+      "Penetration Testing",
+      "SIEM",
+      "Splunk",
+      "ELK",
+      "Vulnerability Scanning",
+      "Nessus",
+      "OpenVAS",
+      "OWASP Top 10",
+      "Python",
+      "Bash",
+      "Linux Hardening",
+      "Firewall Management",
+      "pfSense",
+      "iptables",
+      "Incident Response",
+      "Security Training & Phishing Simulations",
+      "Burp Suite"
+    ],
+    "institutions": [
+      "Politehnica University of Bucharest",
+      "UPB"
+    ]
+  }
+}

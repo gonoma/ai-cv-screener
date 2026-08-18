@@ -1,0 +1,44 @@
+{
+  "source_file": "andrei-georgescu.pdf",
+  "text_sha256": "128828684e188b77724b7c5a6298da238a273184235a5018d3da0d76e6e916d6",
+  "candidate_info": {
+    "name": "Andrei Georgescu",
+    "current_role": "Lead Data Analyst",
+    "current_company": "MedTech Solutions",
+    "years_experience": 13,
+    "skills": [
+      "SQL",
+      "Python (pandas, NumPy, scikit‑learn)",
+      "pandas",
+      "NumPy",
+      "scikit‑learn",
+      "R (tidyverse, caret)",
+      "tidyverse",
+      "caret",
+      "Tableau & Power BI",
+      "Tableau",
+      "Power BI",
+      "Apache Spark (PySpark)",
+      "PySpark",
+      "AWS Redshift & S3",
+      "AWS Redshift",
+      "S3",
+      "Git & GitHub Actions",
+      "Git",
+      "GitHub Actions",
+      "Statistical modeling & A/B testing",
+      "Statistical modeling",
+      "A/B testing",
+      "ETL orchestration (Airflow)",
+      "Airflow",
+      "Data visualization best practices",
+      "Spark",
+      "survival analysis",
+      "template automation"
+    ],
+    "institutions": [
+      "Universitat Autònoma de Barcelona",
+      "UAB"
+    ]
+  }
+}
