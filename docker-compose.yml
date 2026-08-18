@@ -1,0 +1,38 @@
+# Postgres only. The backend and frontend run natively on the host: containerising
+# them would cost rebuild cycles and break --reload and Vite HMR for no gain.
+#
+# Credentials come from the root .env, which is also where the backend reads
+# DATABASE_URL from — so the two cannot disagree about who the database is. The
+# `:-cv` defaults mirror the backend's own os.environ.get defaults, keeping
+# `make db` working before anyone has copied .env.example.
+services:
+  db:
+    image: pgvector/pgvector:pg17
+    environment:
+      POSTGRES_USER: ${POSTGRES_USER:-cv}
+      POSTGRES_PASSWORD: ${POSTGRES_PASSWORD:-cv}
+      POSTGRES_DB: ${POSTGRES_DB:-cv}
+    ports:
+      - "${POSTGRES_PORT:-5433}:5432"   # 5433 avoids collisions with a local Postgres
+    volumes:
+      - pgdata:/var/lib/postgresql/data
+    configs:
+      - source: postgres_init
+        target: /docker-entrypoint-initdb.d/init.sql
+    healthcheck:
+      # Ingestion must not run against a database that is still starting.
+      test: ["CMD-SHELL", "pg_isready -U ${POSTGRES_USER:-cv} -d ${POSTGRES_DB:-cv}"]
+      interval: 2s
+      timeout: 3s
+      retries: 15
+
+configs:
+  # Runs only when the data volume is empty, so the extension is never a manual
+  # step on a fresh clone. If the container booted once without it,
+  # `docker compose down -v` and up again.
+  postgres_init:
+    content: |
+      CREATE EXTENSION IF NOT EXISTS vector;
+
+volumes:
+  pgdata:

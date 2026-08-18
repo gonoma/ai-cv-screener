@@ -1,0 +1,46 @@
+{
+  "source_file": "sanne-lindberg.pdf",
+  "text_sha256": "2d83b34f60fd36b88ca01629e6901e2a9f76616a85e5816e28464b3fabbaea1f",
+  "candidate_info": {
+    "name": "Sanne Lindberg",
+    "current_role": "Freelance Platform Engineer",
+    "current_company": "Self‑employed",
+    "years_experience": 18,
+    "skills": [
+      "Kubernetes",
+      "Docker",
+      "AWS",
+      "Azure",
+      "PLC programming",
+      "IEC 61131‑3",
+      "SCADA",
+      "OPC UA",
+      "MQTT",
+      "Python",
+      "Go",
+      "CI/CD",
+      "Jenkins",
+      "GitLab",
+      "Terraform",
+      "Prometheus",
+      "Grafana",
+      "Linux",
+      "Bash",
+      "GitOps",
+      "Helm",
+      "Git‑Ops",
+      "ArgoCD",
+      "Flux",
+      "OpenStack"
+    ],
+    "institutions": [
+      "Universidad de Zaragoza",
+      "UZ",
+      "Siemens India",
+      "ABB India",
+      "Bosch India",
+      "Tata Consultancy Services",
+      "Self‑employed"
+    ]
+  }
+}

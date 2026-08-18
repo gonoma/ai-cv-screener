@@ -1,0 +1,34 @@
+{
+  "source_file": "felix-schneider.pdf",
+  "text_sha256": "d3515974b3d94c931e62703b224c444d09adfd34209d1f2f220536de5ce6ef1a",
+  "candidate_info": {
+    "name": "Felix Schneider",
+    "current_role": "Intern Security Engineer",
+    "current_company": "Folksam",
+    "years_experience": 1,
+    "skills": [
+      "Network security fundamentals",
+      "Linux administration (Ubuntu, CentOS)",
+      "Ubuntu",
+      "CentOS",
+      "Python scripting for automation",
+      "Basics of SIEM tools (Splunk, ELK)",
+      "Splunk",
+      "ELK",
+      "OWASP Top 10 awareness",
+      "Vulnerability scanning with Nessus/OpenVAS",
+      "Nessus",
+      "OpenVAS",
+      "Incident‑response ticketing (JIRA Service Desk)",
+      "JIRA Service Desk",
+      "Git version control",
+      "Git",
+      "Basic cryptography concepts",
+      "Security awareness training delivery"
+    ],
+    "institutions": [
+      "Universidad Politécnica de Madrid",
+      "UPM"
+    ]
+  }
+}

@@ -1,0 +1,30 @@
+{
+  "source_file": "elena-zapater.pdf",
+  "text_sha256": "538f54d18c2e697952d96d2f8b5ef9c655ee1525b74543dd661bbf3242798617",
+  "candidate_info": {
+    "name": "Elena Zapater",
+    "current_role": "Junior Security Engineer",
+    "current_company": "Self-Employed (Freelance Security Consultant)",
+    "years_experience": 1,
+    "skills": [
+      "Technical Vulnerability Assessment",
+      "OWASP Top 10",
+      "Burp Suite",
+      "SAST/DAST",
+      "Python",
+      "Bash scripting",
+      "Linux Hardening",
+      "Docker Security",
+      "Esquema Nacional de Seguridad (ENS)",
+      "Wazuh",
+      "Trivy",
+      "GitLab CI/CD",
+      "GitGuardian",
+      "Postman"
+    ],
+    "institutions": [
+      "KeepCoding Tech School",
+      "KeepCoding"
+    ]
+  }
+}

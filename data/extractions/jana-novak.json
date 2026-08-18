@@ -1,0 +1,30 @@
+{
+  "source_file": "jana-novak.pdf",
+  "text_sha256": "61890b70d9b1619f1c462b287298664fb3098a440dc2b00655cf396365f054a3",
+  "candidate_info": {
+    "name": "Jana Novak",
+    "current_role": "Backend Engineer",
+    "current_company": "Česká spořitelna",
+    "years_experience": 6,
+    "skills": [
+      "Java",
+      "Spring Boot",
+      "PostgreSQL",
+      "Redis",
+      "Docker",
+      "Kubernetes",
+      "AWS",
+      "REST",
+      "GraphQL",
+      "Git",
+      "JUnit",
+      "GitHub Actions",
+      "Python",
+      "PHP/Laravel"
+    ],
+    "institutions": [
+      "Czech Technical University in Prague",
+      "ČVUT"
+    ]
+  }
+}
