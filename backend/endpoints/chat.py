@@ -17,6 +17,7 @@ database = Database()
 # connection and should not outlive an ingest that changes what it caches.
 answer_generator = AnswerGenerator()
 
+
 @router.post("/chat")
 def chat(request: ChatRequest) -> StreamingResponse:
     def event_stream() -> Iterator[str]:
@@ -78,6 +79,7 @@ def chat(request: ChatRequest) -> StreamingResponse:
     # writing the rest.
     return StreamingResponse(event_stream(), media_type="text/event-stream")
 
+
 def _readable(failure: Exception) -> str:
     """Say what went wrong in terms the person asking the question can act on."""
     text = str(failure)
@@ -102,6 +104,7 @@ def _readable(failure: Exception) -> str:
 
     first_line = text.strip().splitlines()[0] if text.strip() else "no detail"
     return f"Unknown error: {type(failure).__name__}: {first_line[:300]}"
+
 
 def _server_sent_event(payload: dict) -> str:
     return f"data: {json.dumps(payload)}\n\n"

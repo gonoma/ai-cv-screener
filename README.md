@@ -8,75 +8,79 @@ The project has three parts: a one-shot pipeline that generates a synthetic CV c
 that ingests those CVs and answers questions about them; and a web chat
 interface.
 
-## Setup
+## Running it from scratch
 
-Requires Python 3.12 or newer. WeasyPrint needs a couple of system libraries:
+You need **Python 3.12+**, **Node 20+**, **Docker** (running), and one LLM key.
+The CV corpus is already committed, so there is nothing to generate on a fresh clone.
 
-```
-brew install pango libffi            # macOS
-sudo apt install libpango-1.0-0 libpangoft2-1.0-0    # Debian/Ubuntu
-```
-
-Create a Virtual Environment with installed dependencies, activate it,
-and create a .env file that needs to be filled with your personal keys.
 ```sh
-python3 -m venv .venv
-source .venv/bin/activate
-pip install -e ".[dev]"
-cp .env.example .env      # add your GEMINI_API_KEY
+make install                  # venv + Python deps + frontend deps + .env
+# open .env and paste your GEMINI_API_KEY
 ```
 
-The backend needs a database. Postgres with the `pgvector` extension runs in Docker,
-so Docker Desktop (or any Docker daemon) has to be running before `make db`.
+Then, in two terminals:
 
-Makefile commands for simplicity and ease of use:
+```sh
+# terminal 1
+make db                       # Postgres + pgvector, waits until ready
+make api                      # backend on http://localhost:8000
 
-```
-make db                  # Postgres + pgvector in Docker, waits until it's ready
-make api                 # the backend on http://localhost:8000, with reload
-make ingest              # reads every CV in data/cvs into the database
-make test                # generation and backend suites
-make lint                # ruff check
-make format              # ruff format
-make generate            # generates 30 CVs
-make generate COUNT=5    # fewer, while testing changes
+# terminal 2
+make ingest                   # reads data/cvs into the database — once
+make ui                       # chat UI on http://localhost:5173
 ```
 
-The order matters the first time: `make generate` to get a corpus, `make db` to get
-somewhere to put it, `make api` in one terminal, then `make ingest` in another.
-`GET /health` tells you how many candidates and chunks are currently in the database.
+Open <http://localhost:5173> and ask something like *"who knows Kubernetes?"*.
+`GET /health` reports how many candidates and chunks are in the database, and
+`make down` stops Postgres when you are finished.
 
-You can also run the generation command from the terminal:
+## Commands
+
+Run `make` on its own to see this list.
+
+| | |
+|---|---|
+| `make install` | venv, Python and frontend deps, `.env` from the template |
+| `make db` / `make down` | start / stop Postgres + pgvector |
+| `make api` | backend on :8000, with reload |
+| `make ui` | Vite dev server on :5173, proxying `/api` to the backend |
+| `make ingest` | reads every CV in `data/cvs` into the database |
+| `make generate` | rebuilds the corpus (`COUNT=5` for fewer) |
+| `make test` / `make test-fast` | full suite / skipping the corpus-backed tests |
+| `make lint` / `make format` | ruff |
+
+## Configuration
+
+Everything lives in `.env` (copied from `.env.example`, gitignored).
+
+- **A key is required**: `GEMINI_API_KEY` with `TEXT_PROVIDER=gemini`, or
+  `OPENROUTER_API_KEY` with `TEXT_PROVIDER=openrouter`. The same key reads fields out
+  of a CV and writes the answers.
+- **Embeddings run locally**, so search itself costs nothing and needs no key, and the
+  test suite never touches the network.
+- **`DATABASE_URL`** already matches what `make db` starts.
+- **Token knobs** — the backend is tuned to spend as few *tokens* as possible, not as
+  few calls (see [Backend](#backend)): `LLM_MAX_OUTPUT_TOKENS` caps the answer,
+  `GEMINI_THINKING_LEVEL` stops the model buying reasoning it does not need,
+  `SEMANTIC_SEARCH_TOP_K` is how many chunks an open-ended question retrieves, and
+  `LLM_CACHE=1` replays identical calls off disk while you are tuning prompts.
+
+## Regenerating the corpus
+
+Only needed if you want a different corpus. WeasyPrint needs two system libraries first:
+
+```sh
+brew install pango libffi                             # macOS
+sudo apt install libpango-1.0-0 libpangoft2-1.0-0     # Debian/Ubuntu
 ```
-python -m data_generation.run --count 30
+
+```sh
+make generate                 # 30 CVs; COUNT=5 while testing changes
+.venv/bin/python -m data_generation.run --count 30 --force   # ignore what is on disk
 ```
 
-With the `--force` flag it skips everything already on disk:
-
-```
-python -m data_generation.run --count 30 --force
-```
-
-To generate CVs you need:
-
-- `GEMINI_API_KEY` from Google AI Studio, and `TEXT_PROVIDER=gemini`
-- `OPENROUTER_API_KEY` from OpenRouter, and `TEXT_PROVIDER=openrouter`
-
-Photos don't need a key at all. `IMAGE_PROVIDER` picks where to start, and
-anything that fails falls through to the next option.
-
-The tests don't rely on external network APIs.
-
-The backend uses the same `TEXT_PROVIDER` key, for reading fields out of a CV and for
-writing the answers. Embeddings run locally, so search itself costs nothing and needs
-no key. `DATABASE_URL` is already in `.env.example` and matches what `make db` starts.
-
-The backend is tuned to spend as few **tokens** as possible, not as few calls — see
-[Backend](#backend) below. The knobs that control that are all in `.env.example`:
-`LLM_MAX_OUTPUT_TOKENS` caps the answer,
-`GEMINI_THINKING_LEVEL` keeps the model from buying a reasoning budget it doesn't need,
-`SEMANTIC_SEARCH_TOP_K` is how many chunks an open-ended question retrieves, and
-`LLM_CACHE=1` replays identical calls off disk while you're tuning prompts.
+Photos need no key: `IMAGE_PROVIDER` picks where to start and anything that fails falls
+through to the next option. Re-run `make ingest` afterwards to load the new corpus.
 
 # Design Decisions
 
@@ -280,13 +284,6 @@ label first, so the UI can say what it decided while the words are still arrivin
   person, or something vague?" That's the *classifier* (or *router*) call. Then the
   second call actually answers. So you pay twice: once to figure out where to look,
   once to answer.
-
-
-
-
-
-
-
 
 ### Where the tokens went
 
