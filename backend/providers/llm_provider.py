@@ -72,8 +72,7 @@ class GeminiClient(BaseLlmClient):
         return config
 
     def _interaction(self, prompt: str, **options):
-        """Bind the client to a name — `genai.Client().interactions.create(...)` fails.
-        """
+        """Bind the client to a name — `genai.Client().interactions.create(...)` fails."""
         self._required_key("GEMINI_API_KEY")
         from google import genai
 
@@ -157,7 +156,6 @@ class OpenRouterClient(BaseLlmClient):
 
 
 class LlmProvider:
-
     _CLIENTS: dict[str, type[BaseLlmClient]] = {
         "gemini": GeminiClient,
         "openrouter": OpenRouterClient,
