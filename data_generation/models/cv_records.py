@@ -18,6 +18,15 @@ class Role(BaseModel):
     def end_year_or_present(self) -> int:
         return self.end_year or CORPUS_YEAR
 
+    def names_a_job(self) -> bool:
+        """Whether this row is a job at all.
+
+        The model that writes these records occasionally emits a filler row whose
+        company and role are both the string "None", spanning years its owner was
+        a child. Counted, it added eleven years to one candidate's career.
+        """
+        return any(field.strip().lower() not in ("", "none") for field in (self.role, self.company))
+
 
 class Qualification(BaseModel):
     institution: str = Field(
@@ -75,8 +84,9 @@ class Candidate(BaseModel):
         return max(self.experience, key=lambda role: role.end_year_or_present())
 
     def years_of_experience(self) -> int:
-        earliest_start = min(role.start_year for role in self.experience)
-        latest_end = max(role.end_year_or_present() for role in self.experience)
+        jobs = [role for role in self.experience if role.names_a_job()] or self.experience
+        earliest_start = min(role.start_year for role in jobs)
+        latest_end = max(role.end_year_or_present() for role in jobs)
         return latest_end - earliest_start
 
     def institution_names(self) -> list[str]:

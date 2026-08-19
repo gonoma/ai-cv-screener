@@ -23,11 +23,17 @@ def career_years(positions: list[Position], as_of: int | None = None) -> int | N
 
     The span, not the sum of the parts: two jobs held in the same years are one
     stretch of a career, and adding them would credit the person twice.
+
+    Rows that name no job are left out, the same as in `longest_tenure`. One CV
+    in the corpus carries a 1995-2006 entry whose role and employer are both the
+    literal string "None" — years in which its owner was a child — and counting
+    it made a candidate with a 20-year career rank first on 31.
     """
-    starts = [start for position in positions if (start := _year(position.get("start_year")))]
+    dated = [position for position in positions if _names_a_job(position)]
+    starts = [start for position in dated if (start := _year(position.get("start_year")))]
     if not starts:
         return None
-    return max(0, _latest_end(positions, as_of) - min(starts))
+    return max(0, _latest_end(dated, as_of) - min(starts))
 
 
 def longest_tenure(positions: list[Position], as_of: int | None = None) -> Position | None:

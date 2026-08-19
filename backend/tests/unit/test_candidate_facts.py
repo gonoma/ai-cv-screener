@@ -104,3 +104,13 @@ def test_a_nameless_row_is_not_mistaken_for_the_current_job() -> None:
     ]
 
     assert candidate_facts.current_position(positions)["company"] == "Acme"
+
+
+def test_a_career_does_not_start_in_a_year_naming_no_job() -> None:
+    """A "None at None" row spanning someone's childhood used to add eleven years to it."""
+    positions = [
+        {"role": "None", "company": "None", "start_year": 1995, "end_year": 2006},
+        {"role": "Support Specialist", "company": "KPN", "start_year": 2016, "end_year": None},
+    ]
+
+    assert candidate_facts.career_years(positions, as_of=CORPUS_YEAR) == 10
