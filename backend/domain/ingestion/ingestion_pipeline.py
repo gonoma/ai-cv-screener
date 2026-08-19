@@ -7,12 +7,14 @@ from functools import partial
 from pathlib import Path
 
 import psycopg
+from psycopg.types.json import Jsonb
 
 from ... import REPO_ROOT
 from ...data.database import Database
 from ...data.models import CvChunk
 from ...providers.embeddings import EmbeddingModel
-from .candidate_parser import CandidateParser
+from .. import candidate_facts
+from .candidate_parser import CandidateParser, MisalignedBatch
 from .cv_text_chunker import CvTextChunker
 from .pdf_text_extractor import PdfTextExtractor
 
@@ -140,7 +142,21 @@ class IngestionPipeline:
         succeeded, regardless of how the CVs were grouped this time — the batch
         is a transport detail, not a unit of work worth remembering.
         """
-        records = self.candidate_parser.parse_candidates([texts[path] for path in pdf_paths])
+        try:
+            records = self.candidate_parser.parse_candidates([texts[path] for path in pdf_paths])
+        except MisalignedBatch:
+            # A batch that answers for one CV out of ten has said nothing about
+            # the other nine, and no salvage rule can guess which nine. Asking
+            # singly costs a call per CV, which is the expensive path — and
+            # still cheaper than failing an ingest that has already paid for
+            # every other batch.
+            return {
+                pdf_path: self._retry_pdf_extraction(
+                    pdf_path=pdf_path,
+                    cv_text=texts[pdf_path],
+                )
+                for pdf_path in pdf_paths
+            }
 
         aligned: dict[Path, dict] = {}
         misaligned: list[Path] = []
@@ -236,6 +252,11 @@ class IngestionPipeline:
         cached = json.loads(cache_file.read_text(encoding="utf-8"))
         if cached.get("text_sha256") != self._text_fingerprint(cv_text):
             return None
+        # An entry extracted under an older prompt or schema is the right answer
+        # to a question no longer being asked — it is missing whatever field was
+        # added since, and nothing at read time would reveal that.
+        if cached.get("extraction_sha256") != self._extraction_fingerprint():
+            return None
         return cached["candidate_info"]
 
     def _cache_extraction(self, pdf_path: Path, cv_text: str, candidate_info: dict) -> None:
@@ -250,6 +271,7 @@ class IngestionPipeline:
         payload = {
             "source_file": pdf_path.name,
             "text_sha256": self._text_fingerprint(cv_text),
+            "extraction_sha256": self._extraction_fingerprint(),
             "candidate_info": candidate_info,
         }
         partial_file = cache_file.parent / f"{cache_file.stem}.{os.getpid()}.partial"
@@ -262,6 +284,14 @@ class IngestionPipeline:
     @staticmethod
     def _text_fingerprint(cv_text: str) -> str:
         return hashlib.sha256(cv_text.encode("utf-8")).hexdigest()
+
+    @staticmethod
+    def _extraction_fingerprint() -> str:
+        """What was asked of the model, so that changing the ask misses the cache."""
+        asked = CandidateParser.PROMPT_TEMPLATE + json.dumps(
+            CandidateParser.RESPONSE_SCHEMA, sort_keys=True
+        )
+        return hashlib.sha256(asked.encode("utf-8")).hexdigest()
 
     def _store_cv(self, read_cv: ReadCv) -> dict:
         candidate_id = self._insert_candidate_row(
@@ -283,16 +313,36 @@ class IngestionPipeline:
         }
 
     def _insert_candidate_row(self, source_file: str, candidate_info: dict) -> int:
+        """Store what the model read, plus the arithmetic it was not asked to do.
+
+        Deriving here rather than in the parser keeps the sums out of the
+        extraction cache: changing how a career is counted then costs a re-ingest
+        of local JSON, not a re-buy of every CV.
+        """
+        positions = candidate_info.get("positions") or []
+        longest = candidate_facts.longest_tenure(positions)
+        current = candidate_facts.current_position(positions)
+        # A role the extraction left blank is still printed on the CV, at the top
+        # of the job it names — so fall back to that rather than store a
+        # candidate with no title.
+        company = candidate_info.get("current_company") or (current or {}).get("company")
+        role = candidate_facts.role_without_company(
+            role=candidate_info.get("current_role") or (current or {}).get("role"),
+            company=company,
+        )
+
         return self.connection.execute(
             "INSERT INTO candidates (source_file, name, role, current_company, "
-            "years_experience, skills, institutions) VALUES (%s, %s, %s, %s, %s, %s, %s) "
-            "RETURNING id",
+            "years_experience, longest_tenure_years, positions, skills, institutions) "
+            "VALUES (%s, %s, %s, %s, %s, %s, %s, %s, %s) RETURNING id",
             [
                 source_file,
                 candidate_info["name"],
-                candidate_info.get("current_role"),
-                candidate_info.get("current_company"),
-                candidate_info.get("years_experience"),
+                role,
+                company,
+                candidate_facts.career_years(positions),
+                candidate_facts.tenure_years(longest) if longest else None,
+                Jsonb(positions),
                 candidate_info.get("skills") or [],
                 candidate_info.get("institutions") or [],
             ],

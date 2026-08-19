@@ -113,3 +113,145 @@ def test_a_chunk_wholly_contained_in_its_predecessor_is_dropped() -> None:
         ("ada.pdf", "Ada Lovelace", "Skills", "Kubernetes"),
     ]
     assert len(ContextRetriever._drop_repeated_overlap(rows)) == 1
+
+
+def _chunks(*source_files: str) -> list:
+    return [
+        (source, source[:-4].title(), "Experience", f"bullet {i}")
+        for i, source in enumerate(source_files)
+    ]
+
+
+def test_one_cv_cannot_occupy_the_whole_context() -> None:
+    """Whoever writes the most quantified bullets would otherwise win on volume alone."""
+    retriever, _ = _retriever([])
+    retriever._TOP_K = 4
+
+    kept = retriever._spread_across_candidates(
+        _chunks("ada.pdf", "ada.pdf", "ada.pdf", "ada.pdf", "alan.pdf", "grace.pdf")
+    )
+
+    assert [row[0] for row in kept] == ["ada.pdf", "ada.pdf", "alan.pdf", "grace.pdf"]
+
+
+def test_the_cap_keeps_the_ranking_it_was_given() -> None:
+    """Chunks are dropped, never reordered: nearest-first is still the ranking sent."""
+    retriever, _ = _retriever([])
+    retriever._TOP_K = 3
+
+    kept = retriever._spread_across_candidates(_chunks("ada.pdf", "alan.pdf", "ada.pdf"))
+
+    assert [row[0] for row in kept] == ["ada.pdf", "alan.pdf", "ada.pdf"]
+
+
+def test_a_short_ranking_is_returned_whole() -> None:
+    """A corpus smaller than the cap must not come back empty-handed."""
+    retriever, _ = _retriever([])
+    assert len(retriever._spread_across_candidates(_chunks("ada.pdf", "alan.pdf"))) == 2
+
+
+def test_the_roster_states_the_seniority_a_chunk_does_not_carry() -> None:
+    retriever, _ = _retriever([("Ada Lovelace", "ada.pdf", "Staff Engineer", 9)])
+
+    roster = retriever._roster(_chunks("ada.pdf"))
+
+    assert "Ada Lovelace (ada.pdf): Staff Engineer, 9y experience" in roster
+
+
+def test_a_field_the_extraction_missed_is_left_out_of_the_roster() -> None:
+    """An empty role must not render as a stray comma the model has to interpret."""
+    retriever, _ = _retriever([("Ada Lovelace", "ada.pdf", "", 9)])
+
+    assert "Ada Lovelace (ada.pdf): 9y experience" in retriever._roster(_chunks("ada.pdf"))
+
+
+# --- superlatives: ordered in SQL rather than argued out of prose -----------
+
+RANKED = [
+    # source_file, name, ranked number, role, company, positions, rows matched
+    (
+        "ada.pdf",
+        "Ada Lovelace",
+        11,
+        "Staff Engineer",
+        "Steady Ltd",
+        [
+            {"role": "Analyst", "company": "Early Co", "start_year": 2012, "end_year": 2015},
+            {
+                "role": "Staff Engineer",
+                "company": "Steady Ltd",
+                "start_year": 2015,
+                "end_year": None,
+            },
+        ],
+        2,
+    ),
+    ("alan.pdf", "Alan Turing", 4, "Contractor", "Short Ltd", [], 2),
+]
+
+
+def test_a_tenure_question_orders_on_the_tenure_column() -> None:
+    retriever, connection = _retriever(RANKED)
+
+    context = retriever._retrieve_ranked_candidates(
+        QueryRoute(route="structured", ranking="tenure")
+    )
+
+    assert "ORDER BY longest_tenure_years DESC NULLS LAST" in connection.statements[0]
+    assert context.source_files == ["ada.pdf", "alan.pdf"]
+
+
+def test_a_tenure_answer_names_the_job_that_produced_the_number() -> None:
+    """A number with no job attached is a ranking the reader cannot check."""
+    retriever, _ = _retriever(RANKED)
+
+    text = retriever._retrieve_ranked_candidates(
+        QueryRoute(route="structured", ranking="tenure")
+    ).text
+
+    assert "11y as Staff Engineer at Steady Ltd (2015-present)" in text
+
+
+def test_an_experience_question_orders_on_the_career_column() -> None:
+    retriever, connection = _retriever(RANKED)
+
+    retriever._retrieve_ranked_candidates(QueryRoute(route="structured", ranking="experience"))
+
+    assert "ORDER BY years_experience DESC NULLS LAST" in connection.statements[0]
+
+
+def test_a_skill_ranking_says_the_years_are_not_years_of_that_skill() -> None:
+    """The CVs date jobs, not skills — the answer must not claim more than that."""
+    retriever, connection = _retriever(RANKED)
+
+    context = retriever._retrieve_ranked_candidates(
+        QueryRoute(route="structured", skills=["Python"], ranking="experience")
+    )
+
+    assert "unnest(skills)" in connection.statements[0]
+    assert "not years spent using any one of them" in context.text
+    assert "whose CVs list Python" in context.text
+
+
+def test_a_ranking_over_nothing_says_so_rather_than_ranking_nothing() -> None:
+    retriever, _ = _retriever([])
+
+    context = retriever._retrieve_ranked_candidates(
+        QueryRoute(route="structured", skills=["Cobol"], ranking="tenure")
+    )
+
+    assert context.source_files == []
+    assert "No candidate" in context.text
+
+
+def test_a_breakdown_sends_what_people_do_and_not_where_they_studied() -> None:
+    """Thirty rows at once means every column is paid for thirty times."""
+    retriever, connection = _retriever([("ada.pdf", "Ada Lovelace", "Engineer", ["Python"])])
+
+    retriever._retrieve_all_candidates_matching_filters(
+        QueryRoute(route="structured", breakdown=True)
+    )
+
+    selected = connection.statements[0].split("FROM")[0]
+    assert "role" in selected and "skills" in selected
+    assert "institutions" not in selected and "current_company" not in selected

@@ -1,12 +1,56 @@
 {
   "source_file": "lucas-pereira.pdf",
   "text_sha256": "2942b9b273f59b22367bc09309d4290a921fc8399b8ffa349c9ee43380935563",
+  "extraction_sha256": "e70375a7cfc12078619da6f77abcc816f91569c0164d04086e01ce472c8dc30a",
   "candidate_info": {
     "name": "Lucas Pereira",
-    "current_role": "",
-    "current_company": "",
-    "years_experience": 16,
-    "skills": [],
-    "institutions": []
+    "current_role": "Principal Technical Writer - Social Point",
+    "current_company": "Social Point",
+    "positions": [
+      {
+        "role": "Intern Technical Writer - PixelForge",
+        "company": "PixelForge",
+        "start_year": 2009,
+        "end_year": 2010
+      },
+      {
+        "role": "Technical Writer - Social Point",
+        "company": "Social Point",
+        "start_year": 2010,
+        "end_year": 2015
+      },
+      {
+        "role": "Senior Technical Writer - Nimble Giant Entertainment",
+        "company": "Nimble Giant Entertainment",
+        "start_year": 2017,
+        "end_year": 2022
+      },
+      {
+        "role": "Principal Technical Writer - Social Point",
+        "company": "Social Point",
+        "start_year": 2022,
+        "end_year": null
+      }
+    ],
+    "skills": [
+      "Markdown",
+      "DITA",
+      "MadCap Flare",
+      "Adobe FrameMaker",
+      "XML",
+      "API documentation",
+      "Git",
+      "Python",
+      "Unity",
+      "Unreal Engine",
+      "Localization",
+      "UX writing",
+      "Style guides",
+      "Single‑source publishing"
+    ],
+    "institutions": [
+      "Universitat Politecnica de Catalunya",
+      "UPC"
+    ]
   }
 }

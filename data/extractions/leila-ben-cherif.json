@@ -1,12 +1,46 @@
 {
   "source_file": "leila-ben-cherif.pdf",
   "text_sha256": "fa0f0e26e2bad6e8eaa83628b0b12659ff0bad28c8b0e99d58788ddca5f2e939",
+  "extraction_sha256": "e70375a7cfc12078619da6f77abcc816f91569c0164d04086e01ce472c8dc30a",
   "candidate_info": {
     "name": "Leila Ben Cherif",
-    "current_role": "",
-    "current_company": "",
-    "years_experience": 13,
-    "skills": [],
-    "institutions": []
+    "current_role": "Lead Site Reliability Engineer",
+    "current_company": "NexaTech Consulting",
+    "positions": [
+      {
+        "role": "Lead Site Reliability Engineer",
+        "company": "NexaTech Consulting",
+        "start_year": 2020,
+        "end_year": null
+      },
+      {
+        "role": "Freelance Site Reliability Engineer",
+        "company": "FreeLance SRE Contractor",
+        "start_year": 2017,
+        "end_year": 2020
+      },
+      {
+        "role": "Junior Systems Administrator",
+        "company": "EuroSys Solutions",
+        "start_year": 2012,
+        "end_year": 2014
+      }
+    ],
+    "skills": [
+      "Linux (RHEL, Ubuntu)",
+      "KubernetesDocker",
+      "TerraformPrometheus",
+      "Grafana ELK StackPython",
+      "Bash AWS Azure",
+      "Monitoring & Alerting",
+      "Incident Management",
+      "CI/CD (GitLab CI)",
+      "Networking (TCP/IP , DNS, Load Balancing)"
+    ],
+    "institutions": [
+      "Institut de Formation Technologique",
+      "IFT",
+      "IFT Paris"
+    ]
   }
 }

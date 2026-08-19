@@ -1,27 +1,35 @@
 {
   "source_file": "alex-popescu.pdf",
   "text_sha256": "f5967d2077b76d1ee54cdb3f7cefedfe324bb7a91a89d1be14f344b4ab35ea17",
+  "extraction_sha256": "e70375a7cfc12078619da6f77abcc816f91569c0164d04086e01ce472c8dc30a",
   "candidate_info": {
     "name": "Alex Popescu",
     "current_role": "Senior Security Engineer",
     "current_company": "SecureTech SRL",
-    "years_experience": 6,
+    "positions": [
+      {
+        "role": "Senior Security Engineer",
+        "company": "SecureTech SRL",
+        "start_year": 2020,
+        "end_year": null
+      },
+      {
+        "role": "Security Analyst",
+        "company": "CyberGuard Ltd.",
+        "start_year": 2018,
+        "end_year": 2020
+      }
+    ],
     "skills": [
       "Technical Network Security",
       "Penetration Testing",
-      "SIEM",
-      "Splunk",
-      "ELK",
-      "Vulnerability Scanning",
-      "Nessus",
-      "OpenVAS",
+      "SIEM (Splunk, ELK)",
+      "Vulnerability Scanning (Nessus, OpenVAS)",
       "OWASP Top 10",
       "Python",
       "Bash",
       "Linux Hardening",
-      "Firewall Management",
-      "pfSense",
-      "iptables",
+      "Firewall Management (pfSense, iptables)",
       "Incident Response",
       "Security Training & Phishing Simulations",
       "Burp Suite"

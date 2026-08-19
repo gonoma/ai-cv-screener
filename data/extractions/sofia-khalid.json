@@ -1,40 +1,58 @@
 {
   "source_file": "sofia-khalid.pdf",
   "text_sha256": "65fd4ba92137ca82d2d3a507e999f980c1c1cd4432f53c5d54b30b4d300ddff4",
+  "extraction_sha256": "e70375a7cfc12078619da6f77abcc816f91569c0164d04086e01ce472c8dc30a",
   "candidate_info": {
     "name": "Sofia Khalid",
     "current_role": "QA Engineer",
     "current_company": "TechSolutions Iberia",
-    "years_experience": 9,
+    "positions": [
+      {
+        "role": "QA Engineer",
+        "company": "TechSolutions Iberia",
+        "start_year": 2020,
+        "end_year": null
+      },
+      {
+        "role": "Contract QA Analyst",
+        "company": "QAtest Contracting",
+        "start_year": 2019,
+        "end_year": 2020
+      },
+      {
+        "role": "Junior QA Tester",
+        "company": "DevStart Studios",
+        "start_year": 2016,
+        "end_year": 2019
+      }
+    ],
     "skills": [
       "test automation",
       "performance testing",
-      "quality advocacy",
-      "Test automation (Selenium, Cypress)",
       "Selenium",
       "Cypress",
-      "API testing (Postman, REST Assured)",
+      "API testing",
       "Postman",
       "REST Assured",
-      "Performance testing (JMeter, Gatling)",
       "JMeter",
       "Gatling",
-      "Test management (Jira, TestRail)",
+      "Test management",
       "Jira",
       "TestRail",
-      "CI/CD integration (GitLab CI, Jenkins)",
+      "CI/CD integration",
       "GitLab CI",
       "Jenkins",
-      "Programming (Java, Python)",
+      "Programming",
       "Java",
       "Python",
       "SQL basics",
       "Agile/Scrum",
       "Selenium Grid",
+      "functional testing",
+      "iOS/Android",
       "continuous integration"
     ],
     "institutions": [
-      "Universidad de Granada (UGR)",
       "Universidad de Granada",
       "UGR"
     ]

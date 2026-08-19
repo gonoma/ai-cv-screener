@@ -195,3 +195,122 @@ def test_a_forced_route_overrides_what_the_corpus_would_have_picked(monkeypatch)
     )
     assert route.route == "semantic"
     assert route.skills == []
+
+
+# --- superlatives, which are an ordering rather than a filter ---------------
+
+
+def test_the_longest_stint_in_one_job_is_a_ranking(monkeypatch) -> None:
+    """Names no skill and no school, so it used to fall through to plain retrieval."""
+    _forbid_llm(monkeypatch)
+
+    route = _router().classify_question(
+        "Which candidate has worked for the longest period in a single job or position?"
+    )
+
+    assert (route.route, route.ranking) == ("structured", "tenure")
+    assert route.skills == []
+
+
+def test_the_longest_experience_in_a_skill_is_a_ranking_and_a_filter(monkeypatch) -> None:
+    _forbid_llm(monkeypatch)
+
+    route = _router().classify_question(
+        "Which candidate has the longest experience in Python and why?"
+    )
+
+    assert (route.route, route.ranking) == ("structured", "experience")
+    assert route.skills == ["Python"]
+
+
+def test_a_threshold_question_is_still_a_filter_not_a_ranking(monkeypatch) -> None:
+    """ "5+ years" selects rows; it does not ask which row is highest."""
+    _forbid_llm(monkeypatch)
+
+    route = _router().classify_question("Who has 5+ years of experience with Java?")
+
+    assert route.ranking is None
+    assert route.minimum_years_experience == 5
+
+
+def test_a_superlative_does_not_double_as_a_threshold(monkeypatch) -> None:
+    """A ranking that also filtered on the number in the question would rank a subset."""
+    _forbid_llm(monkeypatch)
+
+    route = _router().classify_question("Who has the most years of experience beyond 3 years?")
+
+    assert route.ranking == "experience"
+    assert route.minimum_years_experience is None
+
+
+def test_a_qualitative_superlative_is_not_a_ranking(monkeypatch) -> None:
+    """ "Strongest at leading teams" is not a column, so it must stay semantic."""
+    _stub(
+        monkeypatch=monkeypatch,
+        response={
+            "route": "semantic",
+            "name": None,
+            "skills": [],
+            "institution": None,
+            "min_years": None,
+        },
+    )
+
+    assert (
+        _router().classify_question("Who is the most impressive communicator?").route == "semantic"
+    )
+
+
+# --- a term used as an illustration is not a filter -------------------------
+
+
+def test_a_skill_named_only_in_an_example_is_not_filtered_on(monkeypatch) -> None:
+    """Filtering on it answered a question about thirty people with sixteen of them."""
+    _forbid_llm(monkeypatch)
+
+    route = _router().classify_question(
+        "Can you divide all 30 candidates by roughly what they do? For example: 33% do "
+        "frontend, 40% do backend with Python, 2% machine learning."
+    )
+
+    assert (route.route, route.skills, route.breakdown) == ("structured", [], True)
+
+
+def test_a_name_named_only_in_an_example_does_not_become_a_profile(monkeypatch) -> None:
+    """One CV cited as an illustration must not narrow the question to that person."""
+    _stub(
+        monkeypatch=monkeypatch,
+        response={
+            "route": "semantic",
+            "name": None,
+            "skills": [],
+            "institution": None,
+            "min_years": None,
+        },
+    )
+
+    route = _router().classify_question(
+        "How many candidates are backend engineers, e.g. Jana Novak?"
+    )
+
+    assert route.route != "profile"
+    assert route.candidate_name is None
+
+
+def test_a_filter_stated_before_the_example_survives(monkeypatch) -> None:
+    """Cutting at the marker must not cut the question itself."""
+    _forbid_llm(monkeypatch)
+
+    route = _router().classify_question(
+        "Who knows Python, such as people who have shipped Kubernetes work?"
+    )
+
+    assert route.skills == ["Python"]
+
+
+def test_a_breakdown_of_a_filtered_group_keeps_the_filter(monkeypatch) -> None:
+    _forbid_llm(monkeypatch)
+
+    route = _router().classify_question("Break down the Python candidates by seniority")
+
+    assert (route.skills, route.breakdown) == (["Python"], True)

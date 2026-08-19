@@ -1,13 +1,33 @@
 {
   "source_file": "emily-papadopoulos.pdf",
   "text_sha256": "62e9dadd6b4336edf764063520dbd70d3f96b781460e6a0beb4a366c0da2ef75",
+  "extraction_sha256": "e70375a7cfc12078619da6f77abcc816f91569c0164d04086e01ce472c8dc30a",
   "candidate_info": {
     "name": "Emily Papadopoulos",
     "current_role": "Junior Engineering Manager",
     "current_company": "LogiTrans Solutions",
-    "years_experience": 6,
+    "positions": [
+      {
+        "role": "Junior Engineering Manager",
+        "company": "LogiTrans Solutions",
+        "start_year": 2025,
+        "end_year": null
+      },
+      {
+        "role": "Guest Relations Manager",
+        "company": "Hotel Lyon Centre",
+        "start_year": 2022,
+        "end_year": 2025
+      },
+      {
+        "role": "Front Desk Supervisor",
+        "company": "Hostel Bellevue",
+        "start_year": 2020,
+        "end_year": 2022
+      }
+    ],
     "skills": [
-      "Agile",
+      "Technical Agile",
       "Scrum",
       "JIRA",
       "Python",
@@ -16,12 +36,9 @@
       "AWS Basics",
       "Logistics Optimization",
       "Data Analysis (Excel, PowerBI)",
-      "Excel",
-      "PowerBI",
       "Stakeholder Management",
       "Budgeting",
-      "Communication",
-      "CI/CD pipeline"
+      "Communication"
     ],
     "institutions": [
       "Universitatea Politehnica din Bucuresti",

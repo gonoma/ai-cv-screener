@@ -1,12 +1,8 @@
-import hashlib
 import json
 import os
 import re
 from collections.abc import Iterator
-from pathlib import Path
 from typing import Any
-
-from .. import REPO_ROOT
 
 
 class BaseLlmClient:
@@ -22,7 +18,10 @@ class BaseLlmClient:
     # A max-tokens cap on the answer, because output tokens are the priciest and the only
     # unbounded part of a request — the prompt is capped by the retrieved chunks, but a
     # rambling model isn't capped by anything else.
-    _MAX_OUTPUT_TOKENS: int = int(os.environ.get("LLM_MAX_OUTPUT_TOKENS", "800"))
+    # A truncation guard, not a budget: only emitted tokens are billed, so the cap
+    # costs nothing until it bites. Gemini draws thinking from this same pool, so a
+    # tight cap spends the budget reasoning and cuts the answer mid-sentence.
+    _MAX_OUTPUT_TOKENS: int = int(os.environ.get("LLM_MAX_OUTPUT_TOKENS", "2000"))
 
     def create_json_response(self, prompt: str, json_schema: dict[str, Any]) -> str | None:
         """The model's raw reply to a schema-constrained prompt, still unparsed."""
@@ -94,11 +93,15 @@ class OpenRouterClient(BaseLlmClient):
     # batch time out and look like a hang.
     _REQUEST_TIMEOUT_SECONDS: float = float(os.environ.get("LLM_TIMEOUT_SECONDS", "300"))
 
-    # The same idea for OpenRouter, which normalises it across its catalogue.
-    # Not cosmetic: the default model here is a reasoning model on a free tier,
-    # and without this it thinks its way through the whole output budget and
-    # returns nothing at all.
-    _REASONING_EFFORT: str = os.environ.get("OPENROUTER_REASONING_EFFORT", "low")
+    # Off by default, and not merely low. Neither job here is a reasoning
+    # problem — one transcribes fields off a CV, the other summarises retrieved
+    # text — and this model spends the budget anyway: a single-CV extraction at
+    # `low` came back with finish_reason='error' having burnt 1,534 tokens, all
+    # of them reasoning, and no content at all. Set it to low/medium/high to
+    # turn thinking back on for a model that needs it.
+    _REASONING_EFFORT: str = os.environ.get("OPENROUTER_REASONING_EFFORT", "off")
+
+    _REASONING_OFF: frozenset[str] = frozenset({"off", "none", "no", "0", "false", ""})
 
     def create_json_response(self, prompt: str, json_schema: dict[str, Any]) -> str | None:
         completion = self._client().chat.completions.create(
@@ -108,7 +111,7 @@ class OpenRouterClient(BaseLlmClient):
                 "type": "json_schema",
                 "json_schema": {"name": "result", "strict": True, "schema": json_schema},
             },
-            extra_body={"reasoning": {"effort": self._REASONING_EFFORT}},
+            extra_body={"reasoning": self._reasoning_option()},
         )
         return self._get_required_content(completion)
 
@@ -121,11 +124,25 @@ class OpenRouterClient(BaseLlmClient):
             ],
             max_tokens=self._MAX_OUTPUT_TOKENS,
             stream=True,
+            # Left on, this model streams its deliberation as ordinary content:
+            # the reader watches it talk itself through the answer and the output
+            # budget is gone before the answer starts. `exclude` is not enough —
+            # it only hides reasoning that arrives in its own field. Measured on
+            # one question: off returns 1.6k characters of answer where low
+            # returned 9k characters of thinking.
+            extra_body={"reasoning": self._reasoning_option()},
         )
         for stream_chunk in stream:
             token = stream_chunk.choices[0].delta.content
             if token:
                 yield token
+
+    @classmethod
+    def _reasoning_option(cls) -> dict[str, Any]:
+        """Disabled, or an effort level with the thinking kept out of the content."""
+        if cls._REASONING_EFFORT.strip().lower() in cls._REASONING_OFF:
+            return {"enabled": False}
+        return {"effort": cls._REASONING_EFFORT, "exclude": True}
 
     def _client(self):
         import openai
@@ -163,12 +180,6 @@ class LlmProvider:
 
     _DEFAULT_PROVIDER: str = "openrouter"
 
-    # Off unless LLM_CACHE is set. Replaying a stored answer is right while
-    # tuning and wrong when serving: two users asking the same question would
-    # get byte-identical responses forever, and a provider outage would look
-    # like a working system.
-    _CACHE_DIRECTORY: Path = REPO_ROOT / "data" / "llm_cache"
-
     def _active_provider(self) -> str:
         return os.environ.get("TEXT_PROVIDER", self._DEFAULT_PROVIDER).strip().lower()
 
@@ -180,44 +191,6 @@ class LlmProvider:
         return client_class()
 
     def generate_json_object(self, prompt: str, json_schema: dict[str, Any]) -> dict[str, Any]:
-        cache_key = self._cache_key("json", prompt, json.dumps(json_schema, sort_keys=True))
-        replayed = self._read_cache(cache_key)
-        if replayed is not None:
-            return json.loads(replayed)
-
-        result = self._generate_json_object_uncached(
-            prompt=prompt,
-            json_schema=json_schema,
-        )
-        self._write_cache(
-            cache_key=cache_key,
-            response=json.dumps(result),
-        )
-        return result
-
-    def stream_text_tokens(self, system_prompt: str, user_prompt: str) -> Iterator[str]:
-        cache_key = self._cache_key("text", system_prompt, user_prompt)
-        replayed = self._read_cache(cache_key)
-        if replayed is not None:
-            yield replayed
-            return
-
-        spoken = []
-        for token in self._stream_text_tokens_uncached(
-            system_prompt=system_prompt,
-            user_prompt=user_prompt,
-        ):
-            spoken.append(token)
-            yield token
-
-        self._write_cache(
-            cache_key=cache_key,
-            response="".join(spoken),
-        )
-
-    def _generate_json_object_uncached(
-        self, prompt: str, json_schema: dict[str, Any]
-    ) -> dict[str, Any]:
         client = self._client()
         return self._parse_json(
             text=client.create_json_response(
@@ -227,7 +200,7 @@ class LlmProvider:
             model_name=client.MODEL_NAME,
         )
 
-    def _stream_text_tokens_uncached(self, system_prompt: str, user_prompt: str) -> Iterator[str]:
+    def stream_text_tokens(self, system_prompt: str, user_prompt: str) -> Iterator[str]:
         yield from self._client().stream_text_tokens(
             system_prompt=system_prompt,
             user_prompt=user_prompt,
@@ -252,42 +225,6 @@ class LlmProvider:
                 f"{model_name} returned text that is not JSON ({invalid.msg}). "
                 f"It began: {candidate.strip()[:200]!r}"
             ) from invalid
-
-    def _cache_key(self, kind: str, *material: str) -> str:
-        """
-        Build the cache key from every input that could change the answer.
-
-        The key is a hash of the model name plus the full prompt text — and the
-        prompt already contains the system prompt and the retrieved chunks. So if
-        you edit a prompt, or retrieval starts returning different chunks, or you
-        switch models, the hash changes and the lookup misses instead of handing
-        back an answer that belonged to the old setup.
-        """
-        digest = hashlib.sha256("\x00".join([kind, self._model_name(), *material]).encode())
-        return f"{kind}-{digest.hexdigest()[:32]}"
-
-    def _model_name(self) -> str:
-        return self._client().MODEL_NAME
-
-    def _read_cache(self, cache_key: str) -> str | None:
-        if not self._caching_enabled():
-            return None
-        cache_file = self._CACHE_DIRECTORY / f"{cache_key}.json"
-        if not cache_file.exists():
-            return None
-        return json.loads(cache_file.read_text(encoding="utf-8"))["response"]
-
-    def _write_cache(self, cache_key: str, response: str) -> None:
-        if not self._caching_enabled():
-            return
-        self._CACHE_DIRECTORY.mkdir(parents=True, exist_ok=True)
-        (self._CACHE_DIRECTORY / f"{cache_key}.json").write_text(
-            json.dumps({"response": response}), encoding="utf-8"
-        )
-
-    @staticmethod
-    def _caching_enabled() -> bool:
-        return os.environ.get("LLM_CACHE", "").strip().lower() in {"1", "true", "yes"}
 
     @staticmethod
     def _unknown_provider_message(provider: str) -> str:

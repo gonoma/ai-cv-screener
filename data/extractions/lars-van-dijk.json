@@ -1,12 +1,40 @@
 {
   "source_file": "lars-van-dijk.pdf",
   "text_sha256": "af490372c607cfc317dfcad4def747187d2411e220248c183313d2656c669018",
+  "extraction_sha256": "e70375a7cfc12078619da6f77abcc816f91569c0164d04086e01ce472c8dc30a",
   "candidate_info": {
     "name": "Lars van Dijk",
-    "current_role": "",
-    "current_company": "",
-    "years_experience": 0,
-    "skills": [],
-    "institutions": []
+    "current_role": "Junior Mobile Engineer",
+    "current_company": "CyberSecure Products",
+    "positions": [
+      {
+        "role": "Mobile Developer Intern",
+        "company": "FinTech Utrecht",
+        "start_year": 2025,
+        "end_year": 2025
+      },
+      {
+        "role": "Junior Mobile Engineer",
+        "company": "CyberSecure Products",
+        "start_year": 2025,
+        "end_year": null
+      }
+    ],
+    "skills": [
+      "Technical Kotlin",
+      "Android Jetpack",
+      "SwiftUI",
+      "REST API",
+      "OAuth 2.0",
+      "OWASP Mobile Top 10",
+      "Secure coding practices",
+      "Git",
+      "JIRA",
+      "Agile Scrum"
+    ],
+    "institutions": [
+      "Technische Universität München",
+      "TU Munich"
+    ]
   }
 }

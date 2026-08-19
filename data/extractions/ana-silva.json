@@ -1,11 +1,25 @@
 {
   "source_file": "ana-silva.pdf",
   "text_sha256": "bd7df2728a0a59617b3b77bfb330a1a437857d0aea9a51b7ee20f1f18d454cda",
+  "extraction_sha256": "e70375a7cfc12078619da6f77abcc816f91569c0164d04086e01ce472c8dc30a",
   "candidate_info": {
     "name": "Ana Silva",
     "current_role": "Staff Frontend Engineer",
     "current_company": "LisbonTech Solutions",
-    "years_experience": 5,
+    "positions": [
+      {
+        "role": "Staff Frontend Engineer",
+        "company": "LisbonTech Solutions",
+        "start_year": 2021,
+        "end_year": null
+      },
+      {
+        "role": "Frontend Consultant",
+        "company": "Freelance / Contract",
+        "start_year": 2019,
+        "end_year": 2021
+      }
+    ],
     "skills": [
       "HTML5",
       "CSS3",
@@ -24,17 +38,16 @@
       "GitHub Actions",
       "Docker",
       "RESTful APIs",
-      "GraphQL",
+      "GraphQL (basic)",
       "Web Vitals",
       "WCAG 2.1 AA",
-      "Chrome DevTools",
+      "Performance profiling (Chrome DevTools)",
       "CI/CD",
-      "Chromatic",
+      "Lighthouse",
+      "Cypress",
       "CSS Grid",
       "Flexbox",
-      "code‑splitting",
-      "lazy‑loading",
-      "Lighthouse"
+      "Chromatic"
     ],
     "institutions": [
       "Universidade de Lisboa",

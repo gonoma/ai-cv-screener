@@ -1,31 +1,45 @@
 {
   "source_file": "jan-kowalski.pdf",
   "text_sha256": "d638f6ce0d383894fd9471c43a2c1ba818f717d92c6e3d95d71e6bf5ed62fd8a",
+  "extraction_sha256": "e70375a7cfc12078619da6f77abcc816f91569c0164d04086e01ce472c8dc30a",
   "candidate_info": {
     "name": "Jan Kowalski",
     "current_role": "Contract Solutions Architect",
     "current_company": "Learnify Studios",
-    "years_experience": 5,
+    "positions": [
+      {
+        "role": "Contract Solutions Architect",
+        "company": "Learnify Studios",
+        "start_year": 2024,
+        "end_year": null
+      },
+      {
+        "role": "Contract Cloud Architect",
+        "company": "SkillBridge",
+        "start_year": 2023,
+        "end_year": 2024
+      },
+      {
+        "role": "Associate Solutions Architect",
+        "company": "EduNova",
+        "start_year": 2022,
+        "end_year": 2023
+      },
+      {
+        "role": "Junior Cloud Engineer (Contract)",
+        "company": "CodeCraft Academy",
+        "start_year": 2021,
+        "end_year": 2022
+      }
+    ],
     "skills": [
       "AWS (EC2, S3, RDS, Lambda, EKS)",
-      "EC2",
-      "S3",
-      "RDS",
-      "Lambda",
-      "EKS",
       "Azure (App Service, SQL DB, Functions, AKS)",
-      "App Service",
-      "SQL DB",
-      "Functions",
-      "AKS",
       "Terraform",
       "Kubernetes",
       "Docker",
       "Python (FastAPI, Django)",
-      "FastAPI",
-      "Django",
       "Node.js (Express)",
-      "Express",
       "React",
       "PostgreSQL",
       "MongoDB",
@@ -33,27 +47,11 @@
       "GraphQL",
       "REST API design",
       "CI/CD (GitHub Actions, GitLab CI)",
-      "GitHub Actions",
-      "GitLab CI",
       "Observability (Prometheus, Grafana, ELK)",
-      "Prometheus",
-      "Grafana",
-      "ELK",
       "Security best practices (IAM, VPC, encryption)",
-      "IAM",
-      "VPC",
-      "encryption",
       "Agile/Scrum",
       "Technical documentation",
-      "Stakeholder communication",
-      "CloudFront",
-      "Azure Data Lake Storage Gen2",
-      "Azure DevOps",
-      "AWS Lambda",
-      "API Gateway",
-      "Stripe",
-      "PHP",
-      "Azure Automation"
+      "Stakeholder communication"
     ],
     "institutions": [
       "Instituto Superior Técnico",

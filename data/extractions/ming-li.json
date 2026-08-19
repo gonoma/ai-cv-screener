@@ -1,12 +1,52 @@
 {
   "source_file": "ming-li.pdf",
   "text_sha256": "82c4eb5cfad7f073d410d6ba5dace0b37556ff78102b706fe5e0e70f943a9903",
+  "extraction_sha256": "e70375a7cfc12078619da6f77abcc816f91569c0164d04086e01ce472c8dc30a",
   "candidate_info": {
     "name": "Ming Li",
-    "current_role": "",
-    "current_company": "",
-    "years_experience": 9,
-    "skills": [],
-    "institutions": []
+    "current_role": "Lead Data Analyst",
+    "current_company": "Vitalytics HealthTech",
+    "positions": [
+      {
+        "role": "Junior Quantitative Analyst",
+        "company": "Finova Bank",
+        "start_year": 2016,
+        "end_year": 2018
+      },
+      {
+        "role": "Senior Quantitative Analyst",
+        "company": "Quantum FinTech",
+        "start_year": 2018,
+        "end_year": 2020
+      },
+      {
+        "role": "Data Analyst",
+        "company": "MediPulse Health",
+        "start_year": 2020,
+        "end_year": 2023
+      },
+      {
+        "role": "Lead Data Analyst",
+        "company": "Vitalytics HealthTech",
+        "start_year": 2023,
+        "end_year": null
+      }
+    ],
+    "skills": [
+      "SQL",
+      "Python (pandas, NumPy, scikit-learn)",
+      "R Statistical modeling",
+      "Machine learning (gradient boosting, survival analysis)",
+      "Data visualization (Tableau, Power BI)",
+      "Healthcare data standards (HL7, FHIR)",
+      "ETL pipelines (Apache Airflow, Spark)",
+      "Excel VBARisk modeling",
+      "Experiment design",
+      "A/B testing"
+    ],
+    "institutions": [
+      "Erasmus University Rotterdam",
+      "EUR"
+    ]
   }
 }

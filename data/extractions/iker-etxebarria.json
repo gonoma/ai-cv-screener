@@ -1,11 +1,25 @@
 {
   "source_file": "iker-etxebarria.pdf",
   "text_sha256": "42c463e79ad9bfca7e43d3ddd2f853ed0d6ac53fff1d062df51e3b91b4514d87",
+  "extraction_sha256": "e70375a7cfc12078619da6f77abcc816f91569c0164d04086e01ce472c8dc30a",
   "candidate_info": {
     "name": "Iker Etxebarria",
     "current_role": "Intern Backend Engineer",
     "current_company": "GreenPower Solutions",
-    "years_experience": 4,
+    "positions": [
+      {
+        "role": "Finance Analyst Intern",
+        "company": "Banco Santander",
+        "start_year": 2022,
+        "end_year": 2023
+      },
+      {
+        "role": "Intern Backend Engineer",
+        "company": "GreenPower Solutions",
+        "start_year": 2024,
+        "end_year": null
+      }
+    ],
     "skills": [
       "Python",
       "Django",
@@ -14,10 +28,7 @@
       "Git",
       "Linux/bash",
       "Agile/Scrum",
-      "Energy market basics",
-      "macro automation",
-      "ETL scripts",
-      "SonarQube"
+      "Energy market basics"
     ],
     "institutions": [
       "Instituto Tecnológico de Energía",

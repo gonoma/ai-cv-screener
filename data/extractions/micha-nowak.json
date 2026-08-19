@@ -1,12 +1,60 @@
 {
   "source_file": "micha-nowak.pdf",
   "text_sha256": "e088417f3af8e0325bd35b3c433b1a8645746e85ad807ea454ca0917511c0883",
+  "extraction_sha256": "e70375a7cfc12078619da6f77abcc816f91569c0164d04086e01ce472c8dc30a",
   "candidate_info": {
     "name": "Michał Nowak",
-    "current_role": "",
-    "current_company": "",
-    "years_experience": 3,
-    "skills": [],
-    "institutions": []
+    "current_role": "Mid-Level Frontend Engineer (Contractor)",
+    "current_company": "Edutech Solutions",
+    "positions": [
+      {
+        "role": "Frontend Engineer (Contractor)",
+        "company": "Learnify",
+        "start_year": 2022,
+        "end_year": 2022
+      },
+      {
+        "role": "Frontend Engineer (Contractor)",
+        "company": "SkillHub",
+        "start_year": 2022,
+        "end_year": 2022
+      },
+      {
+        "role": "Frontend Engineer (Contractor)",
+        "company": "Edusoft",
+        "start_year": 2023,
+        "end_year": 2023
+      },
+      {
+        "role": "Mid-Level Frontend Engineer (Contractor)",
+        "company": "Edutech Solutions",
+        "start_year": 2023,
+        "end_year": null
+      }
+    ],
+    "skills": [
+      "React",
+      "TypeScript",
+      "JavaScript (ES6+)",
+      "HTML5",
+      "CSS3 / SCSS",
+      "Redux Toolkit",
+      "Jest & React Testing Library",
+      "Storybook",
+      "Webpack 5",
+      "Vite",
+      "REST & GraphQL APIs",
+      "Accessibility (WCAG 2.1 AA)",
+      "Figma (design handoff)",
+      "GitHub Actions CI/CD"
+    ],
+    "institutions": [
+      "Universidad de Sevilla",
+      "US",
+      "Learnify",
+      "SkillHub",
+      "Edusoft",
+      "Edutech Solutions"
+    ]
   }
 }

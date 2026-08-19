@@ -1,11 +1,25 @@
 {
   "source_file": "elena-zapater.pdf",
   "text_sha256": "538f54d18c2e697952d96d2f8b5ef9c655ee1525b74543dd661bbf3242798617",
+  "extraction_sha256": "e70375a7cfc12078619da6f77abcc816f91569c0164d04086e01ce472c8dc30a",
   "candidate_info": {
     "name": "Elena Zapater",
-    "current_role": "Junior Security Engineer",
+    "current_role": "Freelance Junior Security Engineer",
     "current_company": "Self-Employed (Freelance Security Consultant)",
-    "years_experience": 1,
+    "positions": [
+      {
+        "role": "Freelance Junior Security Engineer",
+        "company": "Self-Employed (Freelance Security Consultant)",
+        "start_year": 2025,
+        "end_year": null
+      },
+      {
+        "role": "Junior Security Tester (Part-time Contractor)",
+        "company": "MedData Safe",
+        "start_year": 2025,
+        "end_year": 2025
+      }
+    ],
     "skills": [
       "Technical Vulnerability Assessment",
       "OWASP Top 10",
@@ -18,9 +32,7 @@
       "Esquema Nacional de Seguridad (ENS)",
       "Wazuh",
       "Trivy",
-      "GitLab CI/CD",
-      "GitGuardian",
-      "Postman"
+      "GitLab CI/CD"
     ],
     "institutions": [
       "KeepCoding Tech School",

@@ -1,12 +1,40 @@
 {
   "source_file": "marco-bianchi.pdf",
   "text_sha256": "f85a7181d0e40ad93f17f38bd32898a3f9d13dbb225dee0a14b88787f9c6a6c8",
+  "extraction_sha256": "e70375a7cfc12078619da6f77abcc816f91569c0164d04086e01ce472c8dc30a",
   "candidate_info": {
     "name": "Marco Bianchi",
-    "current_role": "",
-    "current_company": "",
-    "years_experience": 0,
-    "skills": [],
-    "institutions": []
+    "current_role": "Junior Backend Engineer",
+    "current_company": "MedTech Innovations",
+    "positions": [
+      {
+        "role": "Intern",
+        "company": "HealthTech Solutions",
+        "start_year": 2025,
+        "end_year": 2025
+      },
+      {
+        "role": "Junior Backend Engineer",
+        "company": "MedTech Innovations",
+        "start_year": 2025,
+        "end_year": null
+      }
+    ],
+    "skills": [
+      "Python",
+      "Django",
+      "PostgreSQL",
+      "Docker",
+      "GitHub Actions",
+      "REST API design",
+      "pytest",
+      "AWS EC2",
+      "Linux",
+      "Bash"
+    ],
+    "institutions": [
+      "Le Wagon Prague",
+      "Le Wagon"
+    ]
   }
 }
