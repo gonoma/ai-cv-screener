@@ -61,9 +61,8 @@ Everything lives in `.env` (copied from `.env.example`, gitignored).
 - **`DATABASE_URL`** already matches what `make db` starts.
 - **Token knobs** — the backend is tuned to spend as few *tokens* as possible, not as
   few calls (see [Backend](#backend)): `LLM_MAX_OUTPUT_TOKENS` caps the answer,
-  `GEMINI_THINKING_LEVEL` stops the model buying reasoning it does not need,
-  `SEMANTIC_SEARCH_TOP_K` is how many chunks an open-ended question retrieves, and
-  `LLM_CACHE=1` replays identical calls off disk while you are tuning prompts.
+  `GEMINI_THINKING_LEVEL` stops the model buying reasoning it does not need, and
+  `SEMANTIC_SEARCH_TOP_K` is how many chunks an open-ended question retrieves.
 
 ## Regenerating the corpus
 
@@ -172,9 +171,15 @@ when it comes back nearly empty the slow, careful one (`pdfplumber`) is executed
 page by page, keeping whichever read more words. The two agree to within 1% of word
 count, so the fallback fires on a broken page rather than on a hard layout.
 
-**2. Ask a model for the facts.** Name, role, employer, years, skills, schools —
-pulled into a fixed JSON shape. Ten CVs ride in one call, not to save calls but so the
-instructions are sent once instead of ten times.
+**2. Ask a model for the facts.** Name, role, employer, skills, schools, and every job
+with the years printed beside it — pulled into a fixed JSON shape. Ten CVs ride in one
+call, not to save calls but so the instructions are sent once instead of ten times.
+
+The model is asked for dates, never for durations. "How many years of experience" is
+arithmetic, and asking for it put a 3 where the dates say 4 with nothing downstream able
+to disagree. Career length, longest single tenure and the current job are all worked out
+in code from the years it copied off the page — reproducible, free, and checkable against
+the answer key (30/30 on years, 28/30 on job titles).
 
 When you ask the AI about 10 CVs at once, it can mix up the order and give you Bob's details 
 labeled as Anna's — so each result is only trusted if the surname it claims really shows up in that CV. 
@@ -233,9 +238,14 @@ confidently wrong:
 
 | route | for | fetches |
 |---|---|---|
-| `structured` | filters and counts | a SQL `WHERE`, **every** match |
+| `structured` | filters, counts and rankings | a SQL `WHERE`, **every** match — or the top of an `ORDER BY` |
 | `profile` | one named person | that person's CV |
-| `semantic` | open-ended, qualitative | the 8 nearest chunks |
+| `semantic` | open-ended, qualitative | the 8 nearest chunks, at most 2 per CV |
+
+Two things the router deliberately ignores or widens: a term that appears only after
+"for example" is illustration, not a filter — filtering on the Python in "40% do backend
+with Python" answered a question about thirty candidates with sixteen of them — and a
+question asking how the corpus *divides up* takes every row rather than a filtered few.
 
 **This step is usually free.** Recruiters name things — a person, a technology, a
 university — and the database already knows every name, skill and school in the
@@ -248,6 +258,20 @@ similarity search cannot count: ask a vector search "who knows Python" and it re
 8 chunks whether 8 people match or 18, admitting nothing. But it sends the *narrowest*
 row that still answers — names and skills, not employers and universities too.
 
+A superlative — "who stayed longest in one job", "who has the longest experience in
+Python" — is the one shape neither other route can answer: similarity search sees eight
+chunks and cannot know it missed the ninth, and an unfiltered list hands the model thirty
+rows and asks it to do the comparing, which is how the CV with the most bullet points
+wins. So the ranking happens in SQL and only the head of it is sent, with a header saying
+what was ranked and what the number does *not* mean — total career length is not years
+spent using Python, and the answer has to say so.
+
+`semantic` caps how many chunks any one CV contributes, and heads the context with a
+line per candidate giving title and years. Unspread, one CV takes half the context and
+wins on volume of evidence rather than on merit: asked for the best frontend engineer,
+the system named a mid-level contractor with four dense chunks over the staff engineer
+who had one.
+
 `profile` resolves a name to candidate **ids** first, because names aren't
 identifiers: the corpus can have two different people with the same one, and
 filtering on the name would blend two careers into one incoherent profile. Their
@@ -257,8 +281,9 @@ chunks are stitched back together with the repeated edges removed.
 existence: no general knowledge, no filling-in, and "it's not in the CVs" is a valid
 answer. 
 Each claim carries its source file and the API serves those PDFs. The reply is
-length-capped and thinking is minimal, since output costs several times input and
-neither job here is a reasoning problem. It streams back as Server-Sent Events, route
+length-capped and reasoning is off, since output costs several times input and neither
+job here is a reasoning problem — left on, the model streamed its own deliberation as
+the answer and spent the budget before reaching one. It streams back as Server-Sent Events, route
 label first, so the UI can say what it decided while the words are still arriving.
 
 ## What one question costs
@@ -305,15 +330,16 @@ table, so "find similar text" and "filter by years of experience" are one query
 language over one set of rows. A separate vector service would be another thing to
 run, another thing to keep in sync, and mostly a bill.
 
-**The LLM cache is off by default.** Replaying a stored answer is right while tuning
-prompts and wrong while serving — two users asking the same thing would get identical
-bytes forever, and an outage would look healthy. Its key hashes the model and the
-*full* prompt, context included, so a tuned prompt misses rather than replaying stale
-output.
+**No response cache.** There was one, keyed on the model name and the full prompt, and
+it was useful while tuning prompts. But a key can only hash what it can see: the same
+name in front of retuned weights — a fine-tune, a provider upgrading a model underneath
+you — replays yesterday's answer and nothing reveals it. Serving stale bytes and calling
+it a hit is worse than paying for the call, so extraction is the only thing cached, on
+the CV text that produced it.
 
 ### What it leaves on disk
 
 * It only ever reads `data/cvs/`
-* It writes `data/extractions/` (one JSON per CV plus a hash of its text — what makes a re-ingest free)
-* `data/llm_cache/` (only when `LLM_CACHE=1`) 
-* For the Postgres volume, rewritten on every ingest and reset with `docker compose down -v`. Both directories are safe to delete.
+* It writes `data/extractions/` (one JSON per CV plus a hash of its text — what makes a
+  re-ingest free), which is safe to delete: the next ingest buys it again
+* The Postgres volume is rewritten on every ingest, and reset with `docker compose down -v`

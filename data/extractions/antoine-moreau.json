@@ -1,11 +1,31 @@
 {
   "source_file": "antoine-moreau.pdf",
   "text_sha256": "24199ad581c18602da906c4ba177067615ef25fecb5faba3b9ef3734c95d7a3a",
+  "extraction_sha256": "e70375a7cfc12078619da6f77abcc816f91569c0164d04086e01ce472c8dc30a",
   "candidate_info": {
     "name": "Antoine Moreau",
-    "current_role": "Machine Learning Engineer (contract)",
-    "current_company": "Freelance",
-    "years_experience": 16,
+    "current_role": "Machine Learning Engineer (contract) - Freelance",
+    "current_company": "Remote (clients in Spain, France, Germany)",
+    "positions": [
+      {
+        "role": "Machine Learning Engineer (contract) - Freelance",
+        "company": "Remote (clients in Spain, France, Germany)",
+        "start_year": 2015,
+        "end_year": null
+      },
+      {
+        "role": "Machine Learning Engineer - AdNova",
+        "company": "AdNova",
+        "start_year": 2012,
+        "end_year": 2015
+      },
+      {
+        "role": "Junior Data Scientist - ClickBoost",
+        "company": "ClickBoost",
+        "start_year": 2010,
+        "end_year": 2012
+      }
+    ],
     "skills": [
       "Python",
       "TensorFlow",

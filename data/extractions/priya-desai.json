@@ -1,12 +1,46 @@
 {
   "source_file": "priya-desai.pdf",
   "text_sha256": "825fe21d8e94bdcab6a1f23cdc940beaf987c3b36db3d5ffb60c30a1c20592d8",
+  "extraction_sha256": "e70375a7cfc12078619da6f77abcc816f91569c0164d04086e01ce472c8dc30a",
   "candidate_info": {
     "name": "Priya Desai",
-    "current_role": "",
-    "current_company": "",
-    "years_experience": 13,
-    "skills": [],
-    "institutions": []
+    "current_role": "Staff UX Designer",
+    "current_company": "NordDesign",
+    "positions": [
+      {
+        "role": "UX Designer",
+        "company": "UX Consultancy Estonia",
+        "start_year": 2012,
+        "end_year": 2017
+      },
+      {
+        "role": "Senior UX Designer",
+        "company": "UX Consultancy Estonia",
+        "start_year": 2017,
+        "end_year": 2022
+      },
+      {
+        "role": "Staff UX Designer",
+        "company": "NordDesign",
+        "start_year": 2022,
+        "end_year": null
+      }
+    ],
+    "skills": [
+      "User research",
+      "Wireframing & prototyping (Figma, Sketch)",
+      "Usability testing",
+      "Interaction design",
+      "Design systems",
+      "HTML/CSS",
+      "Basic JavaScript",
+      "Stakeholder facilitation",
+      "Accessibility (WCAG 2.1 AA)",
+      "Workshop facilitation"
+    ],
+    "institutions": [
+      "Politecnico di Milano",
+      "Polimi"
+    ]
   }
 }

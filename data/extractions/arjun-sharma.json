@@ -1,11 +1,43 @@
 {
   "source_file": "arjun-sharma.pdf",
   "text_sha256": "81baa1d1336708d87cd82c139b4ca1cb6bc8286aaa01ab8a2f3bd19166469e9a",
+  "extraction_sha256": "e70375a7cfc12078619da6f77abcc816f91569c0164d04086e01ce472c8dc30a",
   "candidate_info": {
     "name": "Arjun Sharma",
-    "current_role": "Lead Engineering Manager",
+    "current_role": "Lead Engineering Manager - SummitEd Inc.",
     "current_company": "SummitEd Inc.",
-    "years_experience": 10,
+    "positions": [
+      {
+        "role": "Financial Analyst - FinCorp GmbH",
+        "company": "FinCorp GmbH",
+        "start_year": 2016,
+        "end_year": 2018
+      },
+      {
+        "role": "Junior Software Engineer - EduTech Solutions",
+        "company": "EduTech Solutions",
+        "start_year": 2018,
+        "end_year": 2020
+      },
+      {
+        "role": "Software Engineer - LearnVita AG",
+        "company": "LearnVita AG",
+        "start_year": 2020,
+        "end_year": 2022
+      },
+      {
+        "role": "Senior Software Engineer - NovaLearn GmbH",
+        "company": "NovaLearn GmbH",
+        "start_year": 2022,
+        "end_year": 2024
+      },
+      {
+        "role": "Lead Engineering Manager - SummitEd Inc.",
+        "company": "SummitEd Inc.",
+        "start_year": 2024,
+        "end_year": null
+      }
+    ],
     "skills": [
       "Leadership",
       "Agile Scrum",
@@ -20,14 +52,13 @@
       "Stakeholder management",
       "Budget planning",
       "VBA",
-      "Excel",
       "RESTful APIs",
-      "unit tests",
       "GitHub Actions",
       "Docker",
       "Kinesis",
       "Lambda",
       "Redshift",
+      "micro‑services",
       "A/B test"
     ],
     "institutions": []

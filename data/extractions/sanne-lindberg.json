@@ -1,46 +1,66 @@
 {
   "source_file": "sanne-lindberg.pdf",
   "text_sha256": "2d83b34f60fd36b88ca01629e6901e2a9f76616a85e5816e28464b3fabbaea1f",
+  "extraction_sha256": "e70375a7cfc12078619da6f77abcc816f91569c0164d04086e01ce472c8dc30a",
   "candidate_info": {
     "name": "Sanne Lindberg",
-    "current_role": "Freelance Platform Engineer",
+    "current_role": "Principal Platform Engineer",
     "current_company": "Self‑employed",
-    "years_experience": 18,
+    "positions": [
+      {
+        "role": "Freelance Platform Engineer",
+        "company": "Self‑employed",
+        "start_year": 2020,
+        "end_year": null
+      },
+      {
+        "role": "Part‑time Platform Engineer",
+        "company": "Siemens India",
+        "start_year": 2018,
+        "end_year": 2020
+      },
+      {
+        "role": "Contract Platform Engineer",
+        "company": "ABB India",
+        "start_year": 2015,
+        "end_year": 2018
+      },
+      {
+        "role": "Senior Platform Engineer",
+        "company": "Bosch India",
+        "start_year": 2010,
+        "end_year": 2015
+      },
+      {
+        "role": "Platform Engineer",
+        "company": "Tata Consultancy Services",
+        "start_year": 2008,
+        "end_year": 2010
+      }
+    ],
     "skills": [
       "Kubernetes",
       "Docker",
       "AWS",
       "Azure",
-      "PLC programming",
-      "IEC 61131‑3",
+      "PLC programming (IEC 61131‑3)",
       "SCADA",
       "OPC UA",
       "MQTT",
       "Python",
       "Go",
-      "CI/CD",
-      "Jenkins",
-      "GitLab",
+      "CI/CD (Jenkins, GitLab)",
       "Terraform",
       "Prometheus",
       "Grafana",
       "Linux",
       "Bash",
       "GitOps",
-      "Helm",
-      "Git‑Ops",
-      "ArgoCD",
-      "Flux",
-      "OpenStack"
+      "Helm"
     ],
     "institutions": [
       "Universidad de Zaragoza",
-      "UZ",
-      "Siemens India",
-      "ABB India",
-      "Bosch India",
-      "Tata Consultancy Services",
-      "Self‑employed"
+      "UZ"
     ]
   }
 }

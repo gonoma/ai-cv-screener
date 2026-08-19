@@ -1,11 +1,31 @@
 {
   "source_file": "jana-novak.pdf",
   "text_sha256": "61890b70d9b1619f1c462b287298664fb3098a440dc2b00655cf396365f054a3",
+  "extraction_sha256": "e70375a7cfc12078619da6f77abcc816f91569c0164d04086e01ce472c8dc30a",
   "candidate_info": {
     "name": "Jana Novak",
     "current_role": "Backend Engineer",
     "current_company": "Česká spořitelna",
-    "years_experience": 6,
+    "positions": [
+      {
+        "role": "Backend Engineer",
+        "company": "Česká spořitelna",
+        "start_year": 2022,
+        "end_year": null
+      },
+      {
+        "role": "Software Engineer Intern",
+        "company": "Avast",
+        "start_year": 2021,
+        "end_year": 2021
+      },
+      {
+        "role": "Web Developer",
+        "company": "Freelance",
+        "start_year": 2020,
+        "end_year": 2021
+      }
+    ],
     "skills": [
       "Java",
       "Spring Boot",
@@ -17,10 +37,7 @@
       "REST",
       "GraphQL",
       "Git",
-      "JUnit",
-      "GitHub Actions",
-      "Python",
-      "PHP/Laravel"
+      "JUnit"
     ],
     "institutions": [
       "Czech Technical University in Prague",

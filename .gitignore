@@ -217,9 +217,9 @@ __marimo__/
 # Streamlit
 .streamlit/secrets.toml
 
-llm_cache/
 
 # Node / frontend
 node_modules/
 frontend/dist/
+.vite/
 *.tsbuildinfo

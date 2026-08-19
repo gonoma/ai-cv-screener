@@ -1,11 +1,43 @@
 {
   "source_file": "maarten-de-jong.pdf",
   "text_sha256": "2d249377dda1ea0e500d57bce3e21fe9999fcd048a13a666cb324123a41eb875",
+  "extraction_sha256": "e70375a7cfc12078619da6f77abcc816f91569c0164d04086e01ce472c8dc30a",
   "candidate_info": {
     "name": "Maarten de Jong",
     "current_role": "Principal QA Engineer",
     "current_company": "MercadoSol Marketplace",
-    "years_experience": 22,
+    "positions": [
+      {
+        "role": "Principal QA Engineer - MercadoSol Marketplace",
+        "company": "MercadoSol Marketplace",
+        "start_year": 2021,
+        "end_year": null
+      },
+      {
+        "role": "Lead QA Automation Engineer - Andalucía Retail Solutions",
+        "company": "Andalucía Retail Solutions",
+        "start_year": 2016,
+        "end_year": 2021
+      },
+      {
+        "role": "Senior QA Engineer - Viajes Bética Online",
+        "company": "Viajes Bética Online",
+        "start_year": 2012,
+        "end_year": 2016
+      },
+      {
+        "role": "QA Engineer - SolTech QA Labs",
+        "company": "SolTech QA Labs",
+        "start_year": 2010,
+        "end_year": 2012
+      },
+      {
+        "role": "Front Office Operations Supervisor - Hotel Occidental Castellana",
+        "company": "Hotel Occidental Castellana",
+        "start_year": 2004,
+        "end_year": 2010
+      }
+    ],
     "skills": [
       "Playwright",
       "Cypress",
@@ -20,12 +52,7 @@
       "Docker",
       "TestRail",
       "Chaos Mesh",
-      "Quality Engineering Strategy",
-      "Pact",
-      "Selenium",
-      "Postman",
-      "Java",
-      "Jenkins"
+      "Quality Engineering Strategy"
     ],
     "institutions": [
       "Universidad Politécnica de Madrid",

@@ -1,40 +1,48 @@
 {
   "source_file": "andrei-georgescu.pdf",
   "text_sha256": "128828684e188b77724b7c5a6298da238a273184235a5018d3da0d76e6e916d6",
+  "extraction_sha256": "e70375a7cfc12078619da6f77abcc816f91569c0164d04086e01ce472c8dc30a",
   "candidate_info": {
     "name": "Andrei Georgescu",
     "current_role": "Lead Data Analyst",
     "current_company": "MedTech Solutions",
-    "years_experience": 13,
+    "positions": [
+      {
+        "role": "Lead Data Analyst",
+        "company": "MedTech Solutions",
+        "start_year": 2021,
+        "end_year": null
+      },
+      {
+        "role": "Senior Data Analyst",
+        "company": "MedTech Solutions",
+        "start_year": 2018,
+        "end_year": 2021
+      },
+      {
+        "role": "Data Analyst",
+        "company": "MedTech Solutions",
+        "start_year": 2015,
+        "end_year": 2018
+      },
+      {
+        "role": "Junior Data Analyst",
+        "company": "MedTech Solutions",
+        "start_year": 2013,
+        "end_year": 2015
+      }
+    ],
     "skills": [
       "SQL",
       "Python (pandas, NumPy, scikit‑learn)",
-      "pandas",
-      "NumPy",
-      "scikit‑learn",
       "R (tidyverse, caret)",
-      "tidyverse",
-      "caret",
-      "Tableau & Power BI",
-      "Tableau",
-      "Power BI",
+      "Tableau & Power BI",
       "Apache Spark (PySpark)",
-      "PySpark",
       "AWS Redshift & S3",
-      "AWS Redshift",
-      "S3",
       "Git & GitHub Actions",
-      "Git",
-      "GitHub Actions",
       "Statistical modeling & A/B testing",
-      "Statistical modeling",
-      "A/B testing",
       "ETL orchestration (Airflow)",
-      "Airflow",
-      "Data visualization best practices",
-      "Spark",
-      "survival analysis",
-      "template automation"
+      "Data visualization best practices"
     ],
     "institutions": [
       "Universitat Autònoma de Barcelona",

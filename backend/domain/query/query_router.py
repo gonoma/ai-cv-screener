@@ -26,6 +26,84 @@ class QueryRouter:
     # "5+ years", "at least 7 years", "more than 3 years of experience"
     YEARS_PATTERN = re.compile(r"(\d{1,2})\s*\+?\s*(?:or more\s*)?year", re.IGNORECASE)
 
+    # A superlative is not a filter, and a similarity search cannot settle one:
+    # "who stayed longest in one job" is answered by ordering all thirty rows on
+    # a number, not by reading whichever eight chunks sound the most like the
+    # question. Matched before the filter cues, because a ranking question is
+    # often filtered too ("longest experience in Python").
+    TENURE_CUES: tuple[str, ...] = (
+        "single job",
+        "single position",
+        "single role",
+        "one job",
+        "one position",
+        "one role",
+        "same job",
+        "same position",
+        "same role",
+        "same company",
+        "same employer",
+        "one company",
+        "one employer",
+        "tenure",
+        "longest at",
+        "stayed",
+    )
+
+    # Only consulted alongside a superlative, so "years of experience" in an
+    # ordinary filter question does not turn into a ranking.
+    EXPERIENCE_CUES: tuple[str, ...] = (
+        "experience",
+        "years",
+        "senior",
+        "veteran",
+        "been working",
+    )
+
+    # Everything after one of these is illustration, not instruction. "Divide the
+    # candidates by what they do, for example 40% backend with Python" names a
+    # skill it is not asking to filter on — and filtering on it answered a
+    # question about thirty people with sixteen of them, while saying so in a
+    # way that read like a bug.
+    EXAMPLE_MARKERS: tuple[str, ...] = (
+        "for example",
+        "for instance",
+        "e.g.",
+        "eg.",
+        "such as",
+        "i.e.",
+        "like this",
+    )
+
+    # A question about how the corpus divides up. Not a filter and not a
+    # superlative: it needs every row, and the categories come out of the rows
+    # rather than out of the question.
+    BREAKDOWN_CUES: tuple[str, ...] = (
+        "divide",
+        "split",
+        "breakdown",
+        "break down",
+        "distribution",
+        "categor",
+        "classif",
+        "group them",
+        "proportion",
+        "percentage",
+        "%",
+        "how many of each",
+        "mix of",
+    )
+
+    SUPERLATIVE_CUES: tuple[str, ...] = (
+        "longest",
+        "most",
+        "greatest",
+        "highest",
+        "maximum",
+        "biggest",
+        "top",
+    )
+
     RESPONSE_SCHEMA: dict[str, Any] = {
         "type": "object",
         "properties": {
@@ -103,27 +181,60 @@ class QueryRouter:
 
         names, skills, institutions = vocabulary
         lowered_question = question.lower()
+        # Cues are read from the whole question — an example can carry the word
+        # that reveals what is being asked — but filters only from the part
+        # before the examples begin.
+        asked = self._before_the_examples(lowered_question)
 
-        matched_name = self._longest_match(lowered_question, names)
+        matched_name = self._longest_match(asked, names)
         if matched_name:
             return QueryRoute(route="profile", candidate_name=matched_name)
 
-        if not any(cue in lowered_question for cue in self.AGGREGATION_CUES):
+        breakdown = any(cue in lowered_question for cue in self.BREAKDOWN_CUES)
+        if not breakdown and not any(cue in lowered_question for cue in self.AGGREGATION_CUES):
             return None
 
-        matched_skills = [skill for skill in skills if self._contains_term(lowered_question, skill)]
-        matched_institution = self._longest_match(lowered_question, institutions)
-        years = self.YEARS_PATTERN.search(question)
+        matched_skills = [skill for skill in skills if self._contains_term(asked, skill)]
+        matched_institution = self._longest_match(asked, institutions)
+        years = self.YEARS_PATTERN.search(self._before_the_examples(question))
+        ranking = self._ranking_asked_for(lowered_question)
 
+        # A ranking or a breakdown is a reason to go structured on its own: "who
+        # has worked longest in a single job" names no skill and no school, and
+        # the answer is still a column rather than the nearest eight chunks.
         if not matched_skills and not matched_institution and not years:
-            return None
+            if not ranking and not breakdown:
+                return None
 
         return QueryRoute(
             route="structured",
             skills=matched_skills,
             institution=matched_institution,
-            minimum_years_experience=int(years.group(1)) if years else None,
+            # A threshold is a filter and a ranking is an ordering. "5+ years"
+            # read out of "the longest 5 years" would filter away the very rows
+            # the ranking exists to compare.
+            minimum_years_experience=int(years.group(1)) if years and not ranking else None,
+            ranking=ranking,
+            breakdown=breakdown,
         )
+
+    @classmethod
+    def _before_the_examples(cls, question: str) -> str:
+        """The part of the question that is asking, with any illustration cut off."""
+        lowered = question.lower()
+        marks = [at for marker in cls.EXAMPLE_MARKERS if (at := lowered.find(marker)) != -1]
+        return question[: min(marks)] if marks else question
+
+    @classmethod
+    def _ranking_asked_for(cls, lowered_question: str) -> str | None:
+        """Which superlative was asked, if any: one job's length, or a whole career's."""
+        if not any(cue in lowered_question for cue in cls.SUPERLATIVE_CUES):
+            return None
+        if any(cue in lowered_question for cue in cls.TENURE_CUES):
+            return "tenure"
+        if any(cue in lowered_question for cue in cls.EXPERIENCE_CUES):
+            return "experience"
+        return None
 
     def _corpus_vocabulary(self) -> tuple[list[str], list[str], list[str]] | None:
         """Every name, skill and institution in the corpus, in one query.

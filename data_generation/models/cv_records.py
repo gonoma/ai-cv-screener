@@ -61,7 +61,18 @@ class Candidate(BaseModel):
     education: list[Qualification]
 
     def current_role(self) -> Role:
-        return self.experience[0]
+        """The job held now, read off the dates rather than taken as the first entry.
+
+        `experience` is documented as most-recent-first and usually is, but the
+        model that writes these records sometimes lists a career oldest-first —
+        and then the answer key called someone's first job out of university
+        their current role. A wrong answer key is worse than none: it grades a
+        correct extraction as a failure.
+        """
+        current = [role for role in self.experience if role.end_year is None]
+        if current:
+            return max(current, key=lambda role: role.start_year)
+        return max(self.experience, key=lambda role: role.end_year_or_present())
 
     def years_of_experience(self) -> int:
         earliest_start = min(role.start_year for role in self.experience)

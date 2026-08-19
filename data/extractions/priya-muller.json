@@ -1,12 +1,60 @@
 {
   "source_file": "priya-muller.pdf",
   "text_sha256": "5c063104b9bdd9f4f8ee366b36a9409a963ebce600012b712c7280a00df97f83",
+  "extraction_sha256": "e70375a7cfc12078619da6f77abcc816f91569c0164d04086e01ce472c8dc30a",
   "candidate_info": {
     "name": "Priya Müller",
-    "current_role": "",
-    "current_company": "",
-    "years_experience": 10,
-    "skills": [],
-    "institutions": []
+    "current_role": "Senior QA Engineer",
+    "current_company": "GovTech Italia",
+    "positions": [
+      {
+        "role": "Primary School Teacher",
+        "company": "Scuola Primaria Verdi",
+        "start_year": 2015,
+        "end_year": 2018
+      },
+      {
+        "role": "QA Engineer",
+        "company": "GovTech Italia",
+        "start_year": 2018,
+        "end_year": 2020
+      },
+      {
+        "role": "QA Lead",
+        "company": "GovTech Italia",
+        "start_year": 2020,
+        "end_year": 2023
+      },
+      {
+        "role": "Senior QA Engineer",
+        "company": "GovTech Italia",
+        "start_year": 2023,
+        "end_year": null
+      }
+    ],
+    "skills": [
+      "Selenium WebDriver",
+      "Cypress",
+      "Postman/Newman",
+      "JMeter",
+      "Jira",
+      "GitLab CI/CD",
+      "Python",
+      "SQL",
+      "Test case design",
+      "Bug triage",
+      "API testing",
+      "Performance testing",
+      "Mentoring",
+      "Selenium‑Grid",
+      "Docker",
+      "Postman + Newman",
+      "shift‑left testing",
+      "GitLab CI"
+    ],
+    "institutions": [
+      "Le Wagon Full‑Stack Web Development Bootcamp",
+      "Le Wagon"
+    ]
   }
 }

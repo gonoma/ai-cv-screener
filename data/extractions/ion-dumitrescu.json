@@ -1,11 +1,85 @@
 {
   "source_file": "ion-dumitrescu.pdf",
   "text_sha256": "00b064878c622263aede428634c4184be2291f705c01dc9668396a0c226d1e77",
+  "extraction_sha256": "e70375a7cfc12078619da6f77abcc816f91569c0164d04086e01ce472c8dc30a",
   "candidate_info": {
     "name": "Ion Dumitrescu",
     "current_role": "Solutions Architect Intern",
     "current_company": "StreamFlux Media (internship)",
-    "years_experience": 20,
+    "positions": [
+      {
+        "role": "Customer Operations Specialist",
+        "company": "KPN Telecom",
+        "start_year": 2016,
+        "end_year": 2024
+      },
+      {
+        "role": "Solutions Architect Intern",
+        "company": "StreamFlux Media (internship)",
+        "start_year": 2024,
+        "end_year": null
+      },
+      {
+        "role": "Full‑Stack Web Development Bootcamp Graduate",
+        "company": "Codecademy Bootcamp",
+        "start_year": 2023,
+        "end_year": 2024
+      },
+      {
+        "role": "Independent Study",
+        "company": "Self‑directed Learning",
+        "start_year": 2015,
+        "end_year": 2016
+      },
+      {
+        "role": "Course Auditor – Computer Networks",
+        "company": "Universitatea Politehnica Timișoara (audit)",
+        "start_year": 2014,
+        "end_year": 2015
+      },
+      {
+        "role": "Tech Support Contractor",
+        "company": "Freelance",
+        "start_year": 2013,
+        "end_year": 2014
+      },
+      {
+        "role": "IT Assistant – Local NGO",
+        "company": "Volunteer",
+        "start_year": 2012,
+        "end_year": 2013
+      },
+      {
+        "role": "Communications Technician",
+        "company": "Military Service",
+        "start_year": 2010,
+        "end_year": 2012
+      },
+      {
+        "role": "Student – Mathematics‑Informatics Track",
+        "company": "High School",
+        "start_year": 2006,
+        "end_year": 2010
+      },
+      {
+        "role": "Part‑time Retail & Hospitality",
+        "company": "Various",
+        "start_year": 2008,
+        "end_year": 2010
+      },
+      {
+        "role": "None",
+        "company": "None",
+        "start_year": 1995,
+        "end_year": 2006
+      },
+      {
+        "role": "None",
+        "company": "None",
+        "start_year": 1995,
+        "end_year": 2006
+      }
+    ],
     "skills": [
       "AWS Media Services",
       "FFmpeg",
@@ -16,36 +90,16 @@
       "SQL",
       "CDN fundamentals",
       "Linux networking",
-      "Agile/Scrum",
-      "C4 model",
-      "Prometheus",
-      "Grafana",
-      "HTML5",
-      "CSS3",
-      "JavaScript",
-      "Node.js",
-      "Express",
-      "React",
-      "AWS basics",
-      "CI/CD pipeline",
-      "CompTIA Network+",
-      "CompTIA Linux+",
-      "TCP/IP",
-      "routing protocols",
-      "network security",
-      "VLAN trunking",
-      "OSPF configuration",
-      "HTML",
-      "PHP"
+      "Agile/Scrum"
     ],
     "institutions": [
       "Codecademy Bootcamp",
       "Bootcamp",
-      "Self-taught",
-      "Universitatea Politehnica Timișoara (audit)",
-      "Audit",
+      "Self‑taught",
+      "Self‑taught",
       "Universitatea Politehnica Timișoara",
-      "High School"
+      "audit",
+      "Audit"
     ]
   }
 }

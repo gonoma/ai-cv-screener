@@ -2,13 +2,30 @@ from typing import Any
 
 from ...providers.llm_provider import LlmProvider
 
+# One row of a CV's employment history. Dates rather than durations: a model
+# asked for "years in this job" has to do arithmetic it is not reliable at,
+# while the two years it copies off the page are transcription.
+POSITION_SCHEMA: dict[str, Any] = {
+    "type": "object",
+    "properties": {
+        "role": {"type": "string"},
+        "company": {"type": "string"},
+        "start_year": {"type": "integer"},
+        # Null is what "still there" looks like, and it has to be expressible:
+        # a model forced to name an end year for a current role invents one.
+        "end_year": {"type": ["integer", "null"]},
+    },
+    "required": ["role", "company", "start_year", "end_year"],
+    "additionalProperties": False,
+}
+
 CANDIDATE_SCHEMA: dict[str, Any] = {
     "type": "object",
     "properties": {
         "name": {"type": "string"},
         "current_role": {"type": "string"},
         "current_company": {"type": "string"},
-        "years_experience": {"type": "integer"},
+        "positions": {"type": "array", "items": POSITION_SCHEMA},
         "skills": {"type": "array", "items": {"type": "string"}},
         "institutions": {"type": "array", "items": {"type": "string"}},
     },
@@ -16,12 +33,22 @@ CANDIDATE_SCHEMA: dict[str, Any] = {
         "name",
         "current_role",
         "current_company",
-        "years_experience",
+        "positions",
         "skills",
         "institutions",
     ],
     "additionalProperties": False,
 }
+
+
+class MisalignedBatch(RuntimeError):
+    """A batch came back with a different number of records than CVs sent.
+
+    Its own type because the caller can do something about this one: the CVs are
+    still on disk and can be asked for singly. A batch that returns one record
+    for ten CVs has said nothing about nine of them, and there is no way to tell
+    which nine.
+    """
 
 
 class CandidateParser:
@@ -42,8 +69,9 @@ class CandidateParser:
           exact matching, so an omitted skill becomes invisible.
         - institutions: full name and any abbreviation as separate entries. A name
           broken across a line break is still one name.
-        - years_experience: earliest role's start year to the latest role's end, a
-          current role ending this year.
+        - positions: every job the CV lists, in the order it lists them, with the
+          years as printed. end_year is null while the role is current ("Present",
+          "Now", a dash with nothing after it). Do not compute durations.
         - Only what the CV says. Do not infer or correct.
         - Unrelated people: never move a skill, employer, school or name between
           records, never merge two.
@@ -79,5 +107,5 @@ class CandidateParser:
 
         candidates = response["candidates"]
         if len(candidates) != len(cv_texts):
-            raise RuntimeError(f"sent {len(cv_texts)} CVs, got {len(candidates)} records")
+            raise MisalignedBatch(f"sent {len(cv_texts)} CVs, got {len(candidates)} records")
         return candidates

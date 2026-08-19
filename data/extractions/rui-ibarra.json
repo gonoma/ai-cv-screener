@@ -1,21 +1,45 @@
 {
   "source_file": "rui-ibarra.pdf",
   "text_sha256": "b5e7d8bacc482f6eafe9706133bc94151d0bcd2761778f67674eaa6bc8b01032",
+  "extraction_sha256": "e70375a7cfc12078619da6f77abcc816f91569c0164d04086e01ce472c8dc30a",
   "candidate_info": {
     "name": "Rui Ibarra",
     "current_role": "Director, Platform Engineering",
     "current_company": "Siemens Industrial Automation",
-    "years_experience": 18,
+    "positions": [
+      {
+        "role": "Director, Platform Engineering",
+        "company": "Siemens Industrial Automation",
+        "start_year": 2020,
+        "end_year": null
+      },
+      {
+        "role": "Principal Platform Engineer",
+        "company": "Red Hat (OpenShift Consulting)",
+        "start_year": 2015,
+        "end_year": 2020
+      },
+      {
+        "role": "Platform Consultant",
+        "company": "Freelance / Contract",
+        "start_year": 2012,
+        "end_year": 2015
+      },
+      {
+        "role": "Open‑Source Contributor & Teacher",
+        "company": "Self‑taught / Open Source",
+        "start_year": 2008,
+        "end_year": 2012
+      }
+    ],
     "skills": [
-      "Kubernetes",
+      "Technical Kubernetes",
       "Istio",
       "Terraform",
       "Prometheus",
       "Grafana",
       "Jaeger",
       "Python (FastAPI, Celery)",
-      "FastAPI",
-      "Celery",
       "Go",
       "Docker",
       "Helm",
@@ -25,40 +49,33 @@
       "OPC UA",
       "EdgeX Foundry",
       "Linux (RHEL, Ubuntu)",
-      "RHEL",
-      "Ubuntu",
       "AWS (EKS, RDS, S3, Lambda)",
-      "EKS",
-      "RDS",
-      "S3",
-      "Lambda",
       "Azure IoT Hub",
       "C/C++ (embedded)",
       "REST/gRPC",
-      "REST",
-      "gRPC",
       "SQL (PostgreSQL, TimescaleDB)",
-      "PostgreSQL",
-      "TimescaleDB",
       "NoSQL (Cassandra, Redis)",
-      "Cassandra",
-      "Redis",
       "Chaos Engineering",
       "Site Reliability Engineering (SLO/SLI)",
       "Technical mentoring",
       "Agile/SAFe",
-      "CI/CD",
-      "GitOps",
-      "ArgoCD",
-      "OpenShift",
-      "service mesh"
+      "Portuguese (native)",
+      "Spanish (fluent)",
+      "English (professional working proficiency)",
+      "French (basic)"
     ],
     "institutions": [
       "Technical University of Munich",
       "TU München",
       "TUM",
       "Universidade do Porto",
-      "UP"
+      "UP",
+      "Red Hat",
+      "OpenShift Consulting",
+      "Siemens Industrial Automation",
+      "Freelance / Contract",
+      "Self‑taught / Open Source",
+      "Cloud Native Computing Foundations"
     ]
   }
 }

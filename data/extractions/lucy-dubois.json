@@ -1,12 +1,71 @@
 {
   "source_file": "lucy-dubois.pdf",
   "text_sha256": "4935515306a00e80ed66b372d4dbc88a47c2403665e0b6f22d2367ca72cc9c43",
+  "extraction_sha256": "e70375a7cfc12078619da6f77abcc816f91569c0164d04086e01ce472c8dc30a",
   "candidate_info": {
     "name": "Lucy Dubois",
-    "current_role": "",
-    "current_company": "",
-    "years_experience": 15,
-    "skills": [],
-    "institutions": []
+    "current_role": "Freelance Data Engineering Consultant, Self-employed",
+    "current_company": "Self-employed",
+    "positions": [
+      {
+        "role": "Freelance Data Engineering Consultant, Self-employed",
+        "company": "Self-employed",
+        "start_year": 2022,
+        "end_year": null
+      },
+      {
+        "role": "Part‑time Data Pipeline Engineer",
+        "company": "EDF Renewables",
+        "start_year": 2020,
+        "end_year": 2021
+      },
+      {
+        "role": "Contract Data Architect",
+        "company": "TotalEnergies",
+        "start_year": 2018,
+        "end_year": 2020
+      },
+      {
+        "role": "Freelance Data Engineer",
+        "company": "Various startups (remote)",
+        "start_year": 2015,
+        "end_year": 2018
+      },
+      {
+        "role": "Junior Data Engineer",
+        "company": "Siemens Energy",
+        "start_year": 2011,
+        "end_year": 2014
+      },
+      {
+        "role": "Intern",
+        "company": "KTH Data Lab",
+        "start_year": 2010,
+        "end_year": 2010
+      }
+    ],
+    "skills": [
+      "Data Engineering",
+      "ETL/ELT",
+      "SQL",
+      "Python",
+      "Apache Spark",
+      "Kafka",
+      "AWS (S3, Glue, Redshift)",
+      "GCP (BigQuery, Dataflow)",
+      "Data Modeling",
+      "Data Governance",
+      "Tableau",
+      "Power BI",
+      "SCADA Systems",
+      "Energy Domain Knowledge",
+      "Git",
+      "Docker",
+      "Kubernetes"
+    ],
+    "institutions": [
+      "KTH Royal Institute of Technology",
+      "KTH"
+    ]
   }
 }

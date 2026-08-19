@@ -19,6 +19,14 @@ class Database:
         role             TEXT,
         current_company  TEXT,
         years_experience INTEGER,
+        -- Derived at ingest from `positions` rather than asked of the model:
+        -- ordering on it is what answers "who stayed longest in one job", and a
+        -- column can be ordered where a JSON array cannot.
+        longest_tenure_years INTEGER,
+        -- The employment history as the CV prints it. Kept whole because the
+        -- derived columns above are answers to two questions, and the dates
+        -- answer the ones not thought of yet.
+        positions        JSONB NOT NULL DEFAULT '[]',
         skills           TEXT[] NOT NULL DEFAULT '{{}}',
         institutions     TEXT[] NOT NULL DEFAULT '{{}}'
     );

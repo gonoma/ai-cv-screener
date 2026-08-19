@@ -1,12 +1,53 @@
 {
   "source_file": "jordi-olsen.pdf",
   "text_sha256": "2ae6a1aa963f8d94de0b4d2915cb9cf94408d8cc759b61a78f32db8069055068",
+  "extraction_sha256": "e70375a7cfc12078619da6f77abcc816f91569c0164d04086e01ce472c8dc30a",
   "candidate_info": {
     "name": "Jordi Olsen",
-    "current_role": "",
-    "current_company": "",
-    "years_experience": 15,
-    "skills": [],
+    "current_role": "Director, Machine Learning Engineer",
+    "current_company": "Freelance (part‑time clients)",
+    "positions": [
+      {
+        "role": "Director, Machine Learning Engineer",
+        "company": "Freelance (part‑time clients)",
+        "start_year": 2022,
+        "end_year": null
+      },
+      {
+        "role": "Machine Learning Consultant",
+        "company": "Freelance",
+        "start_year": 2018,
+        "end_year": 2022
+      },
+      {
+        "role": "Senior ML Engineer",
+        "company": "CropX",
+        "start_year": 2015,
+        "end_year": 2018
+      },
+      {
+        "role": "ML Engineer",
+        "company": "AgriTech Solutions",
+        "start_year": 2012,
+        "end_year": 2015
+      },
+      {
+        "role": "Data Analyst",
+        "company": "Finova Bank",
+        "start_year": 2010,
+        "end_year": 2012
+      }
+    ],
+    "skills": [
+      "Machine Learning (TensorFlow, PyTorch, Scikit‑learn)",
+      "Deep Learning & Computer Vision (satellite imagery, CNNs)",
+      "Time‑Series Forecasting & Temporal Modeling",
+      "Data Engineering (Apache Spark, SQL, Airflow, Kafka)",
+      "Statistical Modeling & Experiment Design",
+      "MLOps (Docker, Kubernetes, MLflow, Prometheus)",
+      "Team Leadership & Agile Delivery",
+      "Technical Communication & Stakeholder Management"
+    ],
     "institutions": []
   }
 }
