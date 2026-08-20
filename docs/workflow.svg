@@ -1,0 +1,172 @@
+<?xml version='1.0' encoding='utf-8'?>
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 1200 1060" width="1200" height="1060" role="img" aria-label="ai-cv-screener workflow: make generate writes 30 CV PDFs and an answer key; make ingest turns each PDF into text, extracts fields with one LLM call per ten CVs, chunks and embeds them into Postgres with pgvector; a question posted to /chat is routed to a structured, profile or semantic lookup, which reads Postgres and streams an answer back; the eval suite scores the cached extractions offline against the answer key, and asks the live backend eleven graded questions.">
+  <title>ai-cv-screener — from PDF to a graded answer</title>
+  <defs>
+          <marker id="arrow" viewBox="0 0 10 10" refX="9" refY="5" markerWidth="6" markerHeight="6" orient="auto-start-reverse">
+            <path d="M0,0 L10,5 L0,10 z" fill="#8b95a3" />
+          </marker>
+          <marker id="arrow-eval" viewBox="0 0 10 10" refX="9" refY="5" markerWidth="6" markerHeight="6" orient="auto-start-reverse">
+            <path d="M0,0 L10,5 L0,10 z" fill="#0c6b66" />
+          </marker>
+        </defs>
+  <rect x="0" y="0" width="1200" height="1060" fill="#ffffff" />
+  <rect x="0.5" y="0.5" width="1199" height="1059" fill="none" stroke="#dfe3e9" />
+  <text x="40" y="56" font-family="'Helvetica Neue', Helvetica, Arial, sans-serif" font-size="21" font-weight="600" fill="#161a1f">ai-cv-screener — from PDF to a graded answer</text>
+  <text x="40" y="80" font-family="'Helvetica Neue', Helvetica, Arial, sans-serif" font-size="13" fill="#5a6371">Thirty synthetic CVs, read into Postgres and questioned in natural language. The eval suite checks both halves: what was read, and what was answered.</text>
+  <g transform="translate(0, 60)">
+
+        
+        <text x="40" y="60" font-family="'SF Mono', Menlo, Consolas, monospace" font-size="12" letter-spacing="1.1" fill="#5a6371">1 — Build the corpus · offline, once</text>
+        <line x1="40" y1="72" x2="360" y2="72" stroke="#dfe3e9" stroke-width="1" />
+
+        <rect x="40" y="96" width="180" height="66" rx="6" fill="#ffffff" stroke="#9c5410" stroke-width="1.5" />
+        <text x="58" y="124" font-family="'SF Mono', Menlo, Consolas, monospace" font-size="14" font-weight="600" fill="#161a1f">make generate</text>
+        <text x="58" y="142" font-family="'Helvetica Neue', Helvetica, Arial, sans-serif" font-size="11.5" fill="#9c5410">LLM writes 30 CVs</text>
+        <text x="58" y="156" font-family="'Helvetica Neue', Helvetica, Arial, sans-serif" font-size="11.5" fill="#5a6371">…and the answer key</text>
+
+        <line x1="220" y1="129" x2="262" y2="129" marker-end="url(#arrow)" stroke="#8b95a3" stroke-width="1.5" fill="none" />
+        <text x="241" y="120" text-anchor="middle" font-family="'Helvetica Neue', Helvetica, Arial, sans-serif" font-size="11" fill="#5a6371">renders</text>
+
+        <rect x="268" y="96" width="180" height="66" rx="6" fill="#ffffff" stroke="#cdd3db" stroke-width="1.25" />
+        <text x="286" y="124" font-family="'SF Mono', Menlo, Consolas, monospace" font-size="14" font-weight="600" fill="#161a1f">data/cvs/*.pdf</text>
+        <text x="286" y="145" font-family="'Helvetica Neue', Helvetica, Arial, sans-serif" font-size="11.5" fill="#5a6371">30 CVs, three layouts</text>
+
+        
+        <line x1="358" y1="162" x2="358" y2="260" marker-end="url(#arrow)" stroke="#8b95a3" stroke-width="1.5" fill="none" />
+        <text x="368" y="215" font-family="'Helvetica Neue', Helvetica, Arial, sans-serif" font-size="11" fill="#5a6371">each PDF</text>
+
+        
+        <text x="40" y="230" font-family="'SF Mono', Menlo, Consolas, monospace" font-size="12" letter-spacing="1.1" fill="#5a6371">2 — make ingest · POST /ingest</text>
+        <line x1="40" y1="242" x2="360" y2="242" stroke="#dfe3e9" stroke-width="1" />
+
+        <rect x="268" y="266" width="180" height="66" rx="6" fill="#ffffff" stroke="#cdd3db" stroke-width="1.25" />
+        <text x="286" y="294" font-family="'Helvetica Neue', Helvetica, Arial, sans-serif" font-size="14" font-weight="600" fill="#161a1f">PDF → text</text>
+        <text x="286" y="315" font-family="'Helvetica Neue', Helvetica, Arial, sans-serif" font-size="11.5" fill="#5a6371">pypdf + pdfplumber</text>
+
+        <line x1="448" y1="299" x2="490" y2="299" marker-end="url(#arrow)" stroke="#8b95a3" stroke-width="1.5" fill="none" />
+        <text x="469" y="290" text-anchor="middle" font-family="'Helvetica Neue', Helvetica, Arial, sans-serif" font-size="11" fill="#5a6371">text</text>
+
+        <rect x="496" y="266" width="180" height="66" rx="6" fill="#ffffff" stroke="#9c5410" stroke-width="1.5" />
+        <text x="514" y="294" font-family="'Helvetica Neue', Helvetica, Arial, sans-serif" font-size="14" font-weight="600" fill="#161a1f">Extract fields</text>
+        <text x="514" y="315" font-family="'Helvetica Neue', Helvetica, Arial, sans-serif" font-size="11.5" fill="#9c5410">1 LLM call per 10 CVs</text>
+
+        <line x1="676" y1="299" x2="718" y2="299" marker-end="url(#arrow)" stroke="#8b95a3" stroke-width="1.5" fill="none" />
+        <text x="697" y="290" text-anchor="middle" font-family="'Helvetica Neue', Helvetica, Arial, sans-serif" font-size="11" fill="#5a6371">fields</text>
+
+        <rect x="724" y="266" width="180" height="66" rx="6" fill="#ffffff" stroke="#cdd3db" stroke-width="1.25" />
+        <text x="742" y="294" font-family="'Helvetica Neue', Helvetica, Arial, sans-serif" font-size="14" font-weight="600" fill="#161a1f">Chunk + embed</text>
+        <text x="742" y="315" font-family="'Helvetica Neue', Helvetica, Arial, sans-serif" font-size="11.5" fill="#5a6371">900 chars · 384-d, local</text>
+
+        <line x1="904" y1="299" x2="946" y2="299" marker-end="url(#arrow)" stroke="#8b95a3" stroke-width="1.5" fill="none" />
+        <text x="925" y="290" text-anchor="middle" font-family="'Helvetica Neue', Helvetica, Arial, sans-serif" font-size="11" fill="#5a6371">rows</text>
+
+        <rect x="952" y="266" width="180" height="66" rx="6" fill="#ffffff" stroke="#cdd3db" stroke-width="1.25" />
+        <text x="970" y="294" font-family="'Helvetica Neue', Helvetica, Arial, sans-serif" font-size="14" font-weight="600" fill="#161a1f">Postgres + pgvector</text>
+        <text x="970" y="315" font-family="'Helvetica Neue', Helvetica, Arial, sans-serif" font-size="11.5" fill="#5a6371">candidates · chunks</text>
+
+        
+        <line x1="586" y1="336" x2="586" y2="362" marker-start="url(#arrow)" marker-end="url(#arrow)" stroke="#8b95a3" stroke-width="1.5" fill="none" />
+        <text x="598" y="356" font-family="'Helvetica Neue', Helvetica, Arial, sans-serif" font-size="11" fill="#5a6371">writes / reuses</text>
+
+        <rect x="496" y="366" width="180" height="56" rx="6" fill="#eef0f4" stroke="#cdd3db" stroke-width="1.25" stroke-dasharray="4 3" />
+        <text x="514" y="391" font-size="12.5" font-family="'SF Mono', Menlo, Consolas, monospace" font-weight="600" fill="#161a1f">data/extractions/</text>
+        <text x="514" y="409" font-family="'Helvetica Neue', Helvetica, Arial, sans-serif" font-size="11.5" fill="#5a6371">cached per CV text hash</text>
+
+        
+        <text x="40" y="470" font-family="'SF Mono', Menlo, Consolas, monospace" font-size="12" letter-spacing="1.1" fill="#5a6371">3 — A question, at runtime</text>
+        <line x1="40" y1="482" x2="360" y2="482" stroke="#dfe3e9" stroke-width="1" />
+
+        <rect x="40" y="516" width="180" height="66" rx="6" fill="#ffffff" stroke="#cdd3db" stroke-width="1.25" />
+        <text x="58" y="544" font-family="'Helvetica Neue', Helvetica, Arial, sans-serif" font-size="14" font-weight="600" fill="#161a1f">Browser UI</text>
+        <text x="58" y="565" font-family="'Helvetica Neue', Helvetica, Arial, sans-serif" font-size="11.5" fill="#5a6371">Vite proxies /api</text>
+
+        <line x1="220" y1="549" x2="262" y2="549" marker-start="url(#arrow)" marker-end="url(#arrow)" stroke="#8b95a3" stroke-width="1.5" fill="none" />
+        <text x="241" y="506" text-anchor="middle" font-family="'Helvetica Neue', Helvetica, Arial, sans-serif" font-size="11" fill="#5a6371">ask / stream</text>
+
+        <rect x="268" y="516" width="180" height="66" rx="6" fill="#ffffff" stroke="#cdd3db" stroke-width="1.25" />
+        <text x="286" y="544" font-family="'SF Mono', Menlo, Consolas, monospace" font-size="14" font-weight="600" fill="#161a1f">POST /chat</text>
+        <text x="286" y="565" font-family="'Helvetica Neue', Helvetica, Arial, sans-serif" font-size="11.5" fill="#5a6371">one request, kept open</text>
+
+        <line x1="448" y1="549" x2="490" y2="549" marker-end="url(#arrow)" stroke="#8b95a3" stroke-width="1.5" fill="none" />
+        <text x="469" y="540" text-anchor="middle" font-family="'Helvetica Neue', Helvetica, Arial, sans-serif" font-size="11" fill="#5a6371">route it</text>
+
+        <rect x="496" y="516" width="180" height="66" rx="6" fill="#ffffff" stroke="#9c5410" stroke-width="1.5" />
+        <text x="514" y="544" font-family="'Helvetica Neue', Helvetica, Arial, sans-serif" font-size="14" font-weight="600" fill="#161a1f">QueryRouter</text>
+        <text x="514" y="562" font-family="'Helvetica Neue', Helvetica, Arial, sans-serif" font-size="11.5" fill="#9c5410">corpus words first;</text>
+        <text x="514" y="576" font-family="'Helvetica Neue', Helvetica, Arial, sans-serif" font-size="11.5" fill="#9c5410">1 call only if they miss</text>
+
+        <line x1="676" y1="549" x2="718" y2="549" marker-end="url(#arrow)" stroke="#8b95a3" stroke-width="1.5" fill="none" />
+        <text x="697" y="540" text-anchor="middle" font-family="'Helvetica Neue', Helvetica, Arial, sans-serif" font-size="11" fill="#5a6371">one of</text>
+
+        <rect x="724" y="490" width="180" height="34" rx="5" fill="#ffffff" stroke="#cdd3db" stroke-width="1.25" />
+        <text x="740" y="511" font-size="12" font-family="'Helvetica Neue', Helvetica, Arial, sans-serif" fill="#5a6371">structured · SQL rows</text>
+
+        <rect x="724" y="532" width="180" height="34" rx="5" fill="#ffffff" stroke="#cdd3db" stroke-width="1.25" />
+        <text x="740" y="553" font-size="12" font-family="'Helvetica Neue', Helvetica, Arial, sans-serif" fill="#5a6371">profile · one person</text>
+
+        <rect x="724" y="574" width="180" height="34" rx="5" fill="#ffffff" stroke="#cdd3db" stroke-width="1.25" />
+        <text x="740" y="595" font-size="12" font-family="'Helvetica Neue', Helvetica, Arial, sans-serif" fill="#5a6371">semantic · nearest 8</text>
+
+        
+        <line x1="904" y1="507" x2="1010" y2="507" stroke="#8b95a3" stroke-width="1.5" fill="none" />
+        <line x1="904" y1="549" x2="1010" y2="549" stroke="#8b95a3" stroke-width="1.5" fill="none" />
+        <line x1="904" y1="591" x2="1010" y2="591" stroke="#8b95a3" stroke-width="1.5" fill="none" />
+        <path d="M1010,591 V338" marker-end="url(#arrow)" stroke="#8b95a3" stroke-width="1.5" fill="none" />
+        <text x="1018" y="452" font-family="'Helvetica Neue', Helvetica, Arial, sans-serif" font-size="11" fill="#5a6371">filter or</text>
+        <text x="1018" y="466" font-family="'Helvetica Neue', Helvetica, Arial, sans-serif" font-size="11" fill="#5a6371">vector search</text>
+
+        
+        <path d="M1090,332 V674" marker-end="url(#arrow)" stroke="#8b95a3" stroke-width="1.5" fill="none" />
+        <text x="1100" y="500" font-family="'Helvetica Neue', Helvetica, Arial, sans-serif" font-size="11" fill="#5a6371">context</text>
+
+        <rect x="952" y="680" width="180" height="66" rx="6" fill="#ffffff" stroke="#9c5410" stroke-width="1.5" />
+        <text x="970" y="708" font-family="'Helvetica Neue', Helvetica, Arial, sans-serif" font-size="14" font-weight="600" fill="#161a1f">AnswerGenerator</text>
+        <text x="970" y="729" font-family="'Helvetica Neue', Helvetica, Arial, sans-serif" font-size="11.5" fill="#9c5410">1 call · streams tokens</text>
+
+        
+        <path d="M952,713 H430 V588" marker-end="url(#arrow)" stroke="#8b95a3" stroke-width="1.5" fill="none" />
+        <text x="700" y="705" text-anchor="middle" font-family="'Helvetica Neue', Helvetica, Arial, sans-serif" font-size="11" fill="#5a6371">SSE: route, sources, tokens</text>
+
+        
+        <text x="40" y="798" font-family="'SF Mono', Menlo, Consolas, monospace" font-size="12" letter-spacing="1.1" fill="#5a6371">4 — The eval suite</text>
+        <line x1="40" y1="810" x2="360" y2="810" stroke="#dfe3e9" stroke-width="1" />
+
+        <rect x="40" y="834" width="180" height="66" rx="6" fill="#ffffff" stroke="#0c6b66" stroke-width="1.5" />
+        <text x="58" y="862" font-size="12.5" font-family="'SF Mono', Menlo, Consolas, monospace" font-weight="600" fill="#161a1f">make eval-extraction</text>
+        <text x="58" y="883" font-family="'Helvetica Neue', Helvetica, Arial, sans-serif" font-size="11.5" fill="#0c6b66">free · nothing running</text>
+
+        <line x1="490" y1="867" x2="226" y2="867" marker-end="url(#arrow-eval)" stroke="#0c6b66" stroke-width="1.5" fill="none" stroke-dasharray="5 4" />
+        <text x="358" y="858" text-anchor="middle" font-family="'Helvetica Neue', Helvetica, Arial, sans-serif" font-size="11" fill="#0c6b66">what is true</text>
+
+        <rect x="496" y="834" width="180" height="66" rx="6" fill="#eef0f4" stroke="#cdd3db" stroke-width="1.25" stroke-dasharray="4 3" />
+        <text x="514" y="862" font-size="12.5" font-family="'SF Mono', Menlo, Consolas, monospace" font-weight="600" fill="#161a1f">ground_truth.json</text>
+        <text x="514" y="883" font-family="'Helvetica Neue', Helvetica, Arial, sans-serif" font-size="11.5" fill="#5a6371">the answer key</text>
+
+        <line x1="682" y1="867" x2="946" y2="867" marker-end="url(#arrow-eval)" stroke="#0c6b66" stroke-width="1.5" fill="none" stroke-dasharray="5 4" />
+        <text x="814" y="858" text-anchor="middle" font-family="'Helvetica Neue', Helvetica, Arial, sans-serif" font-size="11" fill="#0c6b66">what is true</text>
+
+        <rect x="952" y="834" width="180" height="66" rx="6" fill="#ffffff" stroke="#0c6b66" stroke-width="1.5" />
+        <text x="970" y="862" font-family="'SF Mono', Menlo, Consolas, monospace" font-size="14" font-weight="600" fill="#161a1f">make evals</text>
+        <text x="970" y="883" font-family="'Helvetica Neue', Helvetica, Arial, sans-serif" font-size="11.5" fill="#0c6b66">11 questions, graded</text>
+
+        
+        <path d="M40,867 H18 V394 H490" marker-end="url(#arrow-eval)" stroke="#0c6b66" stroke-width="1.5" fill="none" stroke-dasharray="5 4" />
+        <text x="60" y="386" font-family="'Helvetica Neue', Helvetica, Arial, sans-serif" font-size="11" fill="#0c6b66">scores every field ingestion read</text>
+
+        
+        <path d="M1042,834 V790 H340 V588" marker-end="url(#arrow-eval)" stroke="#0c6b66" stroke-width="1.5" fill="none" stroke-dasharray="5 4" />
+        <text x="352" y="782" font-family="'Helvetica Neue', Helvetica, Arial, sans-serif" font-size="11" fill="#0c6b66">asks the live backend, grades answer + route</text>
+      </g>
+
+  <g transform="translate(40, 1016)">
+    <line x1="0" y1="-4" x2="22" y2="-4" stroke="#9c5410" stroke-width="2" />
+    <text x="32" y="0" font-family="'SF Mono', Menlo, Consolas, monospace" font-size="12" fill="#5a6371">spends an LLM call</text>
+    <line x1="196" y1="-4" x2="218" y2="-4" stroke="#0c6b66" stroke-width="2" stroke-dasharray="5 4" />
+    <text x="228" y="0" font-family="'SF Mono', Menlo, Consolas, monospace" font-size="12" fill="#5a6371">eval suite</text>
+    <line x1="330" y1="-4" x2="352" y2="-4" stroke="#cdd3db" stroke-width="2" stroke-dasharray="4 3" />
+    <text x="362" y="0" font-family="'SF Mono', Menlo, Consolas, monospace" font-size="12" fill="#5a6371">file on disk</text>
+    <line x1="474" y1="-4" x2="496" y2="-4" stroke="#8b95a3" stroke-width="2" />
+    <text x="506" y="0" font-family="'SF Mono', Menlo, Consolas, monospace" font-size="12" fill="#5a6371">request or data flow</text>
+  </g>
+
+</svg>
