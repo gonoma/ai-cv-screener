@@ -255,3 +255,25 @@ def test_a_breakdown_sends_what_people_do_and_not_where_they_studied() -> None:
     selected = connection.statements[0].split("FROM")[0]
     assert "role" in selected and "skills" in selected
     assert "institutions" not in selected and "current_company" not in selected
+
+
+def test_a_skill_is_matched_as_a_word_inside_what_the_cv_wrote() -> None:
+    """CVs write "Python (pandas, NumPy)", and equality made those holders invisible."""
+    retriever, connection = _retriever([("ada.pdf", "Ada Lovelace", ["Python (pandas)"])])
+
+    retriever._retrieve_all_candidates_matching_filters(
+        QueryRoute(route="structured", skills=["Python"])
+    )
+
+    predicate = connection.statements[0]
+    assert "~*" in predicate
+    # Word-bounded on both sides, so Java still does not match inside JavaScript.
+    assert "[^[:alnum:]]" in predicate
+
+
+def test_a_skill_with_punctuation_is_matched_literally() -> None:
+    """ "C++" and "Node.js" are regex metacharacters before they are technologies."""
+    from backend.domain.query.context_retriever import _as_regex_literal
+
+    assert _as_regex_literal("C++") == r"C\+\+"
+    assert _as_regex_literal("Node.js") == r"Node\.js"

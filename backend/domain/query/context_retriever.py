@@ -1,10 +1,16 @@
 import os
+import re
 
 import psycopg
 
 from ...data.models import CandidateRow, ChunkRow, NameMatchRow, QueryRoute, RetrievedContext
 from ...providers.embeddings import EmbeddingModel
 from .. import candidate_facts
+
+
+def _as_regex_literal(term: str) -> str:
+    """Escape a skill so "C++" and "Node.js" are matched literally by Postgres."""
+    return re.sub(r"([\\^$.\[\]|()*+?{}])", r"\\\1", term)
 
 
 class ContextRetriever:
@@ -342,8 +348,17 @@ class ContextRetriever:
         conditions: list[str] = []
         parameters: list = []
         for skill in route.skills:
-            conditions.append("EXISTS (SELECT 1 FROM unnest(skills) s WHERE lower(s) = lower(%s))")
-            parameters.append(skill)
+            # A skill matches as a word inside the stored string, not as the whole
+            # string. CVs write "Python (pandas, NumPy)" and "Programming (Java,
+            # Python)", and equality made every one of those invisible to "who
+            # knows Python" — 6 of 21 holders missing from a route whose entire
+            # purpose is returning every match. Word-bounded, so Java still does
+            # not match inside JavaScript.
+            conditions.append(
+                "EXISTS (SELECT 1 FROM unnest(skills) s "
+                "WHERE s ~* ('(^|[^[:alnum:]])' || %s || '([^[:alnum:]]|$)'))"
+            )
+            parameters.append(_as_regex_literal(skill))
         if route.institution:
             conditions.append(
                 "EXISTS (SELECT 1 FROM unnest(institutions) i "
