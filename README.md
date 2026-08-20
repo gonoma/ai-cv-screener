@@ -463,3 +463,15 @@ the CV text that produced it.
 * It writes `data/extractions/` (one JSON per CV plus a hash of its text — what makes a
   re-ingest free), which is safe to delete: the next ingest buys it again
 * The Postgres volume is rewritten on every ingest, and reset with `docker compose down -v`
+
+# How AI Was Used
+
+I used AI as a typist, not as an architect. It wrote the parts that cost time and return
+little judgement — SQL, regex, the HTML and CSS of the frontend, the boilerplate half of
+the tests, docstrings, and the mechanical refactors that move a method onto the class
+where it belongs — so that the time saved went into the decisions this README spends most
+of its length on: what the corpus should be, how a question is routed, where the schema
+boundary sits, what gets cached and what deliberately does not. The technical ideas, the
+architecture, the patterns, the code style and formatting, and the engineering that holds
+them together are mine; everything AI produced was specified, reviewed, and rewritten by
+me until it read like the rest of the codebase.
