@@ -223,3 +223,6 @@ node_modules/
 frontend/dist/
 .vite/
 *.tsbuildinfo
+
+# macOS
+.DS_Store
