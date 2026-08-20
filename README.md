@@ -42,10 +42,12 @@ Run `make` on its own to see this list.
 |---|---|
 | `make install` | venv, Python and frontend deps, `.env` from the template |
 | `make db` / `make down` | start / stop Postgres + pgvector |
-| `make api` | backend on :8000, with reload |
+| `make api` | backend on `BACKEND_API`'s port (:8000 by default), with reload |
 | `make ui` | Vite dev server on :5173, proxying `/api` to the backend |
 | `make ingest` | reads every CV in `data/cvs` into the database |
 | `make generate` | rebuilds the corpus (`COUNT=5` for fewer) |
+| `make eval-extraction` | scores ingestion against the answer key — free, nothing running |
+| `make evals` | asks a running backend one question of each shape, and grades it |
 | `make test` / `make test-fast` | full suite / skipping the corpus-backed tests |
 | `make lint` / `make format` | ruff |
 
@@ -59,6 +61,8 @@ Everything lives in `.env` (copied from `.env.example`, gitignored).
 - **Embeddings run locally**, so search itself costs nothing and needs no key, and the
   test suite never touches the network.
 - **`DATABASE_URL`** already matches what `make db` starts.
+- **`BACKEND_API`** is where the backend listens, in one place: `make api` binds its
+  port, `make ingest` and `make evals` call it, and `make ui` proxies `/api` to it.
 - **Token knobs** — the backend is tuned to spend as few *tokens* as possible, not as
   few calls (see [Backend](#backend)): `LLM_MAX_OUTPUT_TOKENS` caps the answer,
   `GEMINI_THINKING_LEVEL` stops the model buying reasoning it does not need, and
@@ -285,6 +289,99 @@ length-capped and reasoning is off, since output costs several times input and n
 job here is a reasoning problem — left on, the model streamed its own deliberation as
 the answer and spent the budget before reaching one. It streams back as Server-Sent Events, route
 label first, so the UI can say what it decided while the words are still arriving.
+
+## Evals
+
+Two suites, split by what they cost to run.
+
+`make eval-extraction` needs nothing running and spends nothing. It scores what ingestion
+read out of every CV against `data/ground_truth.json` — years exact, current role exact,
+skill and institution recall — deriving each row exactly as the pipeline does, so it
+measures what is in the database without needing the database. Today: **30/30 years,
+26/30 roles, 99% skills, 90% institutions.**
+
+`make evals` asks a running backend one question of each shape — aggregation, lookup,
+profile, ranking, breakdown, qualitative, unanswerable — and grades the route and the
+answer against the key. The questions are derived from the key rather than hardcoded, so
+they stay correct when the corpus is regenerated and different people exist. There is no
+LLM-as-judge: a grader that is itself a language model cannot tell "the system was wrong"
+from "the grader was wrong", which is the one distinction this directory exists to make.
+
+It earned its keep on the first run: it found that the skills filter compared whole
+strings, so the 6 candidates whose CVs write "Python (pandas, NumPy)" were invisible to
+"who knows Python" — on the route that exists precisely to return *every* match.
+
+### Reading the output
+
+`make eval-extraction` prints one row per metric: the score, the floor it has to clear,
+and then every individual field that missed — so a failure names the CV to go and open.
+
+```text
+30 extractions scored against the answer key
+
+metric               score        floor   result
+------------------------------------------------------------
+years exact          30/30        1.00    PASS (100%)
+role exact           26/30        0.85    PASS (87%)
+skill recall         382/384      0.95    PASS (99%)
+institution recall   66/73        0.85    PASS (90%)
+
+8 field(s) off:
+  lucy-dubois.pdf: role exact — got 'Director, Data Engineer', key 'Freelance Data Engineering Consultant'
+  arjun-sharma.pdf: institution recall — lost ['TU Delft']
+  ...
+```
+
+Scores read as *hits / total*: the two exact metrics count one per CV, the two recalls
+count one per list entry, so 382/384 means two skills out of 384 went missing across the
+whole corpus. The floors sit a little under what the committed corpus measures, so
+regenerating it with different people still passes but a real regression does not. Years
+is the only metric at 1.00, because it is arithmetic over dates rather than reading: less
+than exact means our own calculation is wrong.
+
+`make evals` prints one row per question — its shape, the route the backend chose, and
+what the grader made of the answer. Abridged here to five rows, with two failures
+invented to show what they look like:
+
+```text
+11 cases over 30 candidates
+
+kind           route       result  detail
+------------------------------------------------------------------------------------------------
+aggregation    structured  PASS    22 candidates hold Python
+lookup         structured  FAIL    missing=['Jana Novák'] extra=[]
+profile        semantic    FAIL    ok; routed semantic, expected profile
+breakdown      structured  PASS    must see all 30 candidates and answer in proportions
+unanswerable   structured  PASS    declined
+...
+------------------------------------------------------------------------------------------------
+9/11 passed
+
+NOT COVERED: no `ambiguous` case exists in this corpus.
+  No two candidates share a name, so the disambiguation path is untested.
+```
+
+Each row is graded twice — on the answer and, separately, on the route that produced it —
+and passes only if both are right. A correct answer down the wrong route (row three above)
+is usually luck, and tends to stop being correct as soon as the corpus grows.
+
+| detail | what went wrong |
+|---|---|
+| `missing=[...] extra=[...]` | wrong set of people: `missing` was forgotten, `extra` does not qualify |
+| `did not name [...]` | a ranking that failed to name the winner |
+| `retrieved N CVs, expected at least M` | retrieval narrowed the question before the model ever saw it |
+| `routed X, expected Y` | wrong strategy — the answer may still read well |
+| `did not decline` / `declined but still named [...]` | invented an answer the CVs do not contain |
+| `cited no source` | an opinion with no CV behind it |
+| `ERROR TimeoutError: ...` | the request never completed; a quota or a dead backend, not a wrong answer |
+
+The `NOT COVERED` lines at the end are about the corpus, not the system: this corpus
+happens to contain no two people sharing a name, so that shape could not be asked. It is
+printed loudly but does not fail the run.
+
+Exit codes are three rather than two, so CI can tell the cases apart: **0** everything
+passed, **1** something was answered wrongly, **2** the suite could not run at all
+(backend down, key out of quota). "We could not test it" is not "it is broken".
 
 ## What one question costs
   
