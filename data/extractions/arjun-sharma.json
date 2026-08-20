@@ -1,38 +1,38 @@
 {
   "source_file": "arjun-sharma.pdf",
-  "text_sha256": "81baa1d1336708d87cd82c139b4ca1cb6bc8286aaa01ab8a2f3bd19166469e9a",
+  "text_sha256": "21a4c605de5b498046ec85f0118e90067be5d641b7cda51755d2cda1c6b4a6c8",
   "extraction_sha256": "e70375a7cfc12078619da6f77abcc816f91569c0164d04086e01ce472c8dc30a",
   "candidate_info": {
     "name": "Arjun Sharma",
-    "current_role": "Lead Engineering Manager - SummitEd Inc.",
+    "current_role": "Lead Engineering Manager",
     "current_company": "SummitEd Inc.",
     "positions": [
       {
-        "role": "Financial Analyst - FinCorp GmbH",
+        "role": "Financial Analyst",
         "company": "FinCorp GmbH",
         "start_year": 2016,
         "end_year": 2018
       },
       {
-        "role": "Junior Software Engineer - EduTech Solutions",
+        "role": "Junior Software Engineer",
         "company": "EduTech Solutions",
         "start_year": 2018,
         "end_year": 2020
       },
       {
-        "role": "Software Engineer - LearnVita AG",
+        "role": "Software Engineer",
         "company": "LearnVita AG",
         "start_year": 2020,
         "end_year": 2022
       },
       {
-        "role": "Senior Software Engineer - NovaLearn GmbH",
+        "role": "Senior Software Engineer",
         "company": "NovaLearn GmbH",
         "start_year": 2022,
         "end_year": 2024
       },
       {
-        "role": "Lead Engineering Manager - SummitEd Inc.",
+        "role": "Lead Engineering Manager",
         "company": "SummitEd Inc.",
         "start_year": 2024,
         "end_year": null
@@ -51,15 +51,14 @@
       "Mentoring",
       "Stakeholder management",
       "Budget planning",
+      "Excel",
       "VBA",
       "RESTful APIs",
       "GitHub Actions",
       "Docker",
       "Kinesis",
       "Lambda",
-      "Redshift",
-      "micro‑services",
-      "A/B test"
+      "Redshift"
     ],
     "institutions": []
   }

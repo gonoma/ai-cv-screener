@@ -1,14 +1,14 @@
 {
   "source_file": "lucy-dubois.pdf",
-  "text_sha256": "4935515306a00e80ed66b372d4dbc88a47c2403665e0b6f22d2367ca72cc9c43",
+  "text_sha256": "77b1378800fb2574bdf43a7cf43fe1e1d8764fc7387567ed2e0406c95dd50d3f",
   "extraction_sha256": "e70375a7cfc12078619da6f77abcc816f91569c0164d04086e01ce472c8dc30a",
   "candidate_info": {
     "name": "Lucy Dubois",
-    "current_role": "Freelance Data Engineering Consultant, Self-employed",
+    "current_role": "Director, Data Engineer",
     "current_company": "Self-employed",
     "positions": [
       {
-        "role": "Freelance Data Engineering Consultant, Self-employed",
+        "role": "Freelance Data Engineering Consultant",
         "company": "Self-employed",
         "start_year": 2022,
         "end_year": null
@@ -45,11 +45,18 @@
       }
     ],
     "skills": [
+      "AWS S3",
+      "Great Expectations",
+      "Informatica",
+      "Apache Spark",
+      "Python",
+      "Flask",
+      "D3.js",
+      "SAP",
+      "Hadoop",
       "Data Engineering",
       "ETL/ELT",
       "SQL",
-      "Python",
-      "Apache Spark",
       "Kafka",
       "AWS (S3, Glue, Redshift)",
       "GCP (BigQuery, Dataflow)",
@@ -64,7 +71,8 @@
       "Kubernetes"
     ],
     "institutions": [
-      "KTH Royal Institute of Technology",
+      "KTH Data Lab",
+      "KTH Royal Institute of Technology (KTH)",
       "KTH"
     ]
   }

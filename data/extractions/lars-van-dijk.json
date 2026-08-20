@@ -1,6 +1,6 @@
 {
   "source_file": "lars-van-dijk.pdf",
-  "text_sha256": "af490372c607cfc317dfcad4def747187d2411e220248c183313d2656c669018",
+  "text_sha256": "f7b77985cdb3e0ea2fa60e284633e4aef6d57b431e47f7a392af97ae6ee0244d",
   "extraction_sha256": "e70375a7cfc12078619da6f77abcc816f91569c0164d04086e01ce472c8dc30a",
   "candidate_info": {
     "name": "Lars van Dijk",
@@ -21,7 +21,7 @@
       }
     ],
     "skills": [
-      "Technical Kotlin",
+      "Kotlin",
       "Android Jetpack",
       "SwiftUI",
       "REST API",
@@ -30,7 +30,12 @@
       "Secure coding practices",
       "Git",
       "JIRA",
-      "Agile Scrum"
+      "Agile Scrum",
+      "Jetpack Compose",
+      "OWASP Mobile",
+      "biometric authentication",
+      "Espresso",
+      "threat‑modeling"
     ],
     "institutions": [
       "Technische Universität München",

@@ -1,6 +1,6 @@
 {
   "source_file": "elena-zapater.pdf",
-  "text_sha256": "538f54d18c2e697952d96d2f8b5ef9c655ee1525b74543dd661bbf3242798617",
+  "text_sha256": "1e5cc0c2eb0c804357f6d9b5adece366f75656928e175fda34cbdfc3c57c2094",
   "extraction_sha256": "e70375a7cfc12078619da6f77abcc816f91569c0164d04086e01ce472c8dc30a",
   "candidate_info": {
     "name": "Elena Zapater",
@@ -21,7 +21,7 @@
       }
     ],
     "skills": [
-      "Technical Vulnerability Assessment",
+      "Vulnerability Assessment",
       "OWASP Top 10",
       "Burp Suite",
       "SAST/DAST",
@@ -32,7 +32,10 @@
       "Esquema Nacional de Seguridad (ENS)",
       "Wazuh",
       "Trivy",
-      "GitLab CI/CD"
+      "GitLab CI/CD",
+      "GitGuardian",
+      "Postman",
+      "Wazuh HIDS"
     ],
     "institutions": [
       "KeepCoding Tech School",

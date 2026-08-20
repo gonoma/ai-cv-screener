@@ -1,6 +1,6 @@
 {
   "source_file": "sofia-khalid.pdf",
-  "text_sha256": "65fd4ba92137ca82d2d3a507e999f980c1c1cd4432f53c5d54b30b4d300ddff4",
+  "text_sha256": "4243db7a854279b82c05d664f2c6683c93cccc2808d301803ff7f126cc474345",
   "extraction_sha256": "e70375a7cfc12078619da6f77abcc816f91569c0164d04086e01ce472c8dc30a",
   "candidate_info": {
     "name": "Sofia Khalid",
@@ -27,33 +27,21 @@
       }
     ],
     "skills": [
-      "test automation",
-      "performance testing",
-      "Selenium",
-      "Cypress",
-      "API testing",
-      "Postman",
-      "REST Assured",
-      "JMeter",
-      "Gatling",
-      "Test management",
-      "Jira",
-      "TestRail",
-      "CI/CD integration",
-      "GitLab CI",
-      "Jenkins",
-      "Programming",
-      "Java",
-      "Python",
-      "SQL basics",
-      "Agile/Scrum",
       "Selenium Grid",
-      "functional testing",
-      "iOS/Android",
-      "continuous integration"
+      "Cypress",
+      "Jira",
+      "Jenkins",
+      "Test automation (Selenium, Cypress)",
+      "API testing (Postman, REST Assured)",
+      "Performance testing (JMeter, Gatling)",
+      "Test management (Jira, TestRail)",
+      "CI/CD integration (GitLab CI, Jenkins)",
+      "Programming (Java, Python)",
+      "SQL basics",
+      "Agile/Scrum"
     ],
     "institutions": [
-      "Universidad de Granada",
+      "Universidad de Granada (UGR)",
       "UGR"
     ]
   }

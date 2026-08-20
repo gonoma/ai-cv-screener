@@ -1,6 +1,6 @@
 {
   "source_file": "isabel-fernandes.pdf",
-  "text_sha256": "910646e1159107ad6f02ea31e81a0a4f5fc456cdeab18be07585e443e43132b8",
+  "text_sha256": "326ea01f02026e51d894792ff0104fc828e523aa3229bdc6dfc000753b0e19d2",
   "extraction_sha256": "e70375a7cfc12078619da6f77abcc816f91569c0164d04086e01ce472c8dc30a",
   "candidate_info": {
     "name": "Isabel Fernandes",
@@ -23,10 +23,13 @@
     "skills": [
       "Product Strategy",
       "Roadmap Planning",
-      "Agile/ScrumUser Research",
+      "Agile/Scrum",
+      "User Research",
       "Metrics & KPI Analysis",
-      "A/B TestingJIRA",
-      "ConfluenceSQL",
+      "A/B Testing",
+      "JIRA",
+      "Confluence",
+      "SQL",
       "Stakeholder Management",
       "Go‑to‑Market Planning",
       "Customer Journey Mapping",

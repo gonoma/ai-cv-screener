@@ -1,32 +1,32 @@
 {
   "source_file": "lucas-pereira.pdf",
-  "text_sha256": "2942b9b273f59b22367bc09309d4290a921fc8399b8ffa349c9ee43380935563",
+  "text_sha256": "204c97b8ee65a7ffda190ac3634b6d76b7401c2ab5b797385b667db6a950ca99",
   "extraction_sha256": "e70375a7cfc12078619da6f77abcc816f91569c0164d04086e01ce472c8dc30a",
   "candidate_info": {
     "name": "Lucas Pereira",
-    "current_role": "Principal Technical Writer - Social Point",
+    "current_role": "Principal Technical Writer",
     "current_company": "Social Point",
     "positions": [
       {
-        "role": "Intern Technical Writer - PixelForge",
+        "role": "Intern Technical Writer",
         "company": "PixelForge",
         "start_year": 2009,
         "end_year": 2010
       },
       {
-        "role": "Technical Writer - Social Point",
+        "role": "Technical Writer",
         "company": "Social Point",
         "start_year": 2010,
         "end_year": 2015
       },
       {
-        "role": "Senior Technical Writer - Nimble Giant Entertainment",
+        "role": "Senior Technical Writer",
         "company": "Nimble Giant Entertainment",
         "start_year": 2017,
         "end_year": 2022
       },
       {
-        "role": "Principal Technical Writer - Social Point",
+        "role": "Principal Technical Writer",
         "company": "Social Point",
         "start_year": 2022,
         "end_year": null
@@ -46,10 +46,12 @@
       "Localization",
       "UX writing",
       "Style guides",
-      "Single‑source publishing"
+      "Single‑source publishing",
+      "Git hooks",
+      "HTML5/PDF"
     ],
     "institutions": [
-      "Universitat Politecnica de Catalunya",
+      "Universitat Politecnica de Catalunya (UPC)",
       "UPC"
     ]
   }

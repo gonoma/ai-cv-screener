@@ -1,6 +1,6 @@
 {
   "source_file": "marco-bianchi.pdf",
-  "text_sha256": "f85a7181d0e40ad93f17f38bd32898a3f9d13dbb225dee0a14b88787f9c6a6c8",
+  "text_sha256": "97ac6db7e140fbf9f9191e8f66925ade5c3610a125bcf81e60bbd547ecd7ed11",
   "extraction_sha256": "e70375a7cfc12078619da6f77abcc816f91569c0164d04086e01ce472c8dc30a",
   "candidate_info": {
     "name": "Marco Bianchi",
@@ -29,11 +29,10 @@
       "REST API design",
       "pytest",
       "AWS EC2",
-      "Linux",
-      "Bash"
+      "Linux Bash"
     ],
     "institutions": [
-      "Le Wagon Prague",
+      "Le Wagon Prague (Le Wagon)",
       "Le Wagon"
     ]
   }

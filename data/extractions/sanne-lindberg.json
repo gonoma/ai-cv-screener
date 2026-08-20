@@ -1,6 +1,6 @@
 {
   "source_file": "sanne-lindberg.pdf",
-  "text_sha256": "2d83b34f60fd36b88ca01629e6901e2a9f76616a85e5816e28464b3fabbaea1f",
+  "text_sha256": "f2bb189c4108949f3a2978df40d5224215ff21cc64ac882d535c945dc862b39c",
   "extraction_sha256": "e70375a7cfc12078619da6f77abcc816f91569c0164d04086e01ce472c8dc30a",
   "candidate_info": {
     "name": "Sanne Lindberg",
@@ -39,27 +39,36 @@
       }
     ],
     "skills": [
-      "Kubernetes",
-      "Docker",
-      "AWS",
-      "Azure",
-      "PLC programming (IEC 61131‑3)",
+      "Git‑Ops pipelines (ArgoCD + Flux)",
+      "ArgoCD",
+      "Flux",
+      "IEC 61131‑3 PLC code",
       "SCADA",
-      "OPC UA",
-      "MQTT",
-      "Python",
-      "Go",
-      "CI/CD (Jenkins, GitLab)",
-      "Terraform",
+      "Azure",
+      "Prometheus‑Grafana",
       "Prometheus",
       "Grafana",
-      "Linux",
+      "Terraform",
+      "Kubernetes",
+      "OPC UA",
+      "MQTT",
+      "Helm",
+      "Bash‑Python",
       "Bash",
-      "GitOps",
-      "Helm"
+      "Python",
+      "OpenStack",
+      "Docker",
+      "AWS",
+      "PLC programming (IEC 61131‑3)",
+      "Go",
+      "CI/CD (Jenkins, GitLab)",
+      "Jenkins",
+      "GitLab",
+      "Linux",
+      "GitOps"
     ],
     "institutions": [
-      "Universidad de Zaragoza",
+      "Universidad de Zaragoza (UZ)",
       "UZ"
     ]
   }
