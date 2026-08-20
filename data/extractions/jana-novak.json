@@ -1,6 +1,6 @@
 {
   "source_file": "jana-novak.pdf",
-  "text_sha256": "61890b70d9b1619f1c462b287298664fb3098a440dc2b00655cf396365f054a3",
+  "text_sha256": "0813e1f71c2abf79cb802cbe0332c00f31fbc59a14eee97df941279667880637",
   "extraction_sha256": "e70375a7cfc12078619da6f77abcc816f91569c0164d04086e01ce472c8dc30a",
   "candidate_info": {
     "name": "Jana Novak",
@@ -37,7 +37,12 @@
       "REST",
       "GraphQL",
       "Git",
-      "JUnit"
+      "JUnit",
+      "GitHub Actions",
+      "CI/CD",
+      "Python",
+      "PHP",
+      "Laravel"
     ],
     "institutions": [
       "Czech Technical University in Prague",

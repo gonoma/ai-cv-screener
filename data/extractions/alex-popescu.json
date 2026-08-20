@@ -1,6 +1,6 @@
 {
   "source_file": "alex-popescu.pdf",
-  "text_sha256": "f5967d2077b76d1ee54cdb3f7cefedfe324bb7a91a89d1be14f344b4ab35ea17",
+  "text_sha256": "f9ac945e61f0c65d5fa302af8039d0a1a1efec65e28b6c2604b6945da52f68a6",
   "extraction_sha256": "e70375a7cfc12078619da6f77abcc816f91569c0164d04086e01ce472c8dc30a",
   "candidate_info": {
     "name": "Alex Popescu",
@@ -21,15 +21,21 @@
       }
     ],
     "skills": [
-      "Technical Network Security",
+      "Network Security",
       "Penetration Testing",
-      "SIEM (Splunk, ELK)",
-      "Vulnerability Scanning (Nessus, OpenVAS)",
+      "SIEM",
+      "Splunk",
+      "ELK",
+      "Vulnerability Scanning",
+      "Nessus",
+      "OpenVAS",
       "OWASP Top 10",
       "Python",
       "Bash",
       "Linux Hardening",
-      "Firewall Management (pfSense, iptables)",
+      "Firewall Management",
+      "pfSense",
+      "iptables",
       "Incident Response",
       "Security Training & Phishing Simulations",
       "Burp Suite"

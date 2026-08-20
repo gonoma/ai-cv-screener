@@ -1,6 +1,6 @@
 {
   "source_file": "maarten-de-jong.pdf",
-  "text_sha256": "2d249377dda1ea0e500d57bce3e21fe9999fcd048a13a666cb324123a41eb875",
+  "text_sha256": "51b27f6dde936564c5531d0875ebc014ae3bd83409e34b078ec8bcb0d0d374a7",
   "extraction_sha256": "e70375a7cfc12078619da6f77abcc816f91569c0164d04086e01ce472c8dc30a",
   "candidate_info": {
     "name": "Maarten de Jong",
@@ -8,31 +8,31 @@
     "current_company": "MercadoSol Marketplace",
     "positions": [
       {
-        "role": "Principal QA Engineer - MercadoSol Marketplace",
+        "role": "Principal QA Engineer",
         "company": "MercadoSol Marketplace",
         "start_year": 2021,
         "end_year": null
       },
       {
-        "role": "Lead QA Automation Engineer - Andalucía Retail Solutions",
+        "role": "Lead QA Automation Engineer",
         "company": "Andalucía Retail Solutions",
         "start_year": 2016,
         "end_year": 2021
       },
       {
-        "role": "Senior QA Engineer - Viajes Bética Online",
+        "role": "Senior QA Engineer",
         "company": "Viajes Bética Online",
         "start_year": 2012,
         "end_year": 2016
       },
       {
-        "role": "QA Engineer - SolTech QA Labs",
+        "role": "QA Engineer",
         "company": "SolTech QA Labs",
         "start_year": 2010,
         "end_year": 2012
       },
       {
-        "role": "Front Office Operations Supervisor - Hotel Occidental Castellana",
+        "role": "Front Office Operations Supervisor",
         "company": "Hotel Occidental Castellana",
         "start_year": 2004,
         "end_year": 2010
@@ -52,10 +52,15 @@
       "Docker",
       "TestRail",
       "Chaos Mesh",
-      "Quality Engineering Strategy"
+      "Quality Engineering Strategy",
+      "Pact",
+      "Selenium",
+      "Postman",
+      "Java",
+      "Jenkins CI"
     ],
     "institutions": [
-      "Universidad Politécnica de Madrid",
+      "Universidad Politécnica de Madrid (UPM)",
       "UPM"
     ]
   }

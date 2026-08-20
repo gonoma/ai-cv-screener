@@ -1,6 +1,6 @@
 {
   "source_file": "iker-etxebarria.pdf",
-  "text_sha256": "42c463e79ad9bfca7e43d3ddd2f853ed0d6ac53fff1d062df51e3b91b4514d87",
+  "text_sha256": "b19ac71410a228e04fd73eb9e4c469901300065a8776ca37b5e7e5abe633a6c9",
   "extraction_sha256": "e70375a7cfc12078619da6f77abcc816f91569c0164d04086e01ce472c8dc30a",
   "candidate_info": {
     "name": "Iker Etxebarria",
@@ -28,7 +28,9 @@
       "Git",
       "Linux/bash",
       "Agile/Scrum",
-      "Energy market basics"
+      "Energy market basics",
+      "ETL",
+      "SonarQube"
     ],
     "institutions": [
       "Instituto Tecnológico de Energía",

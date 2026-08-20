@@ -1,6 +1,6 @@
 {
   "source_file": "emily-papadopoulos.pdf",
-  "text_sha256": "62e9dadd6b4336edf764063520dbd70d3f96b781460e6a0beb4a366c0da2ef75",
+  "text_sha256": "9f3c38e3fccefed78334e507f6309a9310d9ecbddefe8864f0cb5a71c8b973e4",
   "extraction_sha256": "e70375a7cfc12078619da6f77abcc816f91569c0164d04086e01ce472c8dc30a",
   "candidate_info": {
     "name": "Emily Papadopoulos",
@@ -27,7 +27,7 @@
       }
     ],
     "skills": [
-      "Technical Agile",
+      "Agile",
       "Scrum",
       "JIRA",
       "Python",
@@ -35,10 +35,13 @@
       "Docker",
       "AWS Basics",
       "Logistics Optimization",
-      "Data Analysis (Excel, PowerBI)",
+      "Data Analysis",
+      "Excel",
+      "PowerBI",
       "Stakeholder Management",
       "Budgeting",
-      "Communication"
+      "Communication",
+      "CI/CD"
     ],
     "institutions": [
       "Universitatea Politehnica din Bucuresti",

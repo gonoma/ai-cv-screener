@@ -1,6 +1,6 @@
 {
   "source_file": "leila-ben-cherif.pdf",
-  "text_sha256": "fa0f0e26e2bad6e8eaa83628b0b12659ff0bad28c8b0e99d58788ddca5f2e939",
+  "text_sha256": "d57e959d7ab7012542225e7f5b0a52729311d9862ca4d7a7f302339d1368e922",
   "extraction_sha256": "e70375a7cfc12078619da6f77abcc816f91569c0164d04086e01ce472c8dc30a",
   "candidate_info": {
     "name": "Leila Ben Cherif",
@@ -20,6 +20,12 @@
         "end_year": 2020
       },
       {
+        "role": "Not employed",
+        "company": "Career Gap (Family Care)",
+        "start_year": 2014,
+        "end_year": 2017
+      },
+      {
         "role": "Junior Systems Administrator",
         "company": "EuroSys Solutions",
         "start_year": 2012,
@@ -27,20 +33,32 @@
       }
     ],
     "skills": [
+      "Kubernetes",
+      "Docker",
+      "Jenkins",
+      "Helm",
+      "Windows",
+      "Linux",
+      "Veeam",
+      "PowerShell",
       "Linux (RHEL, Ubuntu)",
-      "KubernetesDocker",
-      "TerraformPrometheus",
-      "Grafana ELK StackPython",
-      "Bash AWS Azure",
+      "Terraform",
+      "Prometheus",
+      "Grafana",
+      "ELK Stack",
+      "Python",
+      "Bash",
+      "AWS",
+      "Azure",
       "Monitoring & Alerting",
       "Incident Management",
       "CI/CD (GitLab CI)",
       "Networking (TCP/IP , DNS, Load Balancing)"
     ],
     "institutions": [
-      "Institut de Formation Technologique",
-      "IFT",
-      "IFT Paris"
+      "Institut de Formation Technologique (IFT) – Paris",
+      "IFT Paris",
+      "IFT"
     ]
   }
 }

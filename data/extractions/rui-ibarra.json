@@ -1,10 +1,10 @@
 {
   "source_file": "rui-ibarra.pdf",
-  "text_sha256": "b5e7d8bacc482f6eafe9706133bc94151d0bcd2761778f67674eaa6bc8b01032",
+  "text_sha256": "70076db271c304203339c250abd8d8a2546c7b7336b373ee34476d2919340115",
   "extraction_sha256": "e70375a7cfc12078619da6f77abcc816f91569c0164d04086e01ce472c8dc30a",
   "candidate_info": {
     "name": "Rui Ibarra",
-    "current_role": "Director, Platform Engineering",
+    "current_role": "Director Platform Engineer",
     "current_company": "Siemens Industrial Automation",
     "positions": [
       {
@@ -33,19 +33,23 @@
       }
     ],
     "skills": [
-      "Technical Kubernetes",
+      "Kubernetes",
+      "MQTT",
+      "ArgoCD",
+      "Helm",
+      "Azure",
+      "AWS",
+      "OpenShift",
       "Istio",
-      "Terraform",
       "Prometheus",
       "Grafana",
+      "Terraform",
+      "Docker",
       "Jaeger",
       "Python (FastAPI, Celery)",
       "Go",
-      "Docker",
-      "Helm",
       "GitLab CI",
       "Jenkins X",
-      "MQTT",
       "OPC UA",
       "EdgeX Foundry",
       "Linux (RHEL, Ubuntu)",
@@ -58,24 +62,14 @@
       "Chaos Engineering",
       "Site Reliability Engineering (SLO/SLI)",
       "Technical mentoring",
-      "Agile/SAFe",
-      "Portuguese (native)",
-      "Spanish (fluent)",
-      "English (professional working proficiency)",
-      "French (basic)"
+      "Agile/SAFe"
     ],
     "institutions": [
-      "Technical University of Munich",
+      "Technical University of Munich (TU München) (TUM)",
       "TU München",
       "TUM",
-      "Universidade do Porto",
-      "UP",
-      "Red Hat",
-      "OpenShift Consulting",
-      "Siemens Industrial Automation",
-      "Freelance / Contract",
-      "Self‑taught / Open Source",
-      "Cloud Native Computing Foundations"
+      "Universidade do Porto (UP)",
+      "UP"
     ]
   }
 }
