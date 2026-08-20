@@ -4,9 +4,15 @@ Welcome to the AI-Powered CV Screener!
 Essentially A CV screening tool: a user asks questions in a chat interface and gets answers
 grounded in a corpus of CVs, with the source CVs cited.
 
-The project has three parts: a one-shot pipeline that generates a synthetic CV corpus; a backend
-that ingests those CVs and answers questions about them; and a web chat
-interface.
+The project has four parts: a one-shot pipeline that generates a synthetic CV corpus; a backend
+that ingests those CVs and answers questions about them; a web chat interface; and an eval suite
+that grades what was read out of the CVs and what the backend answers.
+
+![From PDF to a graded answer: make generate writes the CVs and the answer key, make ingest reads them into Postgres, a question is routed and answered from that data, and the eval suite grades both halves.](docs/workflow.svg)
+
+*Also as a one-page A3 landscape sheet, with a note on what every step does:*
+*[docs/WorkflowDiagram.pdf](docs/WorkflowDiagram.pdf).*
+
 
 ## Running it from scratch
 
@@ -14,8 +20,24 @@ You need **Python 3.12+**, **Node 20+**, **Docker** (running), and one LLM key.
 The CV corpus is already committed, so there is nothing to generate on a fresh clone.
 
 ```sh
-make install                  # venv + Python deps + frontend deps + .env
+make install                  # checks your toolchain, builds the venv, installs Python and
+                              # frontend deps, writes .env, and hands you a shell inside the venv
 # open .env and paste your GEMINI_API_KEY
+```
+
+`make install` is the only setup step, and it leaves you **inside the venv** — it ends by
+handing back an activated interactive shell, since a Makefile cannot activate anything in the
+shell that called it. Type `exit` to come back out.
+
+Every target that runs Python requires that venv to be active and stops with instructions if
+it is not, so a stale terminal can never quietly run this project against your system Python.
+`make db`, `make down` and `make ui` are exempt — Docker and npm, no Python involved:
+
+```
+$ make test
+not inside this repo's venv (VIRTUAL_ENV=unset).
+  activate it:  source .venv/bin/activate
+  or set it up: make install
 ```
 
 Then, in two terminals:
@@ -40,12 +62,13 @@ Run `make` on its own to see this list.
 
 | | |
 |---|---|
-| `make install` | venv, Python and frontend deps, `.env` from the template |
+| `make install` | one-shot setup: tool checks, venv, deps, `.env`, then a shell inside the venv |
 | `make db` / `make down` | start / stop Postgres + pgvector |
 | `make api` | backend on `BACKEND_API`'s port (:8000 by default), with reload |
 | `make ui` | Vite dev server on :5173, proxying `/api` to the backend |
 | `make ingest` | reads every CV in `data/cvs` into the database |
 | `make generate` | rebuilds the corpus (`COUNT=5` for fewer) |
+| `make regenerate` | rebuilds one CV from scratch, ignoring the cache (replaces `data/`) |
 | `make eval-extraction` | scores ingestion against the answer key — free, nothing running |
 | `make evals` | asks a running backend one question of each shape, and grades it |
 | `make test` / `make test-fast` | full suite / skipping the corpus-backed tests |
