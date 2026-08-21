@@ -40,7 +40,7 @@ class ExtractionScorer:
 
     # The pass marks. Below these, the data in the database is not good enough to
     # answer questions from. They were set by measuring the corpus as committed
-    # (100% / 93% / 100% / 90%) and then sitting a little under it, so that
+    # (100% / 87% / 99% / 100%) and then sitting a little under it, so that
     # regenerating the corpus with different people still passes, while a real
     # regression does not.
     #
@@ -50,14 +50,21 @@ class ExtractionScorer:
     #   - a job title is prose. A CV printing "Solutions Architect Intern" in the
     #     body under a "Solutions Architect" headline is a disagreement about
     #     wording, not a failure to read the page.
-    #   - the two recall marks (how much of a list we found) sit below what we
-    #     measure, because a genuinely broken PDF loses list items first. Whatever
-    #     the rate, every individual miss is printed below the table anyway.
+    #   - skill recall sits below what we measure because the two skills we miss
+    #     are not the same two on every run: the misses move between CVs when a
+    #     record is re-extracted, so the rate is stable and the identity is not.
+    #   - institution recall used to sit at 0.85 to absorb PDFs that had dropped
+    #     an Education section during rendering. They cannot any more — the
+    #     renderer reads every CV back and refuses to write one that lost content
+    #     (see RenderVerifier) — so the only misses left would be the extractor
+    #     misreading a name that is demonstrably on the page. 0.95 leaves room for
+    #     three of those and still catches a clipped section, which loses a whole
+    #     school list at once.
     _THRESHOLDS: dict[str, float] = {
         "years exact": 1.0,
         "role exact": 0.85,
         "skill recall": 0.95,
-        "institution recall": 0.85,
+        "institution recall": 0.95,
     }
 
     # Enough misses to see a pattern, not so many that the table scrolls off.

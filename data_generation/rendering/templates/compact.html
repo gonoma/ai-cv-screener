@@ -8,7 +8,7 @@
   body { font-family: "Helvetica Neue", Helvetica, Arial, sans-serif;
          font-size: 9pt; line-height: 1.42; color: #222; margin: 0; }
 
-  .band { background: #f0ece4; padding: 14mm 16mm 10mm; overflow: hidden;
+  .band { background: #f0ece4; padding: 14mm 16mm 10mm; display: flow-root;
           border-bottom: 3px solid #7d3c21; }
   .band img { float: left; width: 24mm; height: 24mm; object-fit: cover; margin-right: 10mm; }
   .band h1 { font-size: 19pt; margin: 0; font-weight: 600; letter-spacing: -0.3px; }
@@ -26,16 +26,29 @@
   .skills li { margin-bottom: 1px; }
 
   .role { margin-bottom: 10px; break-inside: avoid; }
-  .role-line { font-size: 9.5pt; }
+
+  /* The years used to be `float: right`. A float is placed against the nearest
+     block formatting context, and .role-line establishes none, so all five
+     ranges escaped their own roles and were laid out together against .body —
+     printed in reverse, on one line, next to the last job. Flex keeps them
+     right-aligned while leaving them in the role they date, which is also the
+     order they need to be read in. */
+  .role-line { font-size: 9.5pt; display: flex; justify-content: space-between;
+               align-items: baseline; gap: 8mm; }
   .role-line strong { font-weight: 700; }
-  .role-line .years { float: right; color: #4d4d4d; font-size: 8.5pt; }
+  .role-line .years { color: #4d4d4d; font-size: 8.5pt; white-space: nowrap; }
   .role-meta { font-size: 8pt; color: #4d4d4d; margin-bottom: 3px; }
   ul.bullets { margin: 0; padding-left: 14px; }
   ul.bullets li { margin-bottom: 1px; }
 
-  .two-up { overflow: hidden; }
-  .two-up .col { float: left; width: 48%; }
-  .two-up .col + .col { margin-left: 4%; }
+  /* Two floated columns inside an `overflow: hidden` clearfix. Neither half of
+     that survives a page boundary: the clearfix clips instead of fragmenting,
+     and the floats cannot be carried over either — so on the longest CVs this
+     block was cut off mid-way and the schools and languages simply vanished.
+     `flow-root` fixes the clipping but not the floats, so the columns are flex
+     items now, which need no clearfix and do break onto a second page. */
+  .two-up { display: flex; gap: 4%; }
+  .two-up .col { width: 48%; }
   .edu { margin-bottom: 6px; font-size: 8.5pt; }
   .edu .inst { color: #4d4d4d; }
 </style>
@@ -64,8 +77,8 @@
   {% for role in candidate.experience %}
   <div class="role">
     <div class="role-line">
+      <span><strong>{{ role.role }}</strong> - {{ role.company }}</span>
       <span class="years">{{ role | date_range }}</span>
-      <strong>{{ role.role }}</strong> - {{ role.company }}
     </div>
     <div class="role-meta">{{ role.location }}</div>
     <ul class="bullets">

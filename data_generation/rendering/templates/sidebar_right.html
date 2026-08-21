@@ -20,8 +20,14 @@
   .rule { position: fixed; top: 0; right: 32%; width: 2.5pt; height: 100%;
           background: #314b40; z-index: -1; }
 
-  .main { float: left; width: 68%; box-sizing: border-box; padding: 15mm 8mm 15mm 15mm; }
-  .side { margin-left: 68%; box-sizing: border-box; padding: 15mm 13mm 15mm 8mm; }
+  /* The long column is the one in normal flow, and the short one floats
+     beside it — the same arrangement two_column.html uses, mirrored. It used to
+     be the other way round, with .main floated; a float that outgrows the page
+     is dropped rather than carried onto a second one, so the CVs with the most
+     experience silently lost whichever section came last. The aside is a photo
+     and three short lists and never approaches the page height. */
+  .side { float: right; width: 32%; box-sizing: border-box; padding: 15mm 13mm 15mm 8mm; }
+  .main { margin-right: 32%; box-sizing: border-box; padding: 15mm 8mm 15mm 15mm; }
 
   h1 { font-size: 21pt; margin: 0; font-weight: 600; color: #1c2a24; }
   .headline { font-size: 11pt; color: #314b40; margin: 3px 0 10px; font-weight: 500; }
@@ -48,6 +54,29 @@
 
 <div class="tint"></div>
 <div class="rule"></div>
+
+<aside class="side">
+  {% if photo %}<img src="{{ photo }}" alt="">{% endif %}
+
+  <h3>Contact</h3>
+  <p>{{ candidate.location }}</p>
+  <p>{{ candidate.email }}</p>
+  <p>{{ candidate.phone }}</p>
+
+  <h3>Skills</h3>
+  <p>
+    {% for skill in candidate.skills %}
+    <span class="chip">{{ skill }}</span>
+    {% endfor %}
+  </p>
+
+  <h3>Languages</h3>
+  <ul>
+    {% for language in candidate.languages %}
+    <li>{{ language }}</li>
+    {% endfor %}
+  </ul>
+</aside>
 
 <main class="main">
   <h1>{{ candidate.name }}</h1>
@@ -76,28 +105,6 @@
   {% endfor %}
 </main>
 
-<aside class="side">
-  {% if photo %}<img src="{{ photo }}" alt="">{% endif %}
-
-  <h3>Contact</h3>
-  <p>{{ candidate.location }}</p>
-  <p>{{ candidate.email }}</p>
-  <p>{{ candidate.phone }}</p>
-
-  <h3>Skills</h3>
-  <p>
-    {% for skill in candidate.skills %}
-    <span class="chip">{{ skill }}</span>
-    {% endfor %}
-  </p>
-
-  <h3>Languages</h3>
-  <ul>
-    {% for language in candidate.languages %}
-    <li>{{ language }}</li>
-    {% endfor %}
-  </ul>
-</aside>
 
 </body>
 </html>

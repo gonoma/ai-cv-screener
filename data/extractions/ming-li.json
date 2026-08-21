@@ -1,6 +1,6 @@
 {
   "source_file": "ming-li.pdf",
-  "text_sha256": "82c4eb5cfad7f073d410d6ba5dace0b37556ff78102b706fe5e0e70f943a9903",
+  "text_sha256": "5b41df8a31614a8ad632cc78b851158ecf967c83b4d3bf5b6547604234054dde",
   "extraction_sha256": "e70375a7cfc12078619da6f77abcc816f91569c0164d04086e01ce472c8dc30a",
   "candidate_info": {
     "name": "Ming Li",
@@ -34,13 +34,14 @@
     ],
     "skills": [
       "SQL",
-      "Python (pandas, NumPy, scikit-learn)",
+      "Python (pandas, NumPy, scikit- learn)",
       "R Statistical modeling",
       "Machine learning (gradient boosting, survival analysis)",
       "Data visualization (Tableau, Power BI)",
       "Healthcare data standards (HL7, FHIR)",
       "ETL pipelines (Apache Airflow, Spark)",
-      "Excel VBARisk modeling",
+      "Excel VBA",
+      "Risk modeling",
       "Experiment design",
       "A/B testing"
     ],

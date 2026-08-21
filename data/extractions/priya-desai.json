@@ -1,6 +1,6 @@
 {
   "source_file": "priya-desai.pdf",
-  "text_sha256": "d66220e4a5fe61d1568c55d989aecadb3cc920299b56bd47d172b6a77d1a8784",
+  "text_sha256": "b1f85f1e5f137e853cab364e64c07344bccbed1c4e68c8d40d6045ae18019fe7",
   "extraction_sha256": "e70375a7cfc12078619da6f77abcc816f91569c0164d04086e01ce472c8dc30a",
   "candidate_info": {
     "name": "Priya Desai",
@@ -8,20 +8,20 @@
     "current_company": "NordDesign",
     "positions": [
       {
-        "role": "UX Designer",
-        "company": "UX Consultancy Estonia",
+        "role": "UX Designer - UX Consultancy Estonia",
+        "company": "",
         "start_year": 2012,
         "end_year": 2017
       },
       {
-        "role": "Senior UX Designer",
-        "company": "UX Consultancy Estonia",
+        "role": "Senior UX Designer - UX Consultancy Estonia",
+        "company": "",
         "start_year": 2017,
         "end_year": 2022
       },
       {
-        "role": "Staff UX Designer",
-        "company": "NordDesign",
+        "role": "Staff UX Designer - NordDesign",
+        "company": "",
         "start_year": 2022,
         "end_year": null
       }
@@ -36,13 +36,10 @@
       "Basic JavaScript",
       "Stakeholder facilitation",
       "Accessibility (WCAG 2.1 AA)",
-      "Workshop facilitation",
-      "Sketch",
-      "Figma",
-      "Storybook"
+      "Workshop facilitation"
     ],
     "institutions": [
-      "Politecnico di Milano (Polimi)",
+      "Politecnico di Milano",
       "Polimi"
     ]
   }

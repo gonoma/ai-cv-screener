@@ -1,6 +1,6 @@
 {
   "source_file": "maarten-de-jong.pdf",
-  "text_sha256": "51b27f6dde936564c5531d0875ebc014ae3bd83409e34b078ec8bcb0d0d374a7",
+  "text_sha256": "76a1c4080cc942c9f69a092bcbf816370e5e1ac80220bbd7f0a1d57b122d1eb3",
   "extraction_sha256": "e70375a7cfc12078619da6f77abcc816f91569c0164d04086e01ce472c8dc30a",
   "candidate_info": {
     "name": "Maarten de Jong",
@@ -52,15 +52,10 @@
       "Docker",
       "TestRail",
       "Chaos Mesh",
-      "Quality Engineering Strategy",
-      "Pact",
-      "Selenium",
-      "Postman",
-      "Java",
-      "Jenkins CI"
+      "Quality Engineering Strategy"
     ],
     "institutions": [
-      "Universidad Politécnica de Madrid (UPM)",
+      "Universidad Politécnica de Madrid",
       "UPM"
     ]
   }

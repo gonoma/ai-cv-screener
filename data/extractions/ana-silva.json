@@ -1,6 +1,6 @@
 {
   "source_file": "ana-silva.pdf",
-  "text_sha256": "11f7d6b871d2b47cfae00d1ba11c14869066569c95d6b1e3215ea352f5ee0f11",
+  "text_sha256": "8f596be7a3ff8e5414e5eb8920d4027f25a35a6f13e88c867100ee8b6f018fef",
   "extraction_sha256": "e70375a7cfc12078619da6f77abcc816f91569c0164d04086e01ce472c8dc30a",
   "candidate_info": {
     "name": "Ana Silva",
@@ -38,17 +38,10 @@
       "GitHub Actions",
       "Docker",
       "RESTful APIs",
-      "GraphQL",
-      "Web Vitals",
-      "WCAG 2.1 AA",
+      "GraphQL (basic)",
+      "Web Vitals WCAG 2.1 AA",
       "Performance profiling (Chrome DevTools)",
-      "CI/CD",
-      "jQuery",
-      "Chromatic",
-      "CSS Grid",
-      "Flexbox",
-      "Lighthouse",
-      "Cypress"
+      "CI/CD"
     ],
     "institutions": [
       "Universidade de Lisboa",

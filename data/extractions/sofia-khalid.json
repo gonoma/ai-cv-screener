@@ -1,6 +1,6 @@
 {
   "source_file": "sofia-khalid.pdf",
-  "text_sha256": "4243db7a854279b82c05d664f2c6683c93cccc2808d301803ff7f126cc474345",
+  "text_sha256": "bda3a51ffc0edd77784267e59936bef63fefaf3ead70fa929da4850722339b05",
   "extraction_sha256": "e70375a7cfc12078619da6f77abcc816f91569c0164d04086e01ce472c8dc30a",
   "candidate_info": {
     "name": "Sofia Khalid",
@@ -8,29 +8,25 @@
     "current_company": "TechSolutions Iberia",
     "positions": [
       {
-        "role": "QA Engineer",
-        "company": "TechSolutions Iberia",
+        "role": "QA Engineer - TechSolutions Iberia",
+        "company": "",
         "start_year": 2020,
         "end_year": null
       },
       {
-        "role": "Contract QA Analyst",
-        "company": "QAtest Contracting",
+        "role": "Contract QA Analyst - QAtest Contracting",
+        "company": "",
         "start_year": 2019,
         "end_year": 2020
       },
       {
-        "role": "Junior QA Tester",
-        "company": "DevStart Studios",
+        "role": "Junior QA Tester - DevStart Studios",
+        "company": "",
         "start_year": 2016,
         "end_year": 2019
       }
     ],
     "skills": [
-      "Selenium Grid",
-      "Cypress",
-      "Jira",
-      "Jenkins",
       "Test automation (Selenium, Cypress)",
       "API testing (Postman, REST Assured)",
       "Performance testing (JMeter, Gatling)",
@@ -41,7 +37,7 @@
       "Agile/Scrum"
     ],
     "institutions": [
-      "Universidad de Granada (UGR)",
+      "Universidad de Granada",
       "UGR"
     ]
   }

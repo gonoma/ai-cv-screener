@@ -161,6 +161,36 @@ path thirty times, hence why we have 5 different templates that are quite
 different in structure. The templates cycle by position rather than at random, 
 so all five always show up.
 
+### Reading a CV back before trusting it
+
+Five layouts test the reader. They also mean five ways for the *writer* to be
+wrong, and that turned out to be the more expensive direction.
+
+Two of them were losing content. `compact.html` put its Education and Languages
+columns in an `overflow: hidden` clearfix, and a clipping box cannot be split
+across a page: when a long career pushed that block onto the page boundary,
+WeasyPrint cut it off instead of paginating it. `sidebar_right.html` floated its
+*long* column rather than its short one, and a float that outgrows the page is
+dropped the same way. The result was a CV that still looked like a CV, still
+parsed, still ingested — and had no school on it at all.
+
+Nothing downstream could catch that. The extractor read what was on the page and
+reported it honestly; the answer key still promised a school the page no longer
+contained; the eval booked the difference as an extraction failure and the floor
+was lowered until it passed. Seven of thirty CVs were affected and the suite was
+green throughout.
+
+So the renderer now reads every PDF back the moment it writes it, and refuses to
+keep one that lost something (`RenderVerifier`). It checks that every institution,
+language, employer and job title in the record is on the page, and separately that
+each date range is *near the job it dates* — because the third bug was the same
+template floating its years, which collected all five ranges onto one line beside
+the last job. They were all present. Presence was not the question.
+
+It is the renderer's job because the renderer is the only stage that knows both
+what went in and what came out. Downstream, a truncated CV is indistinguishable
+from a short one.
+
 ### Corpus Generation Pipeline
 
 It writes:
@@ -321,7 +351,7 @@ Two suites, split by what they cost to run.
 read out of every CV against `data/ground_truth.json` — years exact, current role exact,
 skill and institution recall — deriving each row exactly as the pipeline does, so it
 measures what is in the database without needing the database. Today: **30/30 years,
-26/30 roles, 99% skills, 90% institutions.**
+26/30 roles, 99% skills, 73/73 institutions.**
 
 `make evals` asks a running backend one question of each shape — aggregation, lookup,
 profile, ranking, breakdown, qualitative, unanswerable — and grades the route and the
@@ -347,20 +377,25 @@ metric               score        floor   result
 years exact          30/30        1.00    PASS (100%)
 role exact           26/30        0.85    PASS (87%)
 skill recall         382/384      0.95    PASS (99%)
-institution recall   66/73        0.85    PASS (90%)
+institution recall   73/73        0.95    PASS (100%)
 
-8 field(s) off:
+6 field(s) off:
   lucy-dubois.pdf: role exact — got 'Director, Data Engineer', key 'Freelance Data Engineering Consultant'
-  arjun-sharma.pdf: institution recall — lost ['TU Delft']
+  ming-li.pdf: skill recall — lost ['Python (pandas, NumPy, scikit-learn)']
   ...
 ```
 
 Scores read as *hits / total*: the two exact metrics count one per CV, the two recalls
 count one per list entry, so 382/384 means two skills out of 384 went missing across the
-whole corpus. The floors sit a little under what the committed corpus measures, so
+whole corpus. Most floors sit a little under what the committed corpus measures, so
 regenerating it with different people still passes but a real regression does not. Years
-is the only metric at 1.00, because it is arithmetic over dates rather than reading: less
-than exact means our own calculation is wrong.
+is at 1.00 because it is arithmetic over dates rather than reading: less than exact means
+our own calculation is wrong.
+
+Institutions used to be the loosest floor of the four, at 0.85, and the slack was hiding
+a bug rather than absorbing model variance — see [Reading a CV back before
+trusting it](#reading-a-cv-back-before-trusting-it). With the renderer no longer able to
+emit a CV that lost a section, the measured rate went to 73/73 and the floor to 0.95.
 
 `make evals` prints one row per question — its shape, the route the backend chose, and
 what the grader made of the answer. Abridged here to five rows, with two failures
