@@ -1,6 +1,6 @@
 {
   "source_file": "leila-ben-cherif.pdf",
-  "text_sha256": "d57e959d7ab7012542225e7f5b0a52729311d9862ca4d7a7f302339d1368e922",
+  "text_sha256": "3a499a5173a78fd10f0a624b0c79e46320010a64fc5ece38b8405e1bea9c9499",
   "extraction_sha256": "e70375a7cfc12078619da6f77abcc816f91569c0164d04086e01ce472c8dc30a",
   "candidate_info": {
     "name": "Leila Ben Cherif",
@@ -33,31 +33,18 @@
       }
     ],
     "skills": [
-      "Kubernetes",
-      "Docker",
-      "Jenkins",
-      "Helm",
-      "Windows",
-      "Linux",
-      "Veeam",
-      "PowerShell",
       "Linux (RHEL, Ubuntu)",
-      "Terraform",
-      "Prometheus",
-      "Grafana",
-      "ELK Stack",
-      "Python",
-      "Bash",
-      "AWS",
-      "Azure",
+      "Kubernetes Docker",
+      "Terraform Prometheus",
+      "Grafana ELK Stack Python",
+      "Bash AWS Azure",
       "Monitoring & Alerting",
       "Incident Management",
       "CI/CD (GitLab CI)",
       "Networking (TCP/IP , DNS, Load Balancing)"
     ],
     "institutions": [
-      "Institut de Formation Technologique (IFT) – Paris",
-      "IFT Paris",
+      "Institut de Formation Technologique",
       "IFT"
     ]
   }

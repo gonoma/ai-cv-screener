@@ -1,6 +1,6 @@
 {
   "source_file": "jordi-olsen.pdf",
-  "text_sha256": "2ae6a1aa963f8d94de0b4d2915cb9cf94408d8cc759b61a78f32db8069055068",
+  "text_sha256": "58e472cb7bc01d75ca55762681c01bd63af4705344db56801bed085b07fab72e",
   "extraction_sha256": "e70375a7cfc12078619da6f77abcc816f91569c0164d04086e01ce472c8dc30a",
   "candidate_info": {
     "name": "Jordi Olsen",
@@ -48,6 +48,13 @@
       "Team Leadership & Agile Delivery",
       "Technical Communication & Stakeholder Management"
     ],
-    "institutions": []
+    "institutions": [
+      "Technical University of Denmark",
+      "DTU",
+      "Universitat Politècnica de Catalunya",
+      "UPC",
+      "Universitat de Barcelona",
+      "UB"
+    ]
   }
 }

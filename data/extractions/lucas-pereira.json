@@ -1,6 +1,6 @@
 {
   "source_file": "lucas-pereira.pdf",
-  "text_sha256": "204c97b8ee65a7ffda190ac3634b6d76b7401c2ab5b797385b667db6a950ca99",
+  "text_sha256": "df4c26ce89955ee4bf1ffddca73c3a3bc5decd1881fb839c9558d9bc90137d4f",
   "extraction_sha256": "e70375a7cfc12078619da6f77abcc816f91569c0164d04086e01ce472c8dc30a",
   "candidate_info": {
     "name": "Lucas Pereira",
@@ -46,12 +46,10 @@
       "Localization",
       "UX writing",
       "Style guides",
-      "Single‑source publishing",
-      "Git hooks",
-      "HTML5/PDF"
+      "Single‑source publishing"
     ],
     "institutions": [
-      "Universitat Politecnica de Catalunya (UPC)",
+      "Universitat Politecnica de Catalunya",
       "UPC"
     ]
   }

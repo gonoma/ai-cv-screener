@@ -1,6 +1,6 @@
 {
   "source_file": "antoine-moreau.pdf",
-  "text_sha256": "dc7efc5e1e03ef823bffe59e61a7bb9c6452b43421ac7be29b78f9ce4bdf9bf4",
+  "text_sha256": "d391333d1c862d999cd06c0330cb09c0e3f32bd31c80bdabe9c1f373a8b6fbb3",
   "extraction_sha256": "e70375a7cfc12078619da6f77abcc816f91569c0164d04086e01ce472c8dc30a",
   "candidate_info": {
     "name": "Antoine Moreau",
@@ -38,8 +38,7 @@
       "A/B testing",
       "Bayesian optimization",
       "Docker",
-      "GitLab CI",
-      "Airflow"
+      "GitLab CI"
     ],
     "institutions": [
       "KTH Royal Institute of Technology",

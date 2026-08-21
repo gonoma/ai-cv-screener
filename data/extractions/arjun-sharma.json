@@ -1,6 +1,6 @@
 {
   "source_file": "arjun-sharma.pdf",
-  "text_sha256": "21a4c605de5b498046ec85f0118e90067be5d641b7cda51755d2cda1c6b4a6c8",
+  "text_sha256": "5fb529cd008b10bb652a37702e291b2576f9696b12051f52c245ee9088123e68",
   "extraction_sha256": "e70375a7cfc12078619da6f77abcc816f91569c0164d04086e01ce472c8dc30a",
   "candidate_info": {
     "name": "Arjun Sharma",
@@ -40,26 +40,21 @@
     ],
     "skills": [
       "Leadership",
-      "Agile Scrum",
-      "Python",
-      "Django",
-      "React",
-      "AWS",
       "Kubernetes",
+      "Agile Scrum",
       "CI/CD",
+      "Python",
       "Data pipelines",
+      "Django",
       "Mentoring",
+      "React",
       "Stakeholder management",
-      "Budget planning",
-      "Excel",
-      "VBA",
-      "RESTful APIs",
-      "GitHub Actions",
-      "Docker",
-      "Kinesis",
-      "Lambda",
-      "Redshift"
+      "AWS",
+      "Budget planning"
     ],
-    "institutions": []
+    "institutions": [
+      "TU Delft",
+      "TU Delft"
+    ]
   }
 }

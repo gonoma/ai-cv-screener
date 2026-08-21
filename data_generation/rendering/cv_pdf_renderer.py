@@ -6,6 +6,7 @@ from jinja2 import Environment, FileSystemLoader, select_autoescape
 from weasyprint import HTML
 
 from ..models.cv_records import Candidate, Role
+from .render_verifier import RenderVerifier
 
 
 class CvPdfRenderer:
@@ -27,6 +28,7 @@ class CvPdfRenderer:
             lstrip_blocks=True,
         )
         self._environment.filters["date_range"] = self._format_date_range
+        self._verifier = RenderVerifier()
 
     def template_for_index(self, index: int) -> str:
         """Cycle the templates by position rather than choosing one at random."""
@@ -45,10 +47,20 @@ class CvPdfRenderer:
         template: str,
         output_path: Path,
     ) -> None:
+        """Render one CV, then read it back and check the layout kept all of it.
+
+        The verification is not optional and there is no flag to skip it. A CV
+        that lost a section is indistinguishable from a complete one downstream —
+        it is still a valid PDF of a plausible person — and the cost of shipping
+        it is an answer key that promises a school the text does not contain.
+        Failing here stops the corpus at the CV that broke, with the template
+        named, which is the only point where that is a two-line CSS fix.
+        """
         rendered_html = self._environment.get_template(template).render(
             candidate=candidate, photo=photo_data_uri
         )
         HTML(string=rendered_html).write_pdf(output_path)
+        self._verifier.verify(candidate, output_path)
 
     @staticmethod
     def _format_date_range(role: Role) -> str:
